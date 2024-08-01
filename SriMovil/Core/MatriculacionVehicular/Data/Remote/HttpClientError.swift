@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum HttpClientError: Error {
+    case clientError
+    case serverError
+    case unknownError
+    case generico
+    case parsingError
+}

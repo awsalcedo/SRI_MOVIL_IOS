@@ -9,7 +9,23 @@ import SwiftUI
 
 struct BarraProgresoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.black.opacity(0.4)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .scaleEffect(1.5)
+                    .padding(20)
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .shadow(radius: 10)
+                Text("Cargando...")
+                    .foregroundColor(.blue)
+                    .font(.headline)
+                    .padding(.top, 10)
+            }
+        }
     }
 }
 

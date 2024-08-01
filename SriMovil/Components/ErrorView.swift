@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct ErrorView: View {
+    let message: String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Error")
+                .font(.title)
+                .foregroundColor(.red)
+            Text(message)
+                .padding()
+            Spacer()
+        }
+        .padding()
     }
 }
 
 #Preview {
-    ErrorView()
+    ErrorView(message: "No es posible obtener la información del vehículo")
 }

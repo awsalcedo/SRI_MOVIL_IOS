@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+// Define un enum para los posibles errores de dominio relacionados con la información del vehículo
+enum InfoVehiculoDomainError: Error {
+    case generico
+}

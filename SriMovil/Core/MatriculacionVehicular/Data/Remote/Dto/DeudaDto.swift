@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct DeudaDto: Codable {
+    let descripcion: String
+    let rubros: [RubroDto]
+    let subtotal: Double
+}

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class InfoVehiculoDomainErrorMapper {
+    func map(error: HttpClientError?) -> InfoVehiculoDomainError {
+        return .generico
+    }
+}

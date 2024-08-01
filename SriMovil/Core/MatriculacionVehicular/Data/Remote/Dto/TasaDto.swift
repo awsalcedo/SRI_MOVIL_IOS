@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct TasaDto: Codable {
+    let descripcion: String
+    let deudas: [DeudaDto]
+    let subtotal: Double
+}

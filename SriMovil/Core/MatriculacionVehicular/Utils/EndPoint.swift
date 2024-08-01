@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct EndPoint {
+    let baseURL: String
+    let context: String
+    let path: String
+    let method: HTTPMethod
+    
+    var url: URL? {
+        return URL(string: baseURL + context + path)
+    }
+}
