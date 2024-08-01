@@ -65,7 +65,6 @@
 		FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43162C5B273500A021A0 /* ButtonPersonalizadoView.swift */; };
 		FA2A43192C5B274F00A021A0 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43182C5B274F00A021A0 /* ErrorView.swift */; };
 		FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB712912C5B076100771790 /* SriMovilApp.swift */; };
-		FAB712942C5B076100771790 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB712932C5B076100771790 /* ContentView.swift */; };
 		FAB712962C5B076300771790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712952C5B076300771790 /* Assets.xcassets */; };
 		FAB712992C5B076300771790 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712982C5B076300771790 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -129,7 +128,6 @@
 		FA2A43182C5B274F00A021A0 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		FAB7128E2C5B076100771790 /* SriMovil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SriMovil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB712912C5B076100771790 /* SriMovilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriMovilApp.swift; sourceTree = "<group>"; };
-		FAB712932C5B076100771790 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FAB712952C5B076300771790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB712982C5B076300771790 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -510,7 +508,6 @@
 				FA2A42852C5B1CF500A021A0 /* Root */,
 				FA2A42842C5B1CE800A021A0 /* Core */,
 				FA2A42832C5B1CE000A021A0 /* App */,
-				FAB712932C5B076100771790 /* ContentView.swift */,
 				FAB712952C5B076300771790 /* Assets.xcassets */,
 				FAB712972C5B076300771790 /* Preview Content */,
 			);
@@ -622,7 +619,6 @@
 				FA2A42B42C5B208400A021A0 /* VehiculosRemoteDataSourceType.swift in Sources */,
 				FA2A42A62C5B1F7700A021A0 /* EstadoTributarioView.swift in Sources */,
 				FA2A42BF2C5B211A00A021A0 /* TasaDto.swift in Sources */,
-				FAB712942C5B076100771790 /* ContentView.swift in Sources */,
 				FA2A42CA2C5B21C900A021A0 /* VehiculosApiType.swift in Sources */,
 				FA2A42F12C5B242900A021A0 /* EndPoint.swift in Sources */,
 				FA2A42E82C5B237D00A021A0 /* MatriculacionVehicularDetalleView.swift in Sources */,
