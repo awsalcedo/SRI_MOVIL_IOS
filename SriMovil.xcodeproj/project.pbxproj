@@ -318,6 +318,8 @@
 		FA2A42AF2C5B202200A021A0 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				FA2A42F02C5B242900A021A0 /* EndPoint.swift */,
+				FA2A42F42C5B245300A021A0 /* HTTPMethod.swift */,
 				FA2A42C02C5B213200A021A0 /* Repository */,
 				FA2A42B52C5B209900A021A0 /* Dto */,
 				FA2A42B02C5B203400A021A0 /* DataSource */,
@@ -421,9 +423,7 @@
 		FA2A42EF2C5B241000A021A0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				FA2A42F02C5B242900A021A0 /* EndPoint.swift */,
 				FA2A42F22C5B243F00A021A0 /* FormatterUtils.swift */,
-				FA2A42F42C5B245300A021A0 /* HTTPMethod.swift */,
 				FA2A42F62C5B246800A021A0 /* HttpClientErrorMapper.swift */,
 			);
 			path = Utils;
