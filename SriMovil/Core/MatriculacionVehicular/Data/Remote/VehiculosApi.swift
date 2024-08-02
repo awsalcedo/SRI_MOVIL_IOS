@@ -23,7 +23,7 @@ class VehiculosApi: VehiculosApiType {
         request.httpMethod = endPoint.method.rawValue
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await session.data(for: request)
             
             guard let httpResponse = response as? HTTPURLResponse else {
                 return .failure(HttpClientError.unknownError)
