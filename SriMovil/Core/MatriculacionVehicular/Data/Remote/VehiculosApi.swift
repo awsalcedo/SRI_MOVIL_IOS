@@ -16,7 +16,7 @@ class VehiculosApi: VehiculosApiType {
     
     func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError> {
         guard let url = endPoint.url else {
-            return .failure(HttpClientError.clientError)
+            return .failure(HttpClientError.badURL)
         }
         
         var request = URLRequest(url: url)
