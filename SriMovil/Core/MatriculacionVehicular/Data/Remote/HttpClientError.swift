@@ -8,12 +8,10 @@
 import Foundation
 
 enum HttpClientError: Error {
-    case clientError
-    case serverError
-    case generico
-    case parsingError
     case badURL
-    case responseError
-    case tooManyRequests
+    case requestFailed(Error)
+    case statusError(Int)
+    case decodingError(Error)
     case unknownError
+    case parsingError
 }

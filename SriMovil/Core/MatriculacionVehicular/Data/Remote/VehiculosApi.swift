@@ -6,41 +6,20 @@
 //
 
 import Foundation
+import Factory
 
 class VehiculosApi: VehiculosApiType {
-    let session: URLSession
-    
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
+  
+    @Injected(\.httpClient) private var httpClient
     
     func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError> {
-        guard let url = endPoint.url else {
-            return .failure(HttpClientError.badURL)
-        }
+        let result = await httpClient.makeRequest(endPoint: endPoint)
         
-        var request = URLRequest(url: url)
-        request.httpMethod = endPoint.method.rawValue
-        
-        do {
-            let (data, response) = try await session.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse else {
-                return .failure(HttpClientError.unknownError)
-            }
-            
-            switch httpResponse.statusCode {
-            case 200...299:
-                return .success(data)
-            case 400...499:
-                return .failure(HttpClientError.clientError)
-            case 500...599:
-                return .failure(HttpClientError.serverError)
-            default:
-                return .failure(HttpClientError.unknownError)
-            }
-        } catch {
-            return .failure(HttpClientError.unknownError)
+        switch result {
+        case .success(let data):
+            return .success(data)
+        case .failure(let error):
+            return .failure(error)
         }
     }
 }

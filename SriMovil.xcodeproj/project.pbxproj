@@ -64,6 +64,7 @@
 		FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43142C5B271F00A021A0 /* BarraProgresoView.swift */; };
 		FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43162C5B273500A021A0 /* ButtonPersonalizadoView.swift */; };
 		FA2A43192C5B274F00A021A0 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43182C5B274F00A021A0 /* ErrorView.swift */; };
+		FA817E0B2C5E9DC30050C167 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA817E0A2C5E9DC30050C167 /* HTTPClient.swift */; };
 		FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB712912C5B076100771790 /* SriMovilApp.swift */; };
 		FAB712962C5B076300771790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712952C5B076300771790 /* Assets.xcassets */; };
 		FAB712992C5B076300771790 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712982C5B076300771790 /* Preview Assets.xcassets */; };
@@ -126,6 +127,7 @@
 		FA2A43142C5B271F00A021A0 /* BarraProgresoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraProgresoView.swift; sourceTree = "<group>"; };
 		FA2A43162C5B273500A021A0 /* ButtonPersonalizadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPersonalizadoView.swift; sourceTree = "<group>"; };
 		FA2A43182C5B274F00A021A0 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		FA817E0A2C5E9DC30050C167 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		FAB7128E2C5B076100771790 /* SriMovil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SriMovil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB712912C5B076100771790 /* SriMovilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriMovilApp.swift; sourceTree = "<group>"; };
 		FAB712952C5B076300771790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				FA2A42C52C5B219300A021A0 /* InfoVehiculoDomainErrorMapper.swift */,
 				FA2A42C72C5B21AB00A021A0 /* VehiculosApi.swift */,
 				FA2A42C92C5B21C900A021A0 /* VehiculosApiType.swift */,
+				FA817E0A2C5E9DC30050C167 /* HTTPClient.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				FA2A42D72C5B228100A021A0 /* Rubro.swift in Sources */,
 				FA2A42F72C5B246800A021A0 /* HttpClientErrorMapper.swift in Sources */,
 				FA2A42C62C5B219300A021A0 /* InfoVehiculoDomainErrorMapper.swift in Sources */,
+				FA817E0B2C5E9DC30050C167 /* HTTPClient.swift in Sources */,
 				FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */,
 				FA2A42FC2C5B253F00A021A0 /* ConsultasView.swift in Sources */,
 				FA2A42D12C5B223900A021A0 /* DetallesRubro.swift in Sources */,
@@ -793,8 +797,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -821,8 +824,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

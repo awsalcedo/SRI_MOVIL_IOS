@@ -12,14 +12,14 @@ struct HttpClientErrorMapper {
         if let urlError = error as? URLError {
             switch urlError.code {
             case .badURL:
-                return .clientError
+                return .badURL
             case .timedOut:
-                return .clientError
+                return .unknownError
             default:
                 return .unknownError
             }
         }
         
-        return .generico
+        return .unknownError
     }
 }
