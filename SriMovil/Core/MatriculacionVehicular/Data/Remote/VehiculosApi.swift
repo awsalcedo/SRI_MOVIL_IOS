@@ -23,14 +23,3 @@ class VehiculosApi: VehiculosApiType {
         }
     }
 }
-
-extension HTTPMethod {
-    var rawValue: String {
-        switch self {
-        case .get:
-            return "GET"
-        case .post:
-            return "POST"
-        }
-    }
-}

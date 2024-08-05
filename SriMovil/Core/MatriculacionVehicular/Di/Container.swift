@@ -15,7 +15,7 @@ extension Container {
         self { VehiculosApi() }.singleton
     }
     
-    var urlSession: Factory<URLSession> {
+    var session: Factory<URLSession> {
         self { URLSession.shared }.singleton
     }
     

@@ -9,35 +9,42 @@ import Foundation
 import Factory
 
 class HTTPClient {
-    @Injected(\.urlSession) private var urlSession
+    @Injected(\.session) private var session
     
     func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError> {
-        guard let url = endPoint.url else {
-            return .failure(HttpClientError.badURL)
+        guard var urlComponents = URLComponents(string: endPoint.baseURL + endPoint.context + endPoint.path) else {
+            return .failure(.badURL)
+        }
+        
+        urlComponents.setQueryItems(with: endPoint.queryParameters)
+        
+        guard let url = urlComponents.url else {
+            return .failure(.badURL)
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = endPoint.method.rawValue
+        request.setHTTPBody(with: endPoint.bodyParameters)
         
         do {
-            let (data, response) = try await urlSession.data(for: request)
+            let (data, response) = try await session.data(for: request)
+            
             guard let httpResponse = response as? HTTPURLResponse else {
-                return .failure(HttpClientError.unknownError)
+                return .failure(.unknownError)
             }
             
             switch httpResponse.statusCode {
             case 200...299:
                 return .success(data)
             case 400...499:
-                return .failure(.statusError(httpResponse.statusCode))
+                return .failure(.clientError(data, httpResponse.statusCode))
             case 500...599:
-                return .failure(.statusError(httpResponse.statusCode))
+                return .failure(.serverError(data, httpResponse.statusCode))
             default:
-                return .failure(.unknownError)
+                return .failure(.statusError(httpResponse.statusCode))
             }
-            
         } catch {
-            return .failure(HttpClientError.unknownError)
+            return .failure(.requestFailed(error))
         }
     }
 }

@@ -11,13 +11,15 @@ import Factory
 // Componente que se encarga de implementar los detalles de infraestructura para realizar las peticiones al Core de servicios del SRIMOVIL
 
 class VehiculosRemoteDataSource: VehiculosRemoteDataSourceType {
-    @Injected(\.vehiculosApi) private var api//: VehiculosApiType
+    @Injected(\.vehiculosApi) private var api
     
-    func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoDto, HttpClientError> {
+    func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoModel, HttpClientError> {
         let endPoint = EndPoint(
             baseURL: "https://srienlinea.sri.gob.ec/",
             context: "movil-servicios/api/",
             path: "v1.0/matriculacion/valor/\(idVehiculo)",
+            queryParameters: nil,
+            bodyParameters: nil,
             method: .get
         )
         
@@ -27,13 +29,14 @@ class VehiculosRemoteDataSource: VehiculosRemoteDataSourceType {
         case .success(let data):
             do {
                 let infoVehiculoDto = try JSONDecoder().decode(InfoVehiculoDto.self, from: data)
-                return .success(infoVehiculoDto)
+                // Transforma el DTO a tu modelo de dominio
+                let infoVehiculoModel = InfoVehiculoModel(from: infoVehiculoDto)
+                return .success(infoVehiculoModel)
             } catch {
-                return .failure(.parsingError)
+                return .failure(.decodingError(error))
             }
         case .failure(let error):
-            let httpClientError = HttpClientErrorMapper.map(error: error)
-            return .failure(httpClientError)
+            return .failure(error)
         }
     }
 }

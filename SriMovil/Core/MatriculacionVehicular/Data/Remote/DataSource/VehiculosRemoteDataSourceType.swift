@@ -8,5 +8,5 @@
 import Foundation
 
 protocol VehiculosRemoteDataSourceType {
-    func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoDto, HttpClientError>
+    func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoModel, HttpClientError>
 }
