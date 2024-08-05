@@ -37,9 +37,11 @@ class HTTPClient {
             case 200...299:
                 return .success(data)
             case 400...499:
-                return .failure(.clientError(data, httpResponse.statusCode))
+                let apiError = try? JSONDecoder().decode(ApiError.self, from: data)
+                return .failure(.clientError(apiError?.mensaje, httpResponse.statusCode))
             case 500...599:
-                return .failure(.serverError(data, httpResponse.statusCode))
+                let apiError = try? JSONDecoder().decode(ApiError.self, from: data)
+                return .failure(.serverError(apiError?.mensaje ?? "Server error", httpResponse.statusCode))
             default:
                 return .failure(.statusError(httpResponse.statusCode))
             }
@@ -47,4 +49,11 @@ class HTTPClient {
             return .failure(.requestFailed(error))
         }
     }
+}
+
+// Definición de ApiError para decodificar el mensaje de error del API
+struct ApiError: Decodable {
+    let codigo: String
+    let mensaje: String
+    let detalles: String?
 }

@@ -18,5 +18,6 @@ enum InfoVehiculoDomainError: Error {
     case unknownError
     case parsingError(String)
     case statusError(Int)
+    case vehiculoNoEncontrado(String)
     case generico
 }

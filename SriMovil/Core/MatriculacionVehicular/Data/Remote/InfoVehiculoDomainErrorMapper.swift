@@ -16,10 +16,13 @@ class InfoVehiculoDomainErrorMapper {
             return .requestFailed(err.localizedDescription)
         case .statusError(let statusCode):
             return .statusError(statusCode)
-        case .clientError(_, let statusCode):
-            return .clientError("Error de cliente con código de estado: \(statusCode)")
-        case .serverError(_, let statusCode):
-            return .serverError("Error del servidor con código de estado: \(statusCode)")
+        case .clientError(let message, let statusCode):
+            if statusCode == 404 {
+                return .vehiculoNoEncontrado(message ?? "Vehículo no encontrado")
+            }
+            return .clientError(message ?? "Error de cliente")
+        case .serverError(let message, let statusCode):
+            return .serverError(message ?? "Error del servidor con código de estado: \(statusCode)")
         case .decodingError(let err):
             return .decodingError(err.localizedDescription)
         case .unknownError:
