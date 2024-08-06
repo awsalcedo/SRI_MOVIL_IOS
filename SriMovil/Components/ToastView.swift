@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct ToastView: View {
+    let message: String
+    @Binding var isShowing: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            if isShowing {
+                Text(message)
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.black.opacity(0.8))
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+                    .transition(.slide)
+                    .animation(.easeInOut, value: isShowing)
+            }
+        }
+        .padding()
     }
 }
 
-#Preview {
-    ToastView()
+struct ToastView_Previews: PreviewProvider {
+    static var previews: some View {
+        ToastView(message: "Este es un mensaje de error", isShowing: .constant(true))
+    }
 }

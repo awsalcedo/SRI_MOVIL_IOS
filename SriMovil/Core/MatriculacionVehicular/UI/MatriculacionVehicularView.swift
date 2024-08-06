@@ -15,43 +15,31 @@ enum ViewStack {
 
 struct MatriculacionVehicularView: View {
     
-    @Injected(\.matriculacionVehicularViewModel) private var viewModel: MatriculacionVehicularViewModel
+    @Injected(\.matriculacionVehicularViewModel) private var viewModel
     
     @State private var placa: String = ""
-    @State private var infoVehiculo: InfoVehiculoModel?
-    @State private var errorMessage: String?
     @State private var isLoading: Bool = false
-    @State private var siguienteView: ViewStack = .detalleVehiculoView
-    @State private var isNavigating: Bool = false
+    @State private var siguienteView: ViewStack?
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    TextField("Ingrese la placa", text: $placa)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .onChange(of: placa) {
-                            placa = placa.uppercased()
-                        }
-                        .padding()
+                    
+                    HStack {
+                        Text("Placa, RAMV o CPN:")
+                        Spacer()
+                    }
+                    
+                    CustomTextFieldView(texto: $placa, placeholder: "Ej: AAA0123", icono: "car.fill")
+                    
                     
                     ButtonPersonalizadoView(title: "Consultar", action: {
                         Task {
                             isLoading = true
                             await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
                             isLoading = false
-                            switch viewModel.estado {
-                            case .cargado(let info):
-                                infoVehiculo = info
-                                siguienteView = .detalleVehiculoView
-                                isNavigating = true
-                            case .error(let error):
-                                errorMessage = error
-                                siguienteView = .errorView
-                                isNavigating = true
-                            default:
-                                break
-                            }
+                            updateView()
                         }
                     })
                     .padding()
@@ -59,6 +47,7 @@ struct MatriculacionVehicularView: View {
                     
                     Spacer()
                 }
+                .padding()
                 
                 if isLoading {
                     BarraProgresoView()
@@ -69,26 +58,53 @@ struct MatriculacionVehicularView: View {
             .background(
                 NavigationLink(
                     destination: destinationView(),
-                    isActive: $isNavigating,
+                    tag: ViewStack.detalleVehiculoView,
+                    selection: $siguienteView,
                     label: { EmptyView() }
-                )
+                ).hidden()
+            )
+            .background(
+                NavigationLink(
+                    destination: destinationView(),
+                    tag: ViewStack.errorView,
+                    selection: $siguienteView,
+                    label: { EmptyView() }
+                ).hidden()
             )
         }
     }
     
+    private func updateView() {
+        switch viewModel.estado {
+        case .cargado:
+            siguienteView = .detalleVehiculoView
+        case .error:
+            siguienteView = .errorView
+        default:
+            break
+        }
+    }
     
+    @ViewBuilder
     private func destinationView() -> some View {
-        Group {
-            switch siguienteView {
-            case .detalleVehiculoView:
+        switch siguienteView {
+        case .detalleVehiculoView:
+            if case .cargado(let infoVehiculo) = viewModel.estado {
                 MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
-            case .errorView:
-                ErrorView(message: errorMessage!)
+            } else {
+                EmptyView()
             }
+        case .errorView:
+            if case .error(let error) = viewModel.estado {
+                ErrorView(error: error)
+            } else {
+                EmptyView()
+            }
+        default:
+            EmptyView()
         }
     }
 }
-
 
 
 #Preview {

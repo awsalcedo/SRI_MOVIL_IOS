@@ -27,7 +27,6 @@ struct RubrosView: View {
                         Text(rubro.beneficiario)
                             .font(.footnote)
                     }
-                    //.padding(.vertical, 8)
                 }
                 
             }

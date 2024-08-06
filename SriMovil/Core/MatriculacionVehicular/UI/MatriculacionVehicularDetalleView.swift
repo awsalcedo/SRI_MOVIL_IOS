@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct MatriculacionVehicularDetalleView: View {
-    var infoVehiculo: InfoVehiculoModel?
+    let infoVehiculo: InfoVehiculoModel
     
     var body: some View {
-        //VStack (alignment: .leading) {
-        if let infoVehiculo = infoVehiculo {
-            VStack() {
-                
+        NavigationStack {
+            
+            VStack {
                 CabeceraInfoVehiculoView(infoVehiculo: infoVehiculo)
+                
+                NavigationLink {
+                    DetalleMatriculacionView(infoVehiculo: infoVehiculo)
+                } label: {
+                    Text("Detalle Vehículo")
+                        .font(.headline)
+                        .foregroundColor(Color.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+                
                 
                 if infoVehiculo.tasas != nil {
                     ValorPagarView(infoVehiculo: infoVehiculo)
@@ -23,41 +35,28 @@ struct MatriculacionVehicularDetalleView: View {
                     NoExistenValoresPagarView()
                 }
                 
-                if infoVehiculo.deudas != nil {
+                if let deudas = infoVehiculo.deudas {
                     NavigationView {
                         List {
                             Section("Por tipo de deuda") {
-                                ForEach(infoVehiculo.deudas ?? []) { deuda in
-                                    HStack {
-                                        
-                                        TipoDeudaItemView(deuda: deuda)
-                                        //.padding(.vertical, 5)
-                                    }
-                                    
+                                ForEach(deudas) { deuda in
+                                    TipoDeudaItemView(deuda: deuda)
                                 }
                             }
                         }
-                        
                     }
                 }
                 
+                Spacer()
             }
             
-            
-            
-        } else {
-            Text("No hay información disponible.")
-                .foregroundColor(.red)
-                .padding()
         }
-        /*}
-         .navigationTitle("Información del vehículo")
-         .toolbarTitleDisplayMode(.inline)*/
     }
 }
 
 struct CabeceraInfoVehiculoView: View {
     let infoVehiculo: InfoVehiculoModel
+    
     var body: some View {
         VStack {
             Text(infoVehiculo.placa)
@@ -73,24 +72,24 @@ struct CabeceraInfoVehiculoView: View {
             }
         }
         .padding()
-        
     }
 }
 
 struct NoExistenValoresPagarView: View {
     var body: some View {
         Text("No existen valores a pagar")
+            .frame(width: 350)
             .foregroundColor(.white)
-            .background(Color(.blue))
+            .background(Color.blue)
             .bold()
-            .padding(8)
+            .padding(10)
     }
 }
 
 struct ValorPagarView: View {
     let infoVehiculo: InfoVehiculoModel
+    
     var body: some View {
-        
         HStack {
             Text("Valor total a pagar:")
                 .font(.title3)
@@ -103,42 +102,36 @@ struct ValorPagarView: View {
                 .padding(8)
         }
         .foregroundColor(.white)
-        .background(Color(.blue))
+        .background(Color.blue)
         .padding()
     }
 }
 
 struct TipoDeudaItemView: View {
     let deuda: Deuda
+    
     var body: some View {
-        
-        /*
-         NavigationLink se basa en la data no en la view, por eso en el value se le pasa los rubros a visualizar en la pantalla de detalleRubros
-         */
-
-            NavigationLink {
-                RubrosView(rubros: deuda.rubros)
-            } label: {
-                Label(deuda.descripcion, systemImage: "star")
+        NavigationLink {
+            RubrosView(rubros: deuda.rubros)
+        } label: {
+            Label(deuda.descripcion, systemImage: "star")
+                .font(.footnote)
+                .bold()
+            
+            VStack(alignment: .trailing) {
+                Text("Subtotal:")
                     .font(.footnote)
-                    .bold()
+                    .padding(.horizontal)
                 
-                VStack(alignment: .trailing) {
-                    Text("Subtotal:")
-                        .font(.footnote)
-                        .padding(.horizontal)
-                    
-                    
-                    
-                    Text(FormatterUtils.formattedCurrency(value: deuda.subtotal))
-                        .font(.footnote)
-                        .padding(.horizontal)
-                    
-                }
-            }.padding(.vertical, 8)
-  
+                Text(FormatterUtils.formattedCurrency(value: deuda.subtotal))
+                    .font(.footnote)
+                    .padding(.horizontal)
+            }
+        }
+        .padding(.vertical, 8)
     }
 }
+
 
 
 struct MatriculacionVehicularDetalleView_Previews: PreviewProvider {

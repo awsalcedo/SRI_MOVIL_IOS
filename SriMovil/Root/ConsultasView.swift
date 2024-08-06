@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ConsultasView: View {
-        
+    
     @State private var showModal = false
-
+    
     var body: some View {
         NavigationStack {
             VStack {
                 
                 List(servicios, id: \.nombreServicio) { servicio in
-                    NavigationLink(destination: servicio.vista) {
+                    NavigationLink(destination: viewForServicio(servicio.vista)) {
                         ListItemView(imageName: servicio.imagenServicio, title: servicio.nombreServicio)
                     }
                     .listRowBackground(Color(.systemGray6))
@@ -35,10 +35,54 @@ struct ConsultasView: View {
             .sheet(isPresented: $showModal) {
                 ConfiguracionView()
             }
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(.blue, for: .navigationBar)
             .navigationTitle("Servicios")
         }
     }
+    
+    
+    @ViewBuilder
+    func viewForServicio(_ vista: ServicioViewType) -> some View {
+        switch vista {
+        case .comprobantes:
+            ComprobantesView()
+        case .estadoTributario:
+            EstadoTributarioView()
+        case .valoresPagar:
+            //MatriculacionVehicularView()
+            MatriculacionVehicularToastView()
+        case .deudas:
+            DeudasView()
+        case .validezDocumentos:
+            ValidacionDocumentosView()
+        case .impuestoRenta:
+            ImpuestoRentaView()
+        case .certificados:
+            CertificadosView()
+        case .seguimientoTramites:
+            SeguimientoTramitesView()
+        case .validacionQR:
+            ValidacionQRView()
+        case .citaPrevia:
+            CitaPreviaView()
+        case .calculadoras:
+            CalculadorasView()
+        case .denuncias:
+            DenunciasView()
+        case .contactenos:
+            ContactenosView()
+        case .simar:
+            SimarView()
+        case .facturadorSRI:
+            FacturadorSRIView()
+        case .configuracion:
+            ConfiguracionView()
+        case .politicaProteccionDatos:
+            PoliticaProteccionDatosView()
+        }
+    }
+    
+    
 }
 
 struct ListItemView: View {
@@ -69,8 +113,8 @@ struct ListItemView: View {
             }
         }
         .padding()
-                .background(Color.white)
-                .cornerRadius(10)
+        .background(Color.white)
+        .cornerRadius(10)
     }
 }
 
