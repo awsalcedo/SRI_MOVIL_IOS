@@ -21,6 +21,7 @@
 		50CDFCF62C64093800B334A9 /* ObtenerBannerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDFCF52C64093800B334A9 /* ObtenerBannerUseCase.swift */; };
 		50CDFCF82C640BE500B334A9 /* BannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDFCF72C640BE500B334A9 /* BannerViewModel.swift */; };
 		50CDFCFA2C64172200B334A9 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDFCF92C64172200B334A9 /* BannerView.swift */; };
+		50CDFCFC2C655D9100B334A9 /* ToastTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */; };
 		50E7BE162C62890D008EFCAA /* DetalleMatriculacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE152C62890D008EFCAA /* DetalleMatriculacionView.swift */; };
 		50E7BE182C62B29D008EFCAA /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */; };
 		50E7BE1A2C62C9FA008EFCAA /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE192C62C9FA008EFCAA /* ToastView.swift */; };
@@ -103,6 +104,7 @@
 		50CDFCF52C64093800B334A9 /* ObtenerBannerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerBannerUseCase.swift; sourceTree = "<group>"; };
 		50CDFCF72C640BE500B334A9 /* BannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewModel.swift; sourceTree = "<group>"; };
 		50CDFCF92C64172200B334A9 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTwoView.swift; sourceTree = "<group>"; };
 		50E7BE152C62890D008EFCAA /* DetalleMatriculacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleMatriculacionView.swift; sourceTree = "<group>"; };
 		50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		50E7BE192C62C9FA008EFCAA /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				FA2A43182C5B274F00A021A0 /* ErrorView.swift */,
 				50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */,
 				50E7BE192C62C9FA008EFCAA /* ToastView.swift */,
+				50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				50CDFCD92C63CAD800B334A9 /* BannerContainer.swift in Sources */,
 				FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */,
 				FA2A42DE2C5B22E000A021A0 /* ObtenerInfoVehiculoRepositoryType.swift in Sources */,
+				50CDFCFC2C655D9100B334A9 /* ToastTwoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

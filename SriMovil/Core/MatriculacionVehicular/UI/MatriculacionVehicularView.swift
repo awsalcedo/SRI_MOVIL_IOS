@@ -8,7 +8,7 @@
 import SwiftUI
 import Factory
 
-enum ViewStack: Hashable {
+enum ViewStackToast: Hashable {
     case detalleVehiculoView
     case errorView
 }
@@ -19,7 +19,7 @@ struct MatriculacionVehicularView: View {
     
     @State private var placa: String = ""
     @State private var isLoading: Bool = false
-    @State private var siguienteView: ViewStack?
+    @State private var siguienteView: ViewStackToast?
     
     var body: some View {
         NavigationStack {
@@ -58,7 +58,7 @@ struct MatriculacionVehicularView: View {
             .background(
                 NavigationLink(
                     destination: destinationView(),
-                    tag: ViewStack.detalleVehiculoView,
+                    tag: ViewStackToast.detalleVehiculoView,
                     selection: $siguienteView,
                     label: { EmptyView() }
                 ).hidden()
@@ -66,7 +66,7 @@ struct MatriculacionVehicularView: View {
             .background(
                 NavigationLink(
                     destination: destinationView(),
-                    tag: ViewStack.errorView,
+                    tag: ViewStackToast.errorView,
                     selection: $siguienteView,
                     label: { EmptyView() }
                 ).hidden()

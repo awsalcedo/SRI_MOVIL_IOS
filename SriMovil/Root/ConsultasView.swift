@@ -52,8 +52,8 @@ struct ConsultasView: View {
         case .estadoTributario:
             EstadoTributarioView()
         case .valoresPagar:
-            MatriculacionVehicularView()
-            //MatriculacionVehicularToastView()
+            //MatriculacionVehicularView()
+            MatriculacionVehicularToastView()
         case .deudas:
             DeudasView()
         case .validezDocumentos:

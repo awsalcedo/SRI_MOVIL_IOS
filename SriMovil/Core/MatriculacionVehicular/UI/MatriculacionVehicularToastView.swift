@@ -8,14 +8,20 @@
 import SwiftUI
 import Factory
 
+enum ViewToastStack: Hashable {
+    case detalleVehiculoView
+    case errorView
+}
+
 struct MatriculacionVehicularToastView: View {
     @Injected(\.matriculacionVehicularViewModel) private var viewModel: MatriculacionVehicularViewModel
     
     @State private var placa: String = ""
     @State private var isLoading: Bool = false
-    @State private var siguienteView: ViewStack?
-    @State private var showToast: Bool = false
-    @State private var errorMessage: String = ""
+    @State private var siguienteView: ViewToastStack?
+    //@State private var showToast: Bool = false
+    //@State private var errorMessage: String = ""
+    @State private var toast: Toast? = nil
     
     var body: some View {
         NavigationStack {
@@ -42,13 +48,7 @@ struct MatriculacionVehicularToastView: View {
                     Spacer()
                 }
                 .padding()
-                .overlay(
-                    ToastView(message: errorMessage, isShowing: $showToast)
-                )
-                .onAppear {
-                    // Reset toast state when the view appears
-                    showToast = false
-                }
+                .toastView(toast: $toast)
                 
                 if isLoading {
                     BarraProgresoView()
@@ -56,14 +56,24 @@ struct MatriculacionVehicularToastView: View {
             }
             .navigationTitle("Valores a pagar")
             .toolbarTitleDisplayMode(.inline)
-            .navigationDestination(for: ViewStack?.self) { view in
-                if let view = view {
-                    destinationView(for: view)
-                }
-            }
-        }
-        .onChange(of: siguienteView) { newValue in
-            print("siguienteView changed to \(String(describing: newValue))")
+            .navigationTitle("Valores a pagar")
+            .toolbarTitleDisplayMode(.inline)
+            .background(
+                NavigationLink(
+                    destination: destinationView(),
+                    tag: ViewToastStack.detalleVehiculoView,
+                    selection: $siguienteView,
+                    label: { EmptyView() }
+                ).hidden()
+            )
+            .background(
+                NavigationLink(
+                    destination: destinationView(),
+                    tag: ViewToastStack.errorView,
+                    selection: $siguienteView,
+                    label: { EmptyView() }
+                ).hidden()
+            )
         }
     }
     
@@ -71,19 +81,16 @@ struct MatriculacionVehicularToastView: View {
         switch viewModel.estado {
         case .cargado:
             siguienteView = .detalleVehiculoView
-            print("Estado: cargado, siguienteView set to .detalleVehiculoView")
         case .error(let error):
-            errorMessage = error.localizedDescription
-            showToast = true
-            print("Estado: error, errorMessage set to \(error.localizedDescription)")
+            toast = Toast(mensaje: error.localizedDescription, ancho: UIScreen.main.bounds.width * 0.8)
         default:
             break
         }
     }
     
     @ViewBuilder
-    private func destinationView(for view: ViewStack) -> some View {
-        switch view {
+    private func destinationView() -> some View {
+        switch siguienteView {
         case .detalleVehiculoView:
             if case .cargado(let infoVehiculo) = viewModel.estado {
                 MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
@@ -96,6 +103,8 @@ struct MatriculacionVehicularToastView: View {
             } else {
                 EmptyView()
             }
+        default:
+            EmptyView()
         }
     }
 }
