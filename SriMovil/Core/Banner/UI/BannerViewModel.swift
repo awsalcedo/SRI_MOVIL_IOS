@@ -26,7 +26,7 @@ class BannerViewModel: ObservableObject {
         estado = .cargando
         
         Task { @MainActor in
-            print(Thread.current) //Observamos en la consola que se está ejecutando en el hilo 1 que es el principal
+            //print(Thread.current) //Observamos en la consola que se está ejecutando en el hilo 1 que es el principal
             let result = await useCase.excecute()
             
             DispatchQueue.main.async {
