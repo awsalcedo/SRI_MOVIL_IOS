@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol BannerApiType {
+    func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError>
+}

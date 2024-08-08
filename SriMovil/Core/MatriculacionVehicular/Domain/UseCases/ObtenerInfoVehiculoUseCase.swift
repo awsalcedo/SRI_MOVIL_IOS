@@ -19,7 +19,7 @@ protocol ObtenerInfoVehiculoUseCaseType {
 }
 
 class ObtenerInfoVehiculoUseCase: ObtenerInfoVehiculoUseCaseType {
-    @Injected(\.obtenerInfoVehiculoRepository) var repository//: ObtenerInfoVehiculoRepositoryType
+    @Injected(\.obtenerInfoVehiculoRepository) var repository
     
     /*func execute(idVehiculo: String) async -> Result<InfoVehiculoModel, InfoVehiculoDomainError> {
      let result = await repository.obtenerInfoVehiculo(idVehiculo: idVehiculo)

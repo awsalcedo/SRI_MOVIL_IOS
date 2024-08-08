@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol BannerRemoteDataSourceType {
+    func obtenerBanner() async -> Result<BannerModel, HttpClientError>
+}

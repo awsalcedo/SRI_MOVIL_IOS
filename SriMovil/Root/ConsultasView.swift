@@ -15,6 +15,9 @@ struct ConsultasView: View {
         NavigationStack {
             VStack {
                 
+                BannerView()
+                    .frame(maxHeight: 200)
+                
                 List(servicios, id: \.nombreServicio) { servicio in
                     NavigationLink(destination: viewForServicio(servicio.vista)) {
                         ListItemView(imageName: servicio.imagenServicio, title: servicio.nombreServicio)
@@ -49,8 +52,8 @@ struct ConsultasView: View {
         case .estadoTributario:
             EstadoTributarioView()
         case .valoresPagar:
-            //MatriculacionVehicularView()
-            MatriculacionVehicularToastView()
+            MatriculacionVehicularView()
+            //MatriculacionVehicularToastView()
         case .deudas:
             DeudasView()
         case .validezDocumentos:

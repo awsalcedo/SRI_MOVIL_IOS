@@ -9,7 +9,7 @@ import SwiftUI
 import Factory
 
 struct MatriculacionVehicularToastView: View {
-    @Injected(\.matriculacionVehicularViewModel) private var viewModel
+    @Injected(\.matriculacionVehicularViewModel) private var viewModel: MatriculacionVehicularViewModel
     
     @State private var placa: String = ""
     @State private var isLoading: Bool = false
@@ -21,7 +21,6 @@ struct MatriculacionVehicularToastView: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    
                     HStack {
                         Text("Placa, RAMV o CPN:")
                         Spacer()
@@ -57,22 +56,14 @@ struct MatriculacionVehicularToastView: View {
             }
             .navigationTitle("Valores a pagar")
             .toolbarTitleDisplayMode(.inline)
-            .background(
-                NavigationLink(
-                    destination: destinationView(),
-                    tag: ViewStack.detalleVehiculoView,
-                    selection: $siguienteView,
-                    label: { EmptyView() }
-                ).hidden()
-            )
-            .background(
-                NavigationLink(
-                    destination: destinationView(),
-                    tag: ViewStack.errorView,
-                    selection: $siguienteView,
-                    label: { EmptyView() }
-                ).hidden()
-            )
+            .navigationDestination(for: ViewStack?.self) { view in
+                if let view = view {
+                    destinationView(for: view)
+                }
+            }
+        }
+        .onChange(of: siguienteView) { newValue in
+            print("siguienteView changed to \(String(describing: newValue))")
         }
     }
     
@@ -80,17 +71,19 @@ struct MatriculacionVehicularToastView: View {
         switch viewModel.estado {
         case .cargado:
             siguienteView = .detalleVehiculoView
+            print("Estado: cargado, siguienteView set to .detalleVehiculoView")
         case .error(let error):
             errorMessage = error.localizedDescription
             showToast = true
+            print("Estado: error, errorMessage set to \(error.localizedDescription)")
         default:
             break
         }
     }
     
     @ViewBuilder
-    private func destinationView() -> some View {
-        switch siguienteView {
+    private func destinationView(for view: ViewStack) -> some View {
+        switch view {
         case .detalleVehiculoView:
             if case .cargado(let infoVehiculo) = viewModel.estado {
                 MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
@@ -103,8 +96,6 @@ struct MatriculacionVehicularToastView: View {
             } else {
                 EmptyView()
             }
-        default:
-            EmptyView()
         }
     }
 }

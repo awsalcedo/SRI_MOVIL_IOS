@@ -8,7 +8,7 @@
 import SwiftUI
 import Factory
 
-enum ViewStack {
+enum ViewStack: Hashable {
     case detalleVehiculoView
     case errorView
 }

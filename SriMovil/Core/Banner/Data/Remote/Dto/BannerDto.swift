@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct BannerDto: Codable {
+    let imagen64: String
+    let url: String
+    let predeterminado: Bool
+}

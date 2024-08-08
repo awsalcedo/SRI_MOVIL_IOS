@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol BannerRepositoryType {
+    func obtenerBanner() async -> Result<BannerModel, BannerDomainError>
+}

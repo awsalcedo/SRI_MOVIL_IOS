@@ -9,8 +9,8 @@ import Foundation
 import Factory
 
 class ObtenerInfoVehiculoRepository: ObtenerInfoVehiculoRepositoryType {
-    @Injected(\.vehiculosRemoteDataSource) var remoteDataSource
-    @Injected(\.errorMapper) var errorMapper
+    @Injected(\.vehiculosRemoteDataSource) private var remoteDataSource
+    @Injected(\.errorMapper) private var errorMapper
     
     func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoModel, InfoVehiculoDomainError> {
         // Obtiene el resultado del remoteDataSource
