@@ -17,10 +17,16 @@ struct BannerView: View {
             case .inicial:
                 BarraProgresoView()
                     .onAppear {
+                        viewModel.obtenerBanner()
+                    }
+                    /*.task {
+                        viewModel.obtenerBanner()
+                    }*/
+                    /*.onAppear {
                         Task {
                             viewModel.obtenerBanner()
                         }
-                    }
+                    }*/
             case .cargando:
                 BarraProgresoView()
             case .cargado(let banner):

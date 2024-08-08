@@ -21,11 +21,12 @@ class BannerViewModel: ObservableObject {
     @Injected(\.obtenerBannerUsecase) private var useCase
     @Published var estado: ViewState<BannerModel> = .inicial
     
-    @MainActor
+    //@MainActor
     func obtenerBanner() {
         estado = .cargando
         
-        Task {
+        Task { @MainActor in
+            print(Thread.current) //Observamos en la consola que se está ejecutando en el hilo 1 que es el principal
             let result = await useCase.excecute()
             
             DispatchQueue.main.async {
