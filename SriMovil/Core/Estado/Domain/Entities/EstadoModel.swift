@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct EstadoModel {
+    var fechaEstado: Int
+    var fechaInfoAgencias: Int
+    var fechaBanner: Int
+}

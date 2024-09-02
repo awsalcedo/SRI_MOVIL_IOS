@@ -18,3 +18,11 @@ struct BannerModel: Codable, Equatable {
         self.predeterminado = dto.predeterminado
     }
 }
+
+extension BannerModel {
+    init(toEntity entity: BannerEntity) {
+        self.imagen64 = entity.imagen64 ?? ""
+        self.url = entity.url ?? ""
+        self.predeterminado = entity.predeterminado
+    }
+}

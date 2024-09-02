@@ -20,6 +20,10 @@ extension Container {
         self { BannerRemoteDataSource() }.singleton
     }
     
+    var bannerLocalDataSource: Factory<BannerLocalDataSourceType> {
+        self { BannerLocalDataSource() }.singleton
+    }
+    
     var errorBannerMapper: Factory<BannerDomainErrorMapper> {
         self { BannerDomainErrorMapper() }.singleton
     }

@@ -15,8 +15,6 @@ class VehiculosRemoteDataSource: VehiculosRemoteDataSourceType {
     
     func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoModel, HttpClientError> {
         let endPoint = EndPoint(
-            baseURL: "https://srienlinea.sri.gob.ec/",
-            context: "movil-servicios/api/",
             path: "v1.0/matriculacion/valor/\(idVehiculo)",
             queryParameters: nil,
             bodyParameters: nil,

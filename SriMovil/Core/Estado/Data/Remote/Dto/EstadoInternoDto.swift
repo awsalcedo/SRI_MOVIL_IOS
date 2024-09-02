@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct EstadoInternoDto: Codable {
+    let idConsulta: String
+    let habilitada: Bool
+    let mensajeSecundario: String?
+}

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol EstadoLocalDataSourceType {
+    func guardarEstado(_ estado: EstadoDto) throws
+    func obtenerEstado() throws -> EstadoDto?
+}

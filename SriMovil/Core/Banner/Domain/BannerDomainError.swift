@@ -16,5 +16,6 @@ enum BannerDomainError: Error {
     case unknownError
     case parsingError(String)
     case statusError(Int)
+    case noDataAvailable
     case generico
 }

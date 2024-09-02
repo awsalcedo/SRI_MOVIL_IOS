@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol EstadoRemoteDataSourceType {
+    /// Obtiene el estado desde un origen remoto.
+    /// - Returns: Un `Result` que contiene `EstadoDto` en caso de éxito, o un `HttpClientError` en caso de error.
+    func obtenerEstado() async -> Result<EstadoDto, HttpClientError>
+}

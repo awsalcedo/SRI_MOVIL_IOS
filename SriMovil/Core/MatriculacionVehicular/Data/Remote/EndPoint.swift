@@ -8,8 +8,8 @@
 import Foundation
 
 struct EndPoint {
-    let baseURL: String
-    let context: String
+    let baseURL: String = "https://srienlinea.sri.gob.ec/"
+    let context: String = "movil-servicios/api/"
     let path: String
     let queryParameters: [String: String]?
     let bodyParameters: [String: Any]?

@@ -14,8 +14,6 @@ class BannerRemoteDataSource: BannerRemoteDataSourceType {
     
     func obtenerBanner() async -> Result<BannerModel, HttpClientError> {
         let endPoint = EndPoint(
-            baseURL: "https://srienlinea.sri.gob.ec/",
-            context: "movil-servicios/api/",
             path: "v1.0/banner",
             queryParameters: nil,
             bodyParameters: nil,

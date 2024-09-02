@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol BannerLocalDataSourceType {
+    func guardarBanner(banner: BannerModel) throws
+    func obtenerBanner() throws -> BannerModel?
+}

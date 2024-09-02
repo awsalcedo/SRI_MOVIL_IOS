@@ -9,31 +9,20 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-    static let shared = CoreDataStack()
+    public static let shared = CoreDataStack()
     
-    private let container: NSPersistentContainer
+    public let persistentContainer: NSPersistentContainer
     
     private init() {
-        container = NSPersistentContainer(name: "ModelName") // Usa el nombre de tu modelo de datos
-        container.loadPersistentStores { (description, error ) in
-            if let error = error {
-                print("ERROR LOADING CORE DATA. \(error)")
+        persistentContainer = NSPersistentContainer(name: "SriModel")
+        persistentContainer.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
     }
     
-    var context: NSManagedObjectContext {
-        return container.viewContext
-    }
-    
-    func saveContext() throws {
-        let context = container.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                throw CoreDataError.saveError(error)
-            }
-        }
+    public var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
 }

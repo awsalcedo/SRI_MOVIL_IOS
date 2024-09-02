@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier=""/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BannerEntity" representedClassName="BannerEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="imagen64" optional="YES" attributeType="String"/>
+        <attribute name="predeterminado" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="EstadoConsultaEntity" representedClassName="EstadoConsultaEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="habilitada" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="idConsulta" optional="YES" attributeType="String"/>
+        <attribute name="mensajeSecundario" optional="YES" attributeType="String"/>
+        <relationship name="estado" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EstadoEntity" inverseName="estadoConsultas" inverseEntity="EstadoEntity"/>
+    </entity>
+    <entity name="EstadoEntity" representedClassName="EstadoEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="fechaBanner" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fechaEstado" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fechaInfoAgencias" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="habilitado" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mensajeDestacado" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mensajeGeneral" optional="YES" attributeType="String"/>
+        <relationship name="estado" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EstadoInternoEntity" inverseName="estado" inverseEntity="EstadoInternoEntity"/>
+        <relationship name="estadoConsultas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EstadoConsultaEntity" inverseName="estado" inverseEntity="EstadoConsultaEntity"/>
+    </entity>
+    <entity name="EstadoInternoEntity" representedClassName="EstadoInternoEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="habilitada" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="idConsulta" optional="YES" attributeType="String"/>
+        <attribute name="mensajeSecundario" optional="YES" attributeType="String"/>
+        <relationship name="estado" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EstadoEntity" inverseName="estado" inverseEntity="EstadoEntity"/>
+    </entity>
+</model>

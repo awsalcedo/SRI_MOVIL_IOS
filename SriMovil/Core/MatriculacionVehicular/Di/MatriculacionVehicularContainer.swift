@@ -15,14 +15,6 @@ extension Container {
         self { VehiculosApi() }.singleton
     }
     
-    var session: Factory<URLSession> {
-        self { URLSession.shared }.singleton
-    }
-    
-    var httpClient: Factory<HTTPClient> {
-        self { HTTPClient() }.singleton
-    }
-    
     // DataSources
     var vehiculosRemoteDataSource: Factory<VehiculosRemoteDataSourceType> {
         self { VehiculosRemoteDataSource() }.singleton

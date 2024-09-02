@@ -83,7 +83,26 @@
 		FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43142C5B271F00A021A0 /* BarraProgresoView.swift */; };
 		FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43162C5B273500A021A0 /* ButtonPersonalizadoView.swift */; };
 		FA2A43192C5B274F00A021A0 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43182C5B274F00A021A0 /* ErrorView.swift */; };
+		FA450BB22C6BC53200DAA3FB /* EstadoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BB12C6BC53200DAA3FB /* EstadoDto.swift */; };
+		FA450BB42C6BC75200DAA3FB /* EstadoConsultaDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BB32C6BC75200DAA3FB /* EstadoConsultaDto.swift */; };
+		FA450BB72C6BC7CF00DAA3FB /* EstadoRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BB62C6BC7CF00DAA3FB /* EstadoRemoteDataSource.swift */; };
+		FA450BB92C6BC9D800DAA3FB /* EstadoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BB82C6BC9D800DAA3FB /* EstadoApi.swift */; };
+		FA450BBB2C6BCB6A00DAA3FB /* EstadoApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BBA2C6BCB6A00DAA3FB /* EstadoApiType.swift */; };
+		FA450BBD2C6BCC7400DAA3FB /* EstadoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BBC2C6BCC7400DAA3FB /* EstadoContainer.swift */; };
+		FA450BBF2C6BD20000DAA3FB /* EstadoInternoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BBE2C6BD20000DAA3FB /* EstadoInternoDto.swift */; };
+		FA450BC12C6BD22F00DAA3FB /* EstadoRemoteDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BC02C6BD22F00DAA3FB /* EstadoRemoteDataSourceType.swift */; };
+		FA450BC42C6BD26D00DAA3FB /* EstadoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BC32C6BD26D00DAA3FB /* EstadoRepository.swift */; };
+		FA450BC72C6BE1B500DAA3FB /* EstadoLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BC62C6BE1B500DAA3FB /* EstadoLocalDataSource.swift */; };
+		FA450BC92C6BE27100DAA3FB /* EstadoLocalDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BC82C6BE27100DAA3FB /* EstadoLocalDataSourceType.swift */; };
+		FA450BCB2C6BEB3A00DAA3FB /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BCA2C6BEB3A00DAA3FB /* CoreDataError.swift */; };
+		FA450BCD2C6BEBB600DAA3FB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BCC2C6BEBB600DAA3FB /* CoreDataStack.swift */; };
+		FA450BD12C6C1F7600DAA3FB /* GlobalContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BD02C6C1F7600DAA3FB /* GlobalContainer.swift */; };
+		FA450BD42C6C210800DAA3FB /* SriModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA450BD22C6C210800DAA3FB /* SriModel.xcdatamodeld */; };
+		FA6AB46B2C7510B800DD199F /* EstadoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6AB46A2C7510B800DD199F /* EstadoModel.swift */; };
+		FA729C4B2C6DAC680088CFB0 /* BannerLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA729C4A2C6DAC680088CFB0 /* BannerLocalDataSource.swift */; };
+		FA7DA7AE2C7D82F000D942E6 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */; };
 		FA817E0B2C5E9DC30050C167 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA817E0A2C5E9DC30050C167 /* HTTPClient.swift */; };
+		FA9340252C6FE01C000AD1B3 /* BannerLocalDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9340242C6FE01C000AD1B3 /* BannerLocalDataSourceType.swift */; };
 		FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB712912C5B076100771790 /* SriMovilApp.swift */; };
 		FAB712962C5B076300771790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712952C5B076300771790 /* Assets.xcassets */; };
 		FAB712992C5B076300771790 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712982C5B076300771790 /* Preview Assets.xcassets */; };
@@ -165,7 +184,26 @@
 		FA2A43142C5B271F00A021A0 /* BarraProgresoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraProgresoView.swift; sourceTree = "<group>"; };
 		FA2A43162C5B273500A021A0 /* ButtonPersonalizadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPersonalizadoView.swift; sourceTree = "<group>"; };
 		FA2A43182C5B274F00A021A0 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		FA450BB12C6BC53200DAA3FB /* EstadoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoDto.swift; sourceTree = "<group>"; };
+		FA450BB32C6BC75200DAA3FB /* EstadoConsultaDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoConsultaDto.swift; sourceTree = "<group>"; };
+		FA450BB62C6BC7CF00DAA3FB /* EstadoRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoRemoteDataSource.swift; sourceTree = "<group>"; };
+		FA450BB82C6BC9D800DAA3FB /* EstadoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoApi.swift; sourceTree = "<group>"; };
+		FA450BBA2C6BCB6A00DAA3FB /* EstadoApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoApiType.swift; sourceTree = "<group>"; };
+		FA450BBC2C6BCC7400DAA3FB /* EstadoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoContainer.swift; sourceTree = "<group>"; };
+		FA450BBE2C6BD20000DAA3FB /* EstadoInternoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoInternoDto.swift; sourceTree = "<group>"; };
+		FA450BC02C6BD22F00DAA3FB /* EstadoRemoteDataSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoRemoteDataSourceType.swift; sourceTree = "<group>"; };
+		FA450BC32C6BD26D00DAA3FB /* EstadoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoRepository.swift; sourceTree = "<group>"; };
+		FA450BC62C6BE1B500DAA3FB /* EstadoLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoLocalDataSource.swift; sourceTree = "<group>"; };
+		FA450BC82C6BE27100DAA3FB /* EstadoLocalDataSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoLocalDataSourceType.swift; sourceTree = "<group>"; };
+		FA450BCA2C6BEB3A00DAA3FB /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		FA450BCC2C6BEBB600DAA3FB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FA450BD02C6C1F7600DAA3FB /* GlobalContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalContainer.swift; sourceTree = "<group>"; };
+		FA450BD32C6C210800DAA3FB /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
+		FA6AB46A2C7510B800DD199F /* EstadoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoModel.swift; sourceTree = "<group>"; };
+		FA729C4A2C6DAC680088CFB0 /* BannerLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerLocalDataSource.swift; sourceTree = "<group>"; };
+		FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		FA817E0A2C5E9DC30050C167 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		FA9340242C6FE01C000AD1B3 /* BannerLocalDataSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerLocalDataSourceType.swift; sourceTree = "<group>"; };
 		FAB7128E2C5B076100771790 /* SriMovil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SriMovil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB712912C5B076100771790 /* SriMovilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriMovilApp.swift; sourceTree = "<group>"; };
 		FAB712952C5B076300771790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -218,6 +256,7 @@
 		50CDFCD62C63BF1400B334A9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FA8DF5252C690EC600E7A8F5 /* Local */,
 				50CDFCDA2C63CB2400B334A9 /* Remote */,
 			);
 			path = Data;
@@ -304,6 +343,7 @@
 		FA2A42842C5B1CE800A021A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				FA450BAB2C6BC48100DAA3FB /* Estado */,
 				50CDFCD32C63BEE900B334A9 /* Banner */,
 				FA2A43112C5B26AA00A021A0 /* ValidacionQR */,
 				FA2A430E2C5B267900A021A0 /* ValidacionDocumentos */,
@@ -347,6 +387,7 @@
 				50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */,
 				50E7BE192C62C9FA008EFCAA /* ToastView.swift */,
 				50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */,
+				FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -641,6 +682,132 @@
 			path = ValidacionQR;
 			sourceTree = "<group>";
 		};
+		FA450BAB2C6BC48100DAA3FB /* Estado */ = {
+			isa = PBXGroup;
+			children = (
+				FA6AB4682C75108100DD199F /* Domain */,
+				FA450BAD2C6BC4BF00DAA3FB /* Data */,
+				FA450BAC2C6BC4B400DAA3FB /* Di */,
+			);
+			path = Estado;
+			sourceTree = "<group>";
+		};
+		FA450BAC2C6BC4B400DAA3FB /* Di */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BBC2C6BCC7400DAA3FB /* EstadoContainer.swift */,
+			);
+			path = Di;
+			sourceTree = "<group>";
+		};
+		FA450BAD2C6BC4BF00DAA3FB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BAF2C6BC4E900DAA3FB /* Local */,
+				FA450BAE2C6BC4DF00DAA3FB /* Remote */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FA450BAE2C6BC4DF00DAA3FB /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BC22C6BD25200DAA3FB /* Respository */,
+				FA450BB52C6BC7AE00DAA3FB /* Datasource */,
+				FA450BB02C6BC51B00DAA3FB /* Dto */,
+				FA450BB82C6BC9D800DAA3FB /* EstadoApi.swift */,
+				FA450BBA2C6BCB6A00DAA3FB /* EstadoApiType.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		FA450BAF2C6BC4E900DAA3FB /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BC52C6BE00E00DAA3FB /* Datasource */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		FA450BB02C6BC51B00DAA3FB /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BB12C6BC53200DAA3FB /* EstadoDto.swift */,
+				FA450BB32C6BC75200DAA3FB /* EstadoConsultaDto.swift */,
+				FA450BBE2C6BD20000DAA3FB /* EstadoInternoDto.swift */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
+		FA450BB52C6BC7AE00DAA3FB /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BB62C6BC7CF00DAA3FB /* EstadoRemoteDataSource.swift */,
+				FA450BC02C6BD22F00DAA3FB /* EstadoRemoteDataSourceType.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		FA450BC22C6BD25200DAA3FB /* Respository */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BC32C6BD26D00DAA3FB /* EstadoRepository.swift */,
+			);
+			path = Respository;
+			sourceTree = "<group>";
+		};
+		FA450BC52C6BE00E00DAA3FB /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BC62C6BE1B500DAA3FB /* EstadoLocalDataSource.swift */,
+				FA450BC82C6BE27100DAA3FB /* EstadoLocalDataSourceType.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		FA450BCE2C6BEEB800DAA3FB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BCA2C6BEB3A00DAA3FB /* CoreDataError.swift */,
+				FA450BCC2C6BEBB600DAA3FB /* CoreDataStack.swift */,
+				FA450BD22C6C210800DAA3FB /* SriModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		FA450BCF2C6C1F6300DAA3FB /* Di */ = {
+			isa = PBXGroup;
+			children = (
+				FA450BD02C6C1F7600DAA3FB /* GlobalContainer.swift */,
+			);
+			path = Di;
+			sourceTree = "<group>";
+		};
+		FA6AB4682C75108100DD199F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FA6AB4692C75108900DD199F /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FA6AB4692C75108900DD199F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FA6AB46A2C7510B800DD199F /* EstadoModel.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FA8DF5252C690EC600E7A8F5 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				FA729C4A2C6DAC680088CFB0 /* BannerLocalDataSource.swift */,
+				FA9340242C6FE01C000AD1B3 /* BannerLocalDataSourceType.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
 		FAB712852C5B076100771790 = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +827,8 @@
 		FAB712902C5B076100771790 /* SriMovil */ = {
 			isa = PBXGroup;
 			children = (
+				FA450BCF2C6C1F6300DAA3FB /* Di */,
+				FA450BCE2C6BEEB800DAA3FB /* CoreData */,
 				FA2A42862C5B1CFE00A021A0 /* Components */,
 				FA2A42852C5B1CF500A021A0 /* Root */,
 				FA2A42842C5B1CE800A021A0 /* Core */,
@@ -759,10 +928,12 @@
 				FA2A43132C5B26B900A021A0 /* ValidacionQRView.swift in Sources */,
 				50CDFCEE2C63DB8800B334A9 /* BannerRepositoryType.swift in Sources */,
 				FA2A430A2C5B261F00A021A0 /* SimarView.swift in Sources */,
+				FA6AB46B2C7510B800DD199F /* EstadoModel.swift in Sources */,
 				50CDFCE12C63CC5F00B334A9 /* BannerApiType.swift in Sources */,
 				FA2A42C82C5B21AB00A021A0 /* VehiculosApi.swift in Sources */,
 				50CDFCF02C63DC3D00B334A9 /* BannerDomainError.swift in Sources */,
 				FA2A42C42C5B217B00A021A0 /* HttpClientError.swift in Sources */,
+				FA450BB92C6BC9D800DAA3FB /* EstadoApi.swift in Sources */,
 				FA2A43192C5B274F00A021A0 /* ErrorView.swift in Sources */,
 				FA2A42A32C5B1EFD00A021A0 /* DeudasView.swift in Sources */,
 				FA2A42E12C5B231400A021A0 /* ObtenerInfoVehiculoUseCase.swift in Sources */,
@@ -771,36 +942,46 @@
 				FA2A428F2C5B1DC000A021A0 /* CertificadosView.swift in Sources */,
 				50CDFCE32C63CD0400B334A9 /* BannerApi.swift in Sources */,
 				FA2A42B22C5B205100A021A0 /* VehiculosRemoteDataSource.swift in Sources */,
+				FA9340252C6FE01C000AD1B3 /* BannerLocalDataSourceType.swift in Sources */,
 				FA2A42EC2C5B23D400A021A0 /* MatriculacionVehicularViewModel.swift in Sources */,
+				FA450BB42C6BC75200DAA3FB /* EstadoConsultaDto.swift in Sources */,
 				FA2A42EA2C5B23B400A021A0 /* MatriculacionVehicularView.swift in Sources */,
 				FA2A43072C5B25F700A021A0 /* SeguimientoTramitesView.swift in Sources */,
 				FA2A429D2C5B1E9D00A021A0 /* ContactenosView.swift in Sources */,
 				FA2A42E62C5B236200A021A0 /* DetalleRubrosView.swift in Sources */,
 				FA2A42F32C5B243F00A021A0 /* FormatterUtils.swift in Sources */,
 				50CDFCF82C640BE500B334A9 /* BannerViewModel.swift in Sources */,
+				FA450BBB2C6BCB6A00DAA3FB /* EstadoApiType.swift in Sources */,
 				50CDFCF62C64093800B334A9 /* ObtenerBannerUseCase.swift in Sources */,
 				FA2A42B42C5B208400A021A0 /* VehiculosRemoteDataSourceType.swift in Sources */,
 				FA2A42A62C5B1F7700A021A0 /* EstadoTributarioView.swift in Sources */,
+				FA450BD12C6C1F7600DAA3FB /* GlobalContainer.swift in Sources */,
 				50E7BE162C62890D008EFCAA /* DetalleMatriculacionView.swift in Sources */,
 				FA2A42BF2C5B211A00A021A0 /* TasaDto.swift in Sources */,
 				50E7BE1C2C62CA96008EFCAA /* MatriculacionVehicularToastView.swift in Sources */,
+				FA450BC12C6BD22F00DAA3FB /* EstadoRemoteDataSourceType.swift in Sources */,
 				FA2A42CA2C5B21C900A021A0 /* VehiculosApiType.swift in Sources */,
 				50E7BE182C62B29D008EFCAA /* CustomTextFieldView.swift in Sources */,
 				FA2A42F12C5B242900A021A0 /* EndPoint.swift in Sources */,
 				FA2A42E82C5B237D00A021A0 /* MatriculacionVehicularDetalleView.swift in Sources */,
+				FA450BCB2C6BEB3A00DAA3FB /* CoreDataError.swift in Sources */,
 				FA2A42B72C5B20AD00A021A0 /* DetallesRubroDto.swift in Sources */,
 				FA2A42EE2C5B23F100A021A0 /* RubrosView.swift in Sources */,
+				FA450BBF2C6BD20000DAA3FB /* EstadoInternoDto.swift in Sources */,
 				50CDFCF42C63DE6900B334A9 /* BannerDomainErrorMapper.swift in Sources */,
 				FA2A43012C5B25A300A021A0 /* NoticiasView.swift in Sources */,
 				FA2A428C2C5B1D9100A021A0 /* CalculadorasView.swift in Sources */,
 				FA2A42F52C5B245300A021A0 /* HTTPMethod.swift in Sources */,
+				FA450BC72C6BE1B500DAA3FB /* EstadoLocalDataSource.swift in Sources */,
 				50CDFCFA2C64172200B334A9 /* BannerView.swift in Sources */,
+				FA7DA7AE2C7D82F000D942E6 /* CustomTabBarView.swift in Sources */,
 				FA2A42BB2C5B20DE00A021A0 /* InfoVehiculoDto.swift in Sources */,
 				FA2A43102C5B268900A021A0 /* ValidacionDocumentosView.swift in Sources */,
 				FA2A42D72C5B228100A021A0 /* Rubro.swift in Sources */,
 				FA2A42F72C5B246800A021A0 /* HttpClientErrorMapper.swift in Sources */,
 				50CDFCE52C63D26800B334A9 /* BannerRemoteDataSourceType.swift in Sources */,
 				FA2A42C62C5B219300A021A0 /* InfoVehiculoDomainErrorMapper.swift in Sources */,
+				FA729C4B2C6DAC680088CFB0 /* BannerLocalDataSource.swift in Sources */,
 				FA817E0B2C5E9DC30050C167 /* HTTPClient.swift in Sources */,
 				FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */,
 				50CDFCDF2C63CBA700B334A9 /* BannerDto.swift in Sources */,
@@ -815,14 +996,20 @@
 				FA2A42DB2C5B22B600A021A0 /* Tasa.swift in Sources */,
 				FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */,
 				FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */,
+				FA450BB72C6BC7CF00DAA3FB /* EstadoRemoteDataSource.swift in Sources */,
 				FA2A42B92C5B20C500A021A0 /* DeudaDto.swift in Sources */,
 				FA2A429A2C5B1E6B00A021A0 /* ConfiguracionView.swift in Sources */,
 				FA2A42AC2C5B1FD700A021A0 /* ImpuestoRentaView.swift in Sources */,
 				FA2A42A92C5B1FA000A021A0 /* FacturadorSRIView.swift in Sources */,
 				FA2A42D52C5B226400A021A0 /* InfoVehiculoModel.swift in Sources */,
 				50CDFCE82C63D2EF00B334A9 /* BannerModel.swift in Sources */,
+				FA450BD42C6C210800DAA3FB /* SriModel.xcdatamodeld in Sources */,
+				FA450BCD2C6BEBB600DAA3FB /* CoreDataStack.swift in Sources */,
+				FA450BC92C6BE27100DAA3FB /* EstadoLocalDataSourceType.swift in Sources */,
 				50CDFCF22C63DCFF00B334A9 /* BannerRepository.swift in Sources */,
 				50E7BE1A2C62C9FA008EFCAA /* ToastView.swift in Sources */,
+				FA450BC42C6BD26D00DAA3FB /* EstadoRepository.swift in Sources */,
+				FA450BB22C6BC53200DAA3FB /* EstadoDto.swift in Sources */,
 				FA2A42CD2C5B21F900A021A0 /* MatriculacionVehicularContainer.swift in Sources */,
 				FA2A42D92C5B229900A021A0 /* Servicio.swift in Sources */,
 				FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */,
@@ -831,6 +1018,7 @@
 				FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */,
 				FA2A42DE2C5B22E000A021A0 /* ObtenerInfoVehiculoRepositoryType.swift in Sources */,
 				50CDFCFC2C655D9100B334A9 /* ToastTwoView.swift in Sources */,
+				FA450BBD2C6BCC7400DAA3FB /* EstadoContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1241,20 @@
 			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		FA450BD22C6C210800DAA3FB /* SriModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA450BD32C6C210800DAA3FB /* SriModel.xcdatamodel */,
+			);
+			currentVersion = FA450BD32C6C210800DAA3FB /* SriModel.xcdatamodel */;
+			name = SriModel.xcdatamodeld;
+			path = /Users/alex/Documents/CURSO_IOS/SRI_IOS/SriMovil/SriMovil/CoreData/SriModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FAB712862C5B076100771790 /* Project object */;
 }
