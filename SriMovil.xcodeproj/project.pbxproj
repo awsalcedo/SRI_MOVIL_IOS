@@ -198,7 +198,7 @@
 		FA450BCA2C6BEB3A00DAA3FB /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		FA450BCC2C6BEBB600DAA3FB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FA450BD02C6C1F7600DAA3FB /* GlobalContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalContainer.swift; sourceTree = "<group>"; };
-		FA450BD32C6C210800DAA3FB /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
+		FA450BD32C6C210800DAA3FB /* SriModel.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
 		FA6AB46A2C7510B800DD199F /* EstadoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoModel.swift; sourceTree = "<group>"; };
 		FA729C4A2C6DAC680088CFB0 /* BannerLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerLocalDataSource.swift; sourceTree = "<group>"; };
 		FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
