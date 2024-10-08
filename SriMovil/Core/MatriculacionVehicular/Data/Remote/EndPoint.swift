@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EndPoint {
+public struct EndPoint {
     let baseURL: String = "https://srienlinea.sri.gob.ec/"
     let context: String = "movil-servicios/api/"
     let path: String

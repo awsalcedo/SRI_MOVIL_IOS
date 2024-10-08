@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct EstadoTributarioModel: Codable, Identifiable, Hashable {
+    let id: UUID
+    let ruc: String
+    let razonSocial: String
+    let descripcion: String
+    let plazoVigenciaDoc: String
+    let claseContribuyente: String
+    let obligacionesPendientes: [ObligacionesPendientesModel]?
+}

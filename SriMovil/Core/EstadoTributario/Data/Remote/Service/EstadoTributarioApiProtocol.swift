@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol EstadoTributarioApiProtocol {
+    func makeRequest(endPoint: EndPoint) async throws -> EstadoTributarioDTO
+}

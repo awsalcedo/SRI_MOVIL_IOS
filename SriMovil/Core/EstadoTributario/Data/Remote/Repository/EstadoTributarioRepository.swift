@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+struct EstadoTributarioRepository: EstadoTributarioRepositoryProtocol {
+    
+    private let remoteDataSource: EstadoTributarioRemoteDataSourceProtocol
+    
+    init(remoteDataSource: EstadoTributarioRemoteDataSourceProtocol) {
+        self.remoteDataSource = remoteDataSource
+    }
+    
+    func obtenerEstadoTributario(ruc: String) async throws -> EstadoTributarioModel {
+        return try await remoteDataSource.obtenerEstadoTributarioRemote(ruc: ruc)
+    }
+    
+}

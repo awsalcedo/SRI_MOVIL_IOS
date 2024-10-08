@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol EstadoTributarioRemoteDataSourceProtocol {
+    func obtenerEstadoTributarioRemote(ruc: String) async throws -> EstadoTributarioModel
+}
