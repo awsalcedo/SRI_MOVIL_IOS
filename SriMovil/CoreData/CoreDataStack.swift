@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataStack {
+class CoreDataStack: @unchecked Sendable {
     public static let shared = CoreDataStack()
     
     public let persistentContainer: NSPersistentContainer

@@ -12,7 +12,7 @@ protocol SriNetworkProtocol {
     func post(request: URLRequest, statusOK: Int) async throws
 }
 
-public final class SriNetwork: SriNetworkProtocol {
+public final class SriNetwork: SriNetworkProtocol, @unchecked Sendable {
     
     /// Variable de tipo Singleton que almacena la clase persistida de SriNetwork
     public static let shared = SriNetwork()
