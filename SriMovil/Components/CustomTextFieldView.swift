@@ -25,6 +25,7 @@ struct CustomTextFieldView: View {
                 .onChange(of: texto) {
                     texto = String(texto.uppercased().prefix(40))
                 }
+            
         }
         .padding(.horizontal, 10)
         .background(Color(.systemGray6))

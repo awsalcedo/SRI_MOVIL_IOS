@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataStack {
+public actor CoreDataStack {
     public static let shared = CoreDataStack()
     
     public let persistentContainer: NSPersistentContainer

@@ -30,9 +30,11 @@ class MatriculacionVehicularViewModel: ObservableObject {
         DispatchQueue.main.async {
             switch resultado {
             case .success(let info):
-                self.estado = .cargado(info)
+                //self.estado = .cargado(info)
+                print("se obtuvo la información")
             case .failure(let error):
-                self.estado = .error(error)
+                //self.estado = .error(error)
+                print("se obtuvo la información")
             }
         }
     }

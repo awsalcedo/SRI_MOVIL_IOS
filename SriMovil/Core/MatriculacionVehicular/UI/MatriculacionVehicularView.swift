@@ -37,7 +37,7 @@ struct MatriculacionVehicularView: View {
                     ButtonPersonalizadoView(title: "Consultar", action: {
                         Task {
                             isLoading = true
-                            await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
+                            //await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
                             isLoading = false
                             updateView()
                         }

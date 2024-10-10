@@ -25,6 +25,7 @@ struct ButtonPersonalizadoView: View {
                 .cornerRadius(10) // Radio de esquina para redondear el botón
                 .shadow(radius: 5) // Agregar una sombra para darle profundidad
         }
+        .padding(.horizontal, 10)
     }
 }
 
