@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol VehiculosApiType {
+protocol VehiculosApiProtocol {
     func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError>
 }

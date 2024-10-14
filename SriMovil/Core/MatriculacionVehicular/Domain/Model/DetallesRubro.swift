@@ -13,9 +13,9 @@ struct DetallesRubro: Identifiable, Hashable, Codable {
     let anio: Int
     let valor: Double
     
-    init(from dto: DetallesRubroDto) {
+    /*init(from dto: DetallesRubroDto) {
             self.descripcion = dto.descripcion
             self.anio = dto.anio
             self.valor = dto.valor
-        }
+        }*/
 }

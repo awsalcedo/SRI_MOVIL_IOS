@@ -8,6 +8,6 @@
 import Foundation
 
 // Define un protocolo para el repositorio que obtiene la información del vehículo
-protocol ObtenerInfoVehiculoRepositoryType {
+protocol ObtenerInfoVehiculoRepositoryProtocol {
     func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoModel, InfoVehiculoDomainError>
 }

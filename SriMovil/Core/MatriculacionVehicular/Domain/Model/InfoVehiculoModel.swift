@@ -36,34 +36,8 @@ struct InfoVehiculoModel: Codable, Equatable, Hashable {
     let tasas: [Tasa]?
     let remision: String?
     
-    init(from dto: InfoVehiculoDto) {
-            self.fechaUltimaMatricula = dto.fechaUltimaMatricula
-            self.fechaCaducidadMatricula = dto.fechaCaducidadMatricula
-            self.cantonMatricula = dto.cantonMatricula
-            self.fechaRevision = dto.fechaRevision
-            self.total = dto.total
-            self.informacion = dto.informacion
-            self.estadoAuto = dto.estadoAuto
-            self.mensajeMotivoAuto = dto.mensajeMotivoAuto
-            self.placa = dto.placa
-            self.camvCpn = dto.camvCpn
-            self.cilindraje = dto.cilindraje
-            self.fechaCompra = dto.fechaCompra
-            self.anioUltimoPago = dto.anioUltimoPago
-            self.marca = dto.marca
-            self.modelo = dto.modelo
-            self.anioModelo = dto.anioModelo
-            self.paisFabricacion = dto.paisFabricacion
-            self.clase = dto.clase
-            self.servicio = dto.servicio
-            self.tipoUso = dto.tipoUso
-            self.deudas = dto.deudas?.map { Deuda(from: $0) }
-            self.tasas = dto.tasas?.map { Tasa(from: $0) }
-            self.remision = dto.remision
-        }
-    
     // Implementación automática de Equatable y Hashable usando Swift 4.1+
-        static func == (lhs: InfoVehiculoModel, rhs: InfoVehiculoModel) -> Bool {
+        /*static func == (lhs: InfoVehiculoModel, rhs: InfoVehiculoModel) -> Bool {
             return lhs.fechaUltimaMatricula == rhs.fechaUltimaMatricula &&
                 lhs.fechaCaducidadMatricula == rhs.fechaCaducidadMatricula &&
                 lhs.cantonMatricula == rhs.cantonMatricula &&
@@ -113,5 +87,5 @@ struct InfoVehiculoModel: Codable, Equatable, Hashable {
             hasher.combine(deudas)
             hasher.combine(tasas)
             hasher.combine(remision)
-        }
+        }*/
 }

@@ -13,7 +13,7 @@ struct Deuda: Codable, Identifiable, Hashable {
     let rubros: [Rubro]
     let subtotal: Double
     
-    init(from dto: DeudaDto) {
+    /*init(from dto: DeudaDto) {
             self.descripcion = dto.descripcion
             self.rubros = dto.rubros.map { Rubro(from: $0) }
             self.subtotal = dto.subtotal
@@ -31,5 +31,5 @@ struct Deuda: Codable, Identifiable, Hashable {
             hasher.combine(descripcion)
             hasher.combine(rubros)
             hasher.combine(subtotal)
-        }
+        }*/
 }
