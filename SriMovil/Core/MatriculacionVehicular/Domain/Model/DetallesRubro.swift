@@ -8,7 +8,7 @@
 import Foundation
 
 struct DetallesRubro: Identifiable, Hashable, Codable {
-    var id = UUID()
+    let id = UUID()
     let descripcion: String
     let anio: Int
     let valor: Double

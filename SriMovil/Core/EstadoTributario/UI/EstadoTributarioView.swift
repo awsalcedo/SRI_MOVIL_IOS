@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EstadoTributarioView: View {
+    
     @State private var ruc: String = ""
     @State private var viewModel = EstadoTributarioViewModel()
     
@@ -59,8 +60,8 @@ struct EstadoTributarioView: View {
                         EstadoTributarioDetalleView(infoEstadoTributario: estadoTributario!)
                     case .failure(let errorMessage):
                         // Mostrar mensaje de error
-                        Text(errorMessage)
-                            .foregroundColor(.red)
+                        ErrorView(error: errorMessage)
+                        Spacer()
                     }
                 }
                 .padding()

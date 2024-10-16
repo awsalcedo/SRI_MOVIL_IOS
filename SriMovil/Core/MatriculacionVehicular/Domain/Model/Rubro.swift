@@ -8,14 +8,14 @@
 import Foundation
 
 struct Rubro: Hashable, Identifiable, Codable {
-    var id = UUID()
+    let id = UUID()
     let descripcion: String
     let valor: Double
     let periodoFiscal: String
     let beneficiario: String
     let detallesRubro: [DetallesRubro]
     
-    init(from dto: RubroDto) {
+    /*init(from dto: RubroDto) {
             self.descripcion = dto.descripcion
             self.valor = dto.valor
             self.periodoFiscal = dto.periodoFiscal
@@ -41,5 +41,5 @@ struct Rubro: Hashable, Identifiable, Codable {
             hasher.combine(periodoFiscal)
             hasher.combine(beneficiario)
             hasher.combine(detallesRubro)
-        }
+        }*/
 }

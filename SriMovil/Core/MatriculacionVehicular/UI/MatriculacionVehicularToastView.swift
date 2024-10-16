@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Factory
 
 enum ViewToastStack: Hashable {
     case detalleVehiculoView
@@ -14,7 +13,7 @@ enum ViewToastStack: Hashable {
 }
 
 struct MatriculacionVehicularToastView: View {
-    @Injected(\.matriculacionVehicularViewModel) private var viewModel: MatriculacionVehicularViewModel
+    @State private var viewModel = MatriculacionVehicularViewModel()
     
     @State private var placa: String = ""
     @State private var isLoading: Bool = false
@@ -32,9 +31,16 @@ struct MatriculacionVehicularToastView: View {
                         Spacer()
                     }
                     
-                    CustomTextFieldView(texto: $placa, placeholder: "Ej: AAA0123", icono: "car.fill")
+                    CustomTextFieldView(texto: $placa, placeholder: "Ej: AAA0123", icono: "car.fill") {
+                        Task {
+                            isLoading = true
+                            //await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
+                            isLoading = false
+                            updateView()
+                        }
+                    }
                     
-                    ButtonPersonalizadoView(title: "Consultar", action: {
+                    /*ButtonPersonalizadoView(title: "Consultar", action: {
                         Task {
                             isLoading = true
                             //await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
@@ -43,7 +49,7 @@ struct MatriculacionVehicularToastView: View {
                         }
                     })
                     .padding()
-                    .disabled(placa.isEmpty)
+                    .disabled(placa.isEmpty)*/
                     
                     Spacer()
                 }
@@ -78,11 +84,11 @@ struct MatriculacionVehicularToastView: View {
     }
     
     private func updateView() {
-        switch viewModel.estado {
-        case .cargado:
+        switch viewModel.vehiculoState {
+        case .success:
             siguienteView = .detalleVehiculoView
-        case .error(let error):
-            toast = Toast(mensaje: error.localizedDescription, ancho: UIScreen.main.bounds.width * 0.8)
+        case .failure(let error):
+            toast = Toast(mensaje: error, ancho: UIScreen.main.bounds.width * 0.8)
         default:
             break
         }
@@ -92,14 +98,14 @@ struct MatriculacionVehicularToastView: View {
     private func destinationView() -> some View {
         switch siguienteView {
         case .detalleVehiculoView:
-            if case .cargado(let infoVehiculo) = viewModel.estado {
+            if case .success(let infoVehiculo) = viewModel.vehiculoState {
                 MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
             } else {
                 EmptyView()
             }
         case .errorView:
-            if case .error(let error) = viewModel.estado {
-                ErrorView(error: error)
+            if case .failure(let error) = viewModel.vehiculoState {
+                //ErrorView(error: error)
             } else {
                 EmptyView()
             }

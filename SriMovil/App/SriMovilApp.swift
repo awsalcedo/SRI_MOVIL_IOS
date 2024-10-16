@@ -14,9 +14,11 @@ struct SriMovilApp: App {
             /*ConsultasView()
              .environmentObject(MatriculacionVehicularViewModel())*/
             
-            ConsultasView()
+            //ConsultasView()
             
             //MainTabView()
+            
+            SriTabView()
         }
     }
 }

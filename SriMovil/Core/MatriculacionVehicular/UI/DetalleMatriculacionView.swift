@@ -12,25 +12,50 @@ struct DetalleMatriculacionView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                Section(header: Text("Detalle del Vehículo")
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                    .padding(.bottom, 5)) {
-                        DetalleRow(iconName: "car.fill", label: "Placa", value: infoVehiculo.placa)
-                        DetalleRow(iconName: "number", label: "RAMV o CPM", value: infoVehiculo.camvCpn)
-                        DetalleRow(iconName: "tag.fill", label: "Marca", value: infoVehiculo.marca)
-                        DetalleRow(iconName: "doc.text.fill", label: "Modelo", value: infoVehiculo.modelo)
-                        DetalleRow(iconName: "calendar", label: "Año", value: String(infoVehiculo.anioModelo))
-                        DetalleRow(iconName: "flag.fill", label: "País", value: infoVehiculo.paisFabricacion)
-                        DetalleRow(iconName: "clock.fill", label: "Último pago", value: String(infoVehiculo.anioUltimoPago))
-                    }
-            }
-            .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Detalle Vehículo")
-            .toolbarBackground(.blue, for: .navigationBar)
-            .toolbarTitleDisplayMode(.inline)
+            
+            CabeceraDetalleMatriculacionView(infoVehiculo: infoVehiculo)
+            
+            DetalleVehiculoView(infoVehiculo: infoVehiculo)
+            
         }
+    }
+}
+
+struct CabeceraDetalleMatriculacionView: View {
+    let infoVehiculo: InfoVehiculoModel
+    var body: some View {
+        if infoVehiculo.tasas != nil {
+            ValoresPagarView(infoVehiculo: infoVehiculo)
+            
+        } else {
+            NoExistenValoresPagarView()
+        }
+    }
+}
+
+struct DetalleVehiculoView: View {
+    let infoVehiculo: InfoVehiculoModel
+    var body: some View {
+        List {
+            
+            Section(header: Text("Detalle del Vehículo")
+                .font(.subheadline)
+                .bold()
+                .foregroundColor(.primary)
+                .padding(.bottom, 5)) {
+                    DetalleRow(iconName: "car.fill", label: "Placa", value: infoVehiculo.placa)
+                    DetalleRow(iconName: "number", label: "RAMV o CPM", value: infoVehiculo.camvCpn)
+                    DetalleRow(iconName: "tag.fill", label: "Marca", value: infoVehiculo.marca)
+                    DetalleRow(iconName: "doc.text.fill", label: "Modelo", value: infoVehiculo.modelo)
+                    DetalleRow(iconName: "calendar", label: "Año", value: String(infoVehiculo.anioModelo))
+                    DetalleRow(iconName: "flag.fill", label: "País", value: infoVehiculo.paisFabricacion)
+                    DetalleRow(iconName: "clock.fill", label: "Último pago", value: String(infoVehiculo.anioUltimoPago))
+                }
+        }
+        .listStyle(InsetGroupedListStyle())
+        .navigationTitle("Detalle Vehículo")
+        .toolbarBackground(.blue, for: .navigationBar)
+        .toolbarTitleDisplayMode(.inline)
     }
 }
 
@@ -49,11 +74,74 @@ struct DetalleRow: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Text(value)
-                    .font(.body)
+                    .font(.caption)
                     .foregroundColor(.primary)
             }
         }
-        .padding(.vertical, 5)
+        //.padding(.vertical, 5)
+    }
+}
+
+struct ValoresPagarView: View {
+    let infoVehiculo: InfoVehiculoModel
+    
+    var body: some View {
+    
+        NavigationLink {
+            if let deudas = infoVehiculo.deudas {
+                NavigationView {
+                    List {
+                        ForEach(deudas) { deuda in
+                            TipoDeudaItemsView(deuda: deuda)
+                        }
+                    }
+                    .listStyle(InsetGroupedListStyle())
+                    .navigationTitle("Por tipo de deuda")
+                    .toolbarBackground(.blue, for: .navigationBar)
+                    .toolbarTitleDisplayMode(.inline)
+                }
+            }
+        } label: {
+            HStack {
+                Text("Valor total a pagar:")
+                    .font(.subheadline)
+                    .bold()
+                    .padding(8)
+                Spacer()
+                Text(FormatterUtils.formattedCurrency(value: infoVehiculo.total ?? 0.00))
+                    .font(.subheadline)
+                    .bold()
+                    .padding(8)
+            }
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .padding()
+        }
+    }
+}
+
+struct TipoDeudaItemsView: View {
+    let deuda: Deuda
+    
+    var body: some View {
+        NavigationLink {
+            RubrosView(rubros: deuda.rubros)
+        } label: {
+            Label(deuda.descripcion, systemImage: "star")
+                .font(.footnote)
+                .bold()
+            
+            VStack(alignment: .trailing) {
+                Text("Subtotal:")
+                    .font(.footnote)
+                    .padding(.horizontal)
+                
+                Text(FormatterUtils.formattedCurrency(value: deuda.subtotal))
+                    .font(.footnote)
+                    .padding(.horizontal)
+            }
+        }
+        .padding(.vertical, 8)
     }
 }
 
@@ -86,8 +174,8 @@ struct DetalleMatriculacionView_Previews: PreviewProvider {
             remision: nil
         )
         
-        let infoVehiculo = InfoVehiculoModel(from: infoVehiculoDto)
+        let infoVehiculoModel = infoVehiculoDto.toDomain
         
-        DetalleMatriculacionView(infoVehiculo: infoVehiculo)
+        DetalleMatriculacionView(infoVehiculo: infoVehiculoModel)
     }
 }

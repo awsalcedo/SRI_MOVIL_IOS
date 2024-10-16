@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ErrorResponse: Codable {
+    let codigo: String
+    let mensaje: String
+    let detalles: String?
+}

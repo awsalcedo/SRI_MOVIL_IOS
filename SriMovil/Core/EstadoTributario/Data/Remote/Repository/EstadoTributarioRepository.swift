@@ -18,5 +18,4 @@ struct EstadoTributarioRepository: EstadoTributarioRepositoryProtocol {
     func obtenerEstadoTributario(ruc: String) async throws -> EstadoTributarioModel {
         return try await remoteDataSource.obtenerEstadoTributarioRemote(ruc: ruc)
     }
-    
 }

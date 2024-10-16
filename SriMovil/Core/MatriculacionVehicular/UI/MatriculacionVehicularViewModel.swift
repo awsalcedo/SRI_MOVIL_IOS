@@ -6,37 +6,34 @@
 //
 
 import SwiftUI
-import Factory
 
-class MatriculacionVehicularViewModel: ObservableObject {
+@Observable
+final class MatriculacionVehicularViewModel: ObservableObject {
     
-    @Injected(\.obtenerInfoVehiculoUseCase) private var useCase
+    // Estado que se actualizará en la UI
+    var vehiculoState: ViewStates<InfoVehiculoModel> = .idle
     
-    // Estados de la vista
-    @Published var estado: Estado = .inicial
+    private let useCase: ObtenerInfoVehiculoUseCaseProtocol
     
-    enum Estado {
-        case inicial
-        case cargando
-        case cargado(InfoVehiculoModel)
-        case error(InfoVehiculoDomainError)
+    init(useCase: ObtenerInfoVehiculoUseCaseProtocol = ObtenerInfoVehiculoUseCase()) {
+        self.useCase = useCase
     }
     
-    // Función para obtener información del vehículo
+    @MainActor
     func obtenerInfoVehiculo(idVehiculo: String) async {
-        estado = .cargando
         
-        let resultado = await useCase.execute(idVehiculo: idVehiculo)
-        DispatchQueue.main.async {
-            switch resultado {
-            case .success(let info):
-                //self.estado = .cargado(info)
-                print("se obtuvo la información")
-            case .failure(let error):
-                //self.estado = .error(error)
-                print("se obtuvo la información")
+        Task {
+            vehiculoState =  .loading
+            do {
+                let infoVehiculo = try await useCase.execute(idVehiculo: idVehiculo)
+                vehiculoState = .success(infoVehiculo)
+            } catch let error as SriNetworkError {
+                // Asignar el mensaje de error específico de SriNetworkError
+                vehiculoState = .failure(error.descripcion)
+            } catch {
+                // Si por alguna razón es un error desconocido
+                vehiculoState = .failure("Error desconocido: \(error.localizedDescription)")
             }
         }
     }
-    
 }

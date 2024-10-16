@@ -107,6 +107,8 @@ struct ValorPagarView: View {
     }
 }
 
+
+
 struct TipoDeudaItemView: View {
     let deuda: Deuda
     
@@ -218,8 +220,8 @@ struct MatriculacionVehicularDetalleView_Previews: PreviewProvider {
             remision: nil
         )
         
-        let infoVehiculo = InfoVehiculoModel(from: infoVehiculoDto)
+        let infoVehiculoModel = infoVehiculoDto.toDomain
         
-        MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
+        MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculoModel)
     }
 }

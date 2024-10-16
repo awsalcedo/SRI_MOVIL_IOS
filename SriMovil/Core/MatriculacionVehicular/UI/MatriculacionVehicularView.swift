@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Factory
 
 enum ViewStackToast: Hashable {
     case detalleVehiculoView
@@ -15,11 +14,9 @@ enum ViewStackToast: Hashable {
 
 struct MatriculacionVehicularView: View {
     
-    @Injected(\.matriculacionVehicularViewModel) private var viewModel
-    
     @State private var placa: String = ""
-    @State private var isLoading: Bool = false
     @State private var siguienteView: ViewStackToast?
+    @State private var viewModel = MatriculacionVehicularViewModel()
     
     var body: some View {
         NavigationStack {
@@ -31,79 +28,50 @@ struct MatriculacionVehicularView: View {
                         Spacer()
                     }
                     
-                    CustomTextFieldView(texto: $placa, placeholder: "Ej: AAA0123", icono: "car.fill")
-                    
-                    
-                    ButtonPersonalizadoView(title: "Consultar", action: {
+                    CustomTextFieldView(texto: $placa, placeholder: "Ej: AAA0123", icono: "car.fill") {
                         Task {
-                            isLoading = true
-                            //await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
-                            isLoading = false
-                            updateView()
+                            await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
+                        }
+                    }
+                    
+                    
+                    /*ButtonPersonalizadoView(title: "Consultar", action: {
+                        Task {
+                            await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
                         }
                     })
                     .padding()
-                    .disabled(placa.isEmpty)
+                    .disabled(placa.isEmpty)*/
                     
                     Spacer()
+                    
+                    // Manejar los diferentes estados
+                    switch viewModel.vehiculoState {
+                    case .idle:
+                        EmptyView()
+                    case .loading:
+                        BarraProgresoView()
+                    case .success(let infoVehiculo):
+                        //MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
+                        DetalleMatriculacionView(infoVehiculo: infoVehiculo)
+                    case .failure(let errorMessage):
+                        ErrorView(error: errorMessage)
+                        Spacer()
+                    }
                 }
                 .padding()
                 
-                if isLoading {
-                    BarraProgresoView()
-                }
             }
             .navigationTitle("Valores a pagar")
             .toolbarTitleDisplayMode(.inline)
-            .background(
-                NavigationLink(
-                    destination: destinationView(),
-                    tag: ViewStackToast.detalleVehiculoView,
-                    selection: $siguienteView,
-                    label: { EmptyView() }
-                ).hidden()
-            )
-            .background(
-                NavigationLink(
-                    destination: destinationView(),
-                    tag: ViewStackToast.errorView,
-                    selection: $siguienteView,
-                    label: { EmptyView() }
-                ).hidden()
-            )
+            
+        
         }
     }
     
-    private func updateView() {
-        switch viewModel.estado {
-        case .cargado:
-            siguienteView = .detalleVehiculoView
-        case .error:
-            siguienteView = .errorView
-        default:
-            break
-        }
-    }
     
-    @ViewBuilder
-    private func destinationView() -> some View {
-        switch siguienteView {
-        case .detalleVehiculoView:
-            if case .cargado(let infoVehiculo) = viewModel.estado {
-                MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
-            } else {
-                EmptyView()
-            }
-        case .errorView:
-            if case .error(let error) = viewModel.estado {
-                ErrorView(error: error)
-            } else {
-                EmptyView()
-            }
-        default:
-            EmptyView()
-        }
-    }
+    
+    
 }
 
 

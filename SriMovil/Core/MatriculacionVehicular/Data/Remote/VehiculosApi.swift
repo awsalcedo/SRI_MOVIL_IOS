@@ -6,20 +6,21 @@
 //
 
 import Foundation
-import Factory
 
-class VehiculosApi: VehiculosApiType {
+class VehiculosApi: VehiculosApiProtocol {
   
-    @Injected(\.httpClient) private var httpClient
+    private let network: SriNetworkProtocol
     
-    func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError> {
-        let result = await httpClient.makeRequest(endPoint: endPoint)
-        
-        switch result {
-        case .success(let data):
-            return .success(data)
-        case .failure(let error):
-            return .failure(error)
+    init(network: SriNetworkProtocol = SriNetwork.shared) {
+        self.network = network
+    }
+    
+    func makeRequest(endPoint: EndPoint) async throws -> InfoVehiculoDto {
+        do {
+            return try await network.getJSON(endPoint: endPoint, type: InfoVehiculoDto.self, decoder: JSONDecoder())
+        } catch {
+            //throw SriNetworkError.json(error)
+            throw error
         }
     }
 }

@@ -12,3 +12,9 @@ struct TasaDto: Codable {
     let deudas: [DeudaDto]
     let subtotal: Double
 }
+
+extension TasaDto {
+    var toDomain: Tasa {
+        Tasa(descripcion: descripcion, deudas: deudas.map{ $0.toDomain }, subtotal: subtotal)
+    }
+}

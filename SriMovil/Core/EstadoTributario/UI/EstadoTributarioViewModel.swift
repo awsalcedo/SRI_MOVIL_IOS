@@ -11,20 +11,14 @@ import SwiftUI
 final class EstadoTributarioViewModel {
     
     // Estado que se actualizará en la UI
-    //var estadoTributario: EstadoTributarioModel?
-    
     var estadoTributarioState: ViewStates<EstadoTributarioModel?> = .idle
     
-    // Estado para manejar errores
-    //var errores: String?
-        
     private let useCase: ObtenerInfoEstadoTributarioUseCaseProtocol
     
     init(useCase: ObtenerInfoEstadoTributarioUseCaseProtocol = ObtenerInfoEstadoTributarioUseCase()) {
         self.useCase = useCase
     }
     
-    // Función pública para obtener el estado tributario cuando se presiona el botón
     @MainActor
     func obtenerEstadoTributario(ruc: String) async {
         Task {
@@ -33,12 +27,15 @@ final class EstadoTributarioViewModel {
                 let estadoTributario = try await useCase.execute(ruc: ruc)
                 estadoTributarioState = .success(estadoTributario)
                 
+            } /*catch {
+               estadoTributarioState = .failure("Error al obtener el estado tributario: \(error.localizedDescription)")
+               }*/
+            catch let error as SriNetworkError {
+                // Asignar el mensaje de error específico de SriNetworkError
+                estadoTributarioState = .failure(error.descripcion)
             } catch {
-                /*estadoTributario = nil // En caso de error, limpiamos el estado
-                errores = "Error al obtener el estado tributario: \(error.localizedDescription)" // Corregimos el error de mutabilidad
-                print(error)*/
-                estadoTributarioState = .failure("Error al obtener el estado tributario: \(error.localizedDescription)")
-                
+                // Si por alguna razón es un error desconocido
+                estadoTributarioState = .failure("Error desconocido: \(error.localizedDescription)")
             }
         }
     }

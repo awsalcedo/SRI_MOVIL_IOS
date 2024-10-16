@@ -32,3 +32,9 @@ struct InfoVehiculoDto: Codable {
     let tasas: [TasaDto]?
     let remision: String?
 }
+
+extension InfoVehiculoDto {
+    var toDomain: InfoVehiculoModel {
+        InfoVehiculoModel(fechaUltimaMatricula: fechaUltimaMatricula, fechaCaducidadMatricula: fechaCaducidadMatricula, cantonMatricula: cantonMatricula, fechaRevision: fechaRevision, total: total, informacion: informacion, estadoAuto: estadoAuto, mensajeMotivoAuto: mensajeMotivoAuto, placa: placa, camvCpn: camvCpn, cilindraje: cilindraje, fechaCompra: fechaCompra, anioUltimoPago: anioUltimoPago, marca: marca, modelo: modelo, anioModelo: anioModelo, paisFabricacion: paisFabricacion, clase: clase, servicio: servicio, tipoUso: tipoUso, deudas: deudas?.map{ $0.toDomain }, tasas: tasas?.map{ $0.toDomain }, remision: remision)
+    }
+}

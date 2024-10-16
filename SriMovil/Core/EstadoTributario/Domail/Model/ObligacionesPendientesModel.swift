@@ -8,9 +8,9 @@
 import Foundation
 
 struct ObligacionesPendientesModel: Codable, Hashable, Identifiable {
-    //let id: UUID
+    let id: UUID = UUID()
     let descripcion: String
     let periodos: [String]
     
-    let id: UUID = UUID()
+    
 }

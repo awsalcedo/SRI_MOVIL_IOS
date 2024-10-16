@@ -7,41 +7,52 @@
 
 import Foundation
 
-/// Enumeración con los posibles tipos de error
+// Enumeración optimizada con los posibles tipos de error en la red
 public enum SriNetworkError: Error {
-    /// Caso de error general con el tipo `Error` como valor asociado.
+    /// Error general con el tipo `Error` como valor asociado.
     case general(Error)
-    /// Caso de error de estado HTTP que tendrá embebido el valor de estado devuelto en un `Int`
+    /// Error de estado HTTP, que contiene el valor de estado devuelto (código de estado).
     case status(Int)
-    /// Error en la decodificación del JSON (o codificación) por algún error en el mismo. Lleva el tipo `Error` porque al imprimir el tipo completo tendremos una descripción más larga con el error concreto que ha habido.
+    /// Error al decodificar el JSON (o codificación).
     case json(Error)
-    /// Tipo de dato no válido a lo que se esperaba.
-    case dataNotValid
-    /// Error que ha sido devuelto porque el `URLResponse` que se ha devuelto no es el del tipo `HTTPURLResponse`
-    /// Error de url
+    /// URL mal formada o inválida.
     case badURL
+    /// La respuesta no es del tipo HTTP.
     case noHTTP
-    /// Error desconocido
+    /// Error del cliente (4xx) con un mensaje opcional y un código de estado.
+    case clientError(String?, Int)
+    /// Error del servidor (5xx) con un mensaje opcional y un código de estado.
+    case serverError(String?, Int)
+    /// Error desconocido.
     case unknown
     
-    /// Permite saber de una manera textual y extrayendo los tipos asociados de la enumeración, qué ha pasado, preparado para ser mostrado al usuario en algún tipo de alerta dentro la UI.
+    /// Descripción textual de cada error para facilitar su uso en la UI.
     public var descripcion: String {
         switch self {
         case .general(let error):
             return "Error general: \(error.localizedDescription)"
         case .status(let code):
-            return "Error HTTP con status: \(code)"
+            return "Error HTTP con código de estado: \(code)"
         case .json(let error):
-            return "Error en el JSON: \(error.localizedDescription)"
-        case .dataNotValid:
-            return "Datos no válidos"
+            return "Error al procesar el JSON: \(error.localizedDescription)"
         case .badURL:
-            return "URL inválida"
+            return "La URL proporcionada es inválida"
         case .noHTTP:
-            return "No es una conexión HTTP válida"
+            return "La respuesta no es una conexión HTTP válida"
+        case .clientError(let mensaje, let code):
+            if let mensaje = mensaje {
+                return mensaje
+            } else {
+                return "Error del cliente con código: \(code)"
+            }
+        case .serverError(let mensaje, let code):
+            if let mensaje = mensaje {
+                return "Error del servidor (\(code)): \(mensaje)"
+            } else {
+                return "Error del servidor con código: \(code)"
+            }
         case .unknown:
-            return "Error desconocido"
+            return "Ha ocurrido un error desconocido"
         }
     }
-    
 }

@@ -9,34 +9,49 @@ import SwiftUI
 
 struct RubrosView: View {
     let rubros: [Rubro]
+    // Permite que la vista se actualice su estado correctamente y se reactive cuando cambie su valor
+    @State private var rubroSeleccionado: Rubro?
     
     var body: some View {
         NavigationStack {
             List(rubros) { rubro in
-                NavigationLink {
-                    DetalleRubrosView(detalleRubros: rubro.detallesRubro)
-                } label: {
+                Button(action: {
+                    rubroSeleccionado = rubro // Establecer el rubro seleccionado
+                }) {
                     VStack(alignment: .leading) {
-                        Text(rubro.descripcion)
-                            .font(.subheadline)
-                            .bold()
-                        Text("Valor: \(FormatterUtils.formattedCurrency(value: rubro.valor))")
-                            .font(.footnote)
+                        HStack {
+                            Text(rubro.descripcion)
+                                .font(.caption)
+                                .bold()
+                            Spacer()
+                            Text((FormatterUtils.formattedCurrency(value: rubro.valor)))
+                                .font(.caption)
+                        }
+                        
                         Text(rubro.periodoFiscal)
-                            .font(.footnote)
+                            .font(.caption2)
                         Text(rubro.beneficiario)
-                            .font(.footnote)
+                            .font(.caption2)
                     }
                 }
-                
             }
-            .padding(.vertical, 20)
+            .listStyle(InsetGroupedListStyle())
             .navigationTitle("Rubros")
+            .toolbarBackground(.blue, for: .navigationBar)
             .toolbarTitleDisplayMode(.inline)
+            .sheet(item: $rubroSeleccionado) { rubroSeleccionado in
+                DetalleRubrosView(detalleRubros: rubroSeleccionado.detallesRubro) {
+                    //El uso de self asegura que acceda a la variable @State de la vista
+                    // Cierra el sheet
+                    self.rubroSeleccionado = nil
+                }
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+            }
         }
     }
-    
 }
+
 
 
 struct RubrosView_Previews: PreviewProvider {
@@ -58,8 +73,8 @@ struct RubrosView_Previews: PreviewProvider {
         RubroDto(descripcion: "IMPUESTO A LA PROPIEDAD", valor: 2912.22, periodoFiscal: "2020 - 2022", beneficiario: "SRI", detallesRubro: detallesRubroDto)
         
         
-        let rubros = [Rubro(from: rubrosDto)]
+        let rubrosModel = [rubrosDto.toDomain]
         
-        RubrosView(rubros: rubros)
+        RubrosView(rubros: rubrosModel)
     }
 }

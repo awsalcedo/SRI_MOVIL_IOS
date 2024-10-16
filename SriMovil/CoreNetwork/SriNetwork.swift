@@ -57,15 +57,38 @@ public final class SriNetwork: SriNetworkProtocol, @unchecked Sendable {
         
         guard let response = response as? HTTPURLResponse else { throw SriNetworkError.noHTTP }
         
-        if response.statusCode == 200 {
+        /*if response.statusCode == 200 {
+         do {
+         return try actualDecoder.decode(JSON.self, from: data)
+         } catch {
+         throw SriNetworkError.json(error)
+         }
+         } else {
+         throw SriNetworkError.status(response.statusCode)
+         }*/
+        
+        switch response.statusCode {
+        case 200...299:
+            // Decodificación del JSON en caso de éxito
             do {
                 return try actualDecoder.decode(JSON.self, from: data)
             } catch {
                 throw SriNetworkError.json(error)
             }
-        } else {
+        case 400...499:
+            // Manejo de errores del cliente
+            let apiError = try? actualDecoder.decode(ErrorResponse.self, from: data)
+            throw SriNetworkError.clientError(apiError?.mensaje ?? "Error del cliente", response.statusCode)
+        case 500...599:
+            // Manejo de errores del servidor
+            let apiError = try? actualDecoder.decode(ErrorResponse.self, from: data)
+            throw SriNetworkError.serverError(apiError?.mensaje ?? "Error del servidor", response.statusCode)
+            
+        default:
             throw SriNetworkError.status(response.statusCode)
         }
+        
+        
     }
     
     /// Función `post` que realiza una solicitud POST.

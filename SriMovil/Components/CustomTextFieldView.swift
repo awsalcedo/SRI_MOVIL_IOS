@@ -11,6 +11,7 @@ struct CustomTextFieldView: View {
     @Binding var texto: String
     let placeholder: String
     let icono: String
+    let onSearch: () -> Void
     
     var body: some View {
         HStack {
@@ -25,6 +26,17 @@ struct CustomTextFieldView: View {
                 .onChange(of: texto) {
                     texto = String(texto.uppercased().prefix(40))
                 }
+            
+            // Botón de lupa siempre visible
+            Button(action: {
+                onSearch()  // Acción de búsqueda
+            }) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.blue)
+            }
+            .padding(.trailing, 10)
+            .disabled(texto.isEmpty)  // Deshabilitar hasta que se ingresen 13 caracteres
+            .opacity(texto.count == 13 ? 1.0 : 0.5)  // Cambiar la opacidad para que parezca desactivado
             
         }
         .padding(.horizontal, 10)
@@ -45,7 +57,7 @@ struct CustomTextFieldContainerView: View {
     
     var body: some View {
         VStack {
-            CustomTextFieldView(texto: $texto, placeholder: "Ej: AAA0123", icono: "car.fill")
+            CustomTextFieldView(texto: $texto, placeholder: "Ej: AAA0123", icono: "car.fill", onSearch: {})
                 .padding(.top, 40)
             Spacer()
         }

@@ -14,3 +14,9 @@ struct RubroDto: Codable {
     let beneficiario: String
     let detallesRubro: [DetallesRubroDto]
 }
+
+extension RubroDto {
+    var toDomain: Rubro {
+        Rubro(descripcion: descripcion, valor: valor, periodoFiscal: periodoFiscal, beneficiario: beneficiario, detallesRubro: detallesRubro.map { $0.toDomain })
+    }
+}

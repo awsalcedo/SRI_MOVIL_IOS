@@ -6,14 +6,18 @@
 //
 
 import Foundation
-import Factory
 
-// Componente que se encarga de implementar los detalles de infraestructura para realizar las peticiones al Core de servicios del SRIMOVIL
+/// Componente que se encarga de implementar los detalles de infraestructura para realizar las peticiones al Core de servicios del SRIMOVIL
 
-class VehiculosRemoteDataSource: VehiculosRemoteDataSourceType {
-    @Injected(\.vehiculosApi) private var api
+class VehiculosRemoteDataSource: VehiculosRemoteDataSourceProtocol {
+
+    private let api: VehiculosApiProtocol
     
-    func obtenerInfoVehiculo(idVehiculo: String) async -> Result<InfoVehiculoModel, HttpClientError> {
+    init(api: VehiculosApiProtocol) {
+        self.api = api
+    }
+    
+    func obtenerInfoVehiculo(idVehiculo: String) async throws -> InfoVehiculoModel {
         let endPoint = EndPoint(
             path: "v1.0/matriculacion/valor/\(idVehiculo)",
             queryParameters: nil,
@@ -21,20 +25,8 @@ class VehiculosRemoteDataSource: VehiculosRemoteDataSourceType {
             method: .get
         )
         
-        let result = await api.makeRequest(endPoint: endPoint)
+        let infoVehiculoDto = try await api.makeRequest(endPoint: endPoint)
         
-        switch result {
-        case .success(let data):
-            do {
-                let infoVehiculoDto = try JSONDecoder().decode(InfoVehiculoDto.self, from: data)
-                // Transforma el DTO a tu modelo de dominio
-                let infoVehiculoModel = InfoVehiculoModel(from: infoVehiculoDto)
-                return .success(infoVehiculoModel)
-            } catch {
-                return .failure(.decodingError(error))
-            }
-        case .failure(let error):
-            return .failure(error)
-        }
+        return infoVehiculoDto.toDomain
     }
 }

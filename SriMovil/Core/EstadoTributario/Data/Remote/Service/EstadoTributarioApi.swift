@@ -16,12 +16,11 @@ struct EstadoTributarioApi: EstadoTributarioApiProtocol {
     }
     
     func makeRequest(endPoint: EndPoint) async throws -> EstadoTributarioDTO {
-        
         do {
             return try await network.getJSON(endPoint: endPoint, type: EstadoTributarioDTO.self, decoder: JSONDecoder())
         } catch {
-            throw SriNetworkError.json(error)
+            //throw SriNetworkError.json(error)
+            throw error
         }
-        
     }
 }

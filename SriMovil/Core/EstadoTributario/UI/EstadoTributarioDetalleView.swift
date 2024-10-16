@@ -16,14 +16,16 @@ struct EstadoTributarioDetalleView: View {
     
     var body: some View {
         VStack {
-            CabeceraInfoEstadoTributarioView(infoEstadoTributario: infoEstadoTributario, obligacionSeleccionada: $obligacionSeleccionada)
+            CabeceraInfoEstadoTributarioView(infoEstadoTributario: infoEstadoTributario, onObligacionSeleccionada: { obligacion in
+                obligacionSeleccionada = obligacion
+            })
             Spacer()
         }
         // Muestra el sheet con la obligación seleccionada
         .sheet(item: $obligacionSeleccionada) { obligacion in
             DetalleObligacionSheetView(obligacionPendiente: obligacion)
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
         }
     }
 }
@@ -31,7 +33,7 @@ struct EstadoTributarioDetalleView: View {
 struct CabeceraInfoEstadoTributarioView: View {
     let infoEstadoTributario: EstadoTributarioModel
     
-    @Binding var obligacionSeleccionada: ObligacionesPendientesModel?
+    let onObligacionSeleccionada: (ObligacionesPendientesModel) -> Void
     
     var body: some View {
         Form {
@@ -52,7 +54,7 @@ struct CabeceraInfoEstadoTributarioView: View {
                 List {
                     Section(header: Text("OBLIGACIONES PENDIENTES")) {
                         ForEach(obligacionesPendientes) { obligacionPendiente in
-                            ObligacionPendienteItemView(obligacionPendiente: obligacionPendiente, obligacionSeleccionada: $obligacionSeleccionada)
+                            ObligacionPendienteItemView(obligacionPendiente: obligacionPendiente, onObligacionSeleccionada: onObligacionSeleccionada)
                         }
                     }
                 }
@@ -97,15 +99,12 @@ struct CustomLabeledContent: View {
 
 struct ObligacionPendienteItemView: View {
     let obligacionPendiente: ObligacionesPendientesModel
-    
-    //Recibe el estado mediante @Binding que permite modificar el valor de obligacionSeleccionada desde esta vista hija
-    @Binding var obligacionSeleccionada: ObligacionesPendientesModel?
+    let onObligacionSeleccionada: (ObligacionesPendientesModel) -> Void
     
     var body: some View {
         Button(action: {
             // Al presionar, se selecciona la obligación y se muestra el sheet
-            // Al hacer clic en un botón dentro de ObligacionPendienteItemView, se asigna la obligación actual a obligacionSeleccionada, lo que cambia el estado en la vista padre.
-            obligacionSeleccionada = obligacionPendiente
+            onObligacionSeleccionada(obligacionPendiente)
         }) {
             Label(obligacionPendiente.descripcion, systemImage: "doc.text")
                 .font(.caption)

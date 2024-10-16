@@ -8,5 +8,5 @@
 import Foundation
 
 protocol VehiculosApiProtocol {
-    func makeRequest(endPoint: EndPoint) async -> Result<Data, HttpClientError>
+    func makeRequest(endPoint: EndPoint) async throws -> InfoVehiculoDto
 }

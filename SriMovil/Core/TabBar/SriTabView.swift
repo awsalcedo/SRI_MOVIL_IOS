@@ -24,14 +24,16 @@ struct SriTabView: View {
             
             NoticiasView()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: selectedTab == 1 ? "newspaper.fill" : "newspaper")
+                        .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
                 }
                 .onAppear { selectedTab = 1 }
                 .tag(1)
             
             AgenciasView()
                 .tabItem {
-                    Image(systemName: "plus")
+                    Image(systemName: selectedTab == 2 ? "building.2.fill" : "building.2")
+                        .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                 }
                 .onAppear { selectedTab = 2}
                 .tag(2)
