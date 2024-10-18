@@ -23,7 +23,9 @@ struct EstadoTributarioDetalleView: View {
         }
         // Muestra el sheet con la obligación seleccionada
         .sheet(item: $obligacionSeleccionada) { obligacion in
-            DetalleObligacionSheetView(obligacionPendiente: obligacion)
+            DetalleObligacionSheetView(obligacionPendiente: obligacion) {
+                self.obligacionSeleccionada = nil
+            }
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
         }
@@ -116,18 +118,36 @@ struct ObligacionPendienteItemView: View {
 
 struct DetalleObligacionSheetView: View {
     let obligacionPendiente: ObligacionesPendientesModel
+    var cerrarSheet: () -> Void
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                
+                Text("Detalle de la obligación")
+                    .font(.title3)
+                    .bold()
+                    .padding()
+                
+                Spacer()
+                
+                Button {
+                    cerrarSheet()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 15))
+                        .foregroundStyle(.black)
+                        .padding(.horizontal, 5)
+                }
+
+            }
             
-            Text("Detalle de la obligación")
-                .font(.title2)
-                .bold()
-                .padding()
             
             Text(obligacionPendiente.descripcion)
                 .font(.caption)
-                .padding()
+            
+            Divider()
             
             if !obligacionPendiente.periodos.isEmpty {
                 List(obligacionPendiente.periodos, id: \.self) { periodo in

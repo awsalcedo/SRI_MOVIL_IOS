@@ -29,7 +29,7 @@ struct ErrorView: View {
                     .padding()
             }
             .padding()
-            .background(Color.red.opacity(0.9))
+            .background(Color.blue.opacity(0.7))
             .cornerRadius(15)
             .shadow(radius: 10)
             .padding()

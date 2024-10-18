@@ -39,4 +39,8 @@ final class EstadoTributarioViewModel {
             }
         }
     }
+    
+    func resetState() {
+        estadoTributarioState = .idle  // Reinicia el estado a idle
+    }
 }

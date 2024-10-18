@@ -40,7 +40,7 @@ struct RubrosView: View {
             .toolbarBackground(.blue, for: .navigationBar)
             .toolbarTitleDisplayMode(.inline)
             .sheet(item: $rubroSeleccionado) { rubroSeleccionado in
-                DetalleRubrosView(detalleRubros: rubroSeleccionado.detallesRubro) {
+                DetalleRubrosView(detalleRubros: rubroSeleccionado.detallesRubro, descripcionRubro: rubroSeleccionado.descripcion) {
                     //El uso de self asegura que acceda a la variable @State de la vista
                     // Cierra el sheet
                     self.rubroSeleccionado = nil

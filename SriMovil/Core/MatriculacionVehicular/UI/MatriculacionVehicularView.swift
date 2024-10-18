@@ -7,15 +7,9 @@
 
 import SwiftUI
 
-enum ViewStackToast: Hashable {
-    case detalleVehiculoView
-    case errorView
-}
-
 struct MatriculacionVehicularView: View {
     
     @State private var placa: String = ""
-    @State private var siguienteView: ViewStackToast?
     @State private var viewModel = MatriculacionVehicularViewModel()
     
     var body: some View {
@@ -34,15 +28,6 @@ struct MatriculacionVehicularView: View {
                         }
                     }
                     
-                    
-                    /*ButtonPersonalizadoView(title: "Consultar", action: {
-                        Task {
-                            await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
-                        }
-                    })
-                    .padding()
-                    .disabled(placa.isEmpty)*/
-                    
                     Spacer()
                     
                     // Manejar los diferentes estados
@@ -60,17 +45,11 @@ struct MatriculacionVehicularView: View {
                     }
                 }
                 .padding()
-                
             }
             .navigationTitle("Valores a pagar")
             .toolbarTitleDisplayMode(.inline)
-            
-        
         }
     }
-    
-    
-    
     
 }
 

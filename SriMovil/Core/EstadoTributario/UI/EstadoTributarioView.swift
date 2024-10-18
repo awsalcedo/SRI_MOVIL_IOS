@@ -69,6 +69,9 @@ struct EstadoTributarioView: View {
             .navigationTitle("Estado Tributario")
             .toolbarTitleDisplayMode(.inline)
         }
+        .onAppear {
+            viewModel.resetState()
+        }
     }
 }
 

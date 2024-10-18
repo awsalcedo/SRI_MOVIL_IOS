@@ -18,7 +18,7 @@ struct ConsultasView: View {
                 /*BannerView()
                     .frame(maxHeight: 200)*/
                 
-                List(servicios, id: \.nombreServicio) { servicio in
+                /*List(servicios, id: \.nombreServicio) { servicio in
                     NavigationLink(destination: viewForServicio(servicio.vista)) {
                         ListItemView(imageName: servicio.imagenServicio, title: servicio.nombreServicio)
                     }
@@ -34,6 +34,24 @@ struct ConsultasView: View {
                     
                 }
                 .listStyle(PlainListStyle())
+                */
+                
+                let columnas = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
+                
+                ScrollView {
+                    LazyVGrid(columns: columnas, spacing: 10) {
+                        ForEach(servicios) { servicio in
+                            NavigationLink(destination: viewForServicio(servicio.vista)) {
+                                ConsultasCardView(nombreImagen: servicio.imagenServicio, tituloServicio: servicio.nombreServicio)
+                                    .padding()
+                            }
+                            
+                        }
+                    }
+                }
+                
+                
+                
             }
             .sheet(isPresented: $showModal) {
                 ConfiguracionView()

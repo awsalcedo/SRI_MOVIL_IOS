@@ -9,31 +9,38 @@ import SwiftUI
 
 struct DetalleRubrosView: View {
     let detalleRubros: [DetallesRubro] // Pasamos los detalles del rubro
+    let descripcionRubro: String
     // Closure para cerrar el sheet
     var cerrarSheet: () -> Void
     
     var body: some View {
         NavigationStack {
             VStack {
-                
                 // Encabezado con botón "X" para cerrar el sheet
                 HStack {
                     Spacer()
+                    Text("Detalle de los Rubros")
+                        .font(.title3)
+                        .bold()
+                        .padding()
+                    
+                    Spacer()
+                    
                     Button(action: {
                         cerrarSheet()  // Llamar la closure para cerrar el sheet
                     }) {
                         Image(systemName: "xmark")
-                            .font(.system(size: 20, weight: .semibold))
-                            .foregroundColor(.black)
-                            .padding()
+                            .font(.system(size: 15))
+                            //.foregroundColor(.black)
+                            .foregroundStyle(.black)
+                            .padding(.horizontal, 5)
                     }
                 }
                 
-                Text("Detalle de los Rubros")
-                    .font(.title2)
-                    .bold()
-                    .padding()
+                Text(descripcionRubro)
+                    .font(.caption)
                 
+                Divider()
                 
                 if !detalleRubros.isEmpty {
                     List(detalleRubros) { detalle in
@@ -61,13 +68,6 @@ struct DetalleRubrosView: View {
                 }
             }
             .padding()
-            /*.toolbar {
-             ToolbarItem(placement: .cancellationAction) {
-             Button("Cerrar") {
-             isPresented = false // Cerrar el sheet al presionar el botón
-             }
-             }
-             }*/
         }
         
     }
@@ -86,6 +86,6 @@ struct DetalleRubrosView_Previews: PreviewProvider {
         //@State var rubro: Rubro? = nil
         @State var isPresented = true
         
-        DetalleRubrosView(detalleRubros: detallesRubrosModel, cerrarSheet: {})
+        DetalleRubrosView(detalleRubros: detallesRubrosModel, descripcionRubro: "TASA JUNTA BEN. GUAYAQUIL", cerrarSheet: {})
     }
 }

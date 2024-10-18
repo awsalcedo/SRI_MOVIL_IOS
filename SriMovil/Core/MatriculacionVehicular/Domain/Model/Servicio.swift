@@ -29,28 +29,30 @@ enum ServicioViewType {
 }
 
 
-struct Servicio {
+struct Servicio: Identifiable {
+    let id: UUID
     let nombreServicio: String
     let imagenServicio: String?
     let vista: ServicioViewType
 }
 
 let servicios: [Servicio] = [
-    Servicio(nombreServicio: "Comprobantes electrónicos", imagenServicio: "comprobantes", vista: .comprobantes),
-    Servicio(nombreServicio: "Estado tributario", imagenServicio: "estado_tributario", vista: .estadoTributario),
-    Servicio(nombreServicio: "Valores a pagar", imagenServicio: "matriculacion", vista: .valoresPagar),
-    Servicio(nombreServicio: "Deudas", imagenServicio: "pagos", vista: .deudas),
-    Servicio(nombreServicio: "Validez documentos físicos", imagenServicio: "documentos", vista: .validezDocumentos),
-    Servicio(nombreServicio: "Impuesto a la Renta Causado", imagenServicio: "impuesto", vista: .impuestoRenta),
-    Servicio(nombreServicio: "Certificados", imagenServicio: "certificados", vista: .certificados),
-    Servicio(nombreServicio: "Seguimiento de trámites", imagenServicio: "tramites", vista: .seguimientoTramites),
-    Servicio(nombreServicio: "Validación códigos QR", imagenServicio: "validacion_qr", vista: .validacionQR),
-    Servicio(nombreServicio: "Cita previa", imagenServicio: "turnos_movil", vista: .citaPrevia),
-    Servicio(nombreServicio: "Calculadoras", imagenServicio: "calculadora", vista: .calculadoras),
-    Servicio(nombreServicio: "Denuncias", imagenServicio: "denuncias_50", vista: .denuncias),
-    Servicio(nombreServicio: "Contáctenos", imagenServicio: "contacto_50", vista: .contactenos),
-    Servicio(nombreServicio: "SIMAR", imagenServicio: "simar", vista: .simar),
-    Servicio(nombreServicio: "Facturador SRI", imagenServicio: "facturador", vista: .facturadorSRI),
-    Servicio(nombreServicio: "Configuración", imagenServicio: "configuracion", vista: .configuracion),
-    Servicio(nombreServicio: "Política Protección de Datos", imagenServicio: nil, vista: .politicaProteccionDatos)
+    /*Servicio(nombreServicio: "Comprobantes electrónicos", imagenServicio: "comprobantes", vista: .comprobantes),*/
+    Servicio(id: UUID(), nombreServicio: "Comprobantes electrónicos", imagenServicio: "comprobantes_electronicos_boton", vista: .comprobantes),
+    Servicio(id: UUID(), nombreServicio: "Estado tributario", imagenServicio: "estado_tributario_boton", vista: .estadoTributario),
+    Servicio(id: UUID(), nombreServicio: "Valores a pagar", imagenServicio: "matriculacion_boton", vista: .valoresPagar),
+    Servicio(id: UUID(), nombreServicio: "Deudas", imagenServicio: "pagos_boton", vista: .deudas),
+    Servicio(id: UUID(), nombreServicio: "Validez documentos físicos", imagenServicio: "documentos_boton", vista: .validezDocumentos),
+    Servicio(id: UUID(), nombreServicio: "Impuesto a la Renta Causado", imagenServicio: "impuesto_boton", vista: .impuestoRenta),
+    Servicio(id: UUID(), nombreServicio: "Certificados", imagenServicio: "certificados_boton", vista: .certificados),
+    Servicio(id: UUID(), nombreServicio: "Seguimiento de trámites", imagenServicio: "tramites_boton", vista: .seguimientoTramites),
+    Servicio(id: UUID(), nombreServicio: "Validación códigos QR", imagenServicio: "validacion_qr_boton", vista: .validacionQR),
+    Servicio(id: UUID(), nombreServicio: "Cita previa", imagenServicio: "turnos_movil_boton", vista: .citaPrevia),
+    Servicio(id: UUID(), nombreServicio: "Calculadoras", imagenServicio: "calculadora_boton", vista: .calculadoras),
+    Servicio(id: UUID(), nombreServicio: "Denuncias", imagenServicio: "denuncias_50_boton", vista: .denuncias),
+    Servicio(id: UUID(), nombreServicio: "Contáctenos", imagenServicio: "contacto_50_boton", vista: .contactenos),
+    Servicio(id: UUID(), nombreServicio: "SIMAR", imagenServicio: "simar_boton", vista: .simar),
+    Servicio(id: UUID(), nombreServicio: "Facturador SRI", imagenServicio: "facturador_boton", vista: .facturadorSRI),
+    Servicio(id: UUID(), nombreServicio: "Configuración", imagenServicio: "configuracion_boton", vista: .configuracion),
+    Servicio(id: UUID(), nombreServicio: "Política Protección de Datos", imagenServicio: "politica_boton", vista: .politicaProteccionDatos)
 ]

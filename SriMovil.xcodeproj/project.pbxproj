@@ -14,6 +14,7 @@
 		508C72B52CBD85800040D3B6 /* HttpClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B42CBD85800040D3B6 /* HttpClientError.swift */; };
 		508C72B72CBDA4BC0040D3B6 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B62CBDA4BC0040D3B6 /* ErrorResponse.swift */; };
 		508C72B92CBDC1300040D3B6 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B82CBDC1300040D3B6 /* ErrorView.swift */; };
+		50A99E2B2CC1A7A100045E9C /* ConsultasCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */; };
 		50CDFCFC2C655D9100B334A9 /* ToastTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */; };
 		50E7BE162C62890D008EFCAA /* DetalleMatriculacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE152C62890D008EFCAA /* DetalleMatriculacionView.swift */; };
 		50E7BE182C62B29D008EFCAA /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */; };
@@ -105,6 +106,7 @@
 		508C72B42CBD85800040D3B6 /* HttpClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientError.swift; sourceTree = "<group>"; };
 		508C72B62CBDA4BC0040D3B6 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		508C72B82CBDC1300040D3B6 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultasCardView.swift; sourceTree = "<group>"; };
 		50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTwoView.swift; sourceTree = "<group>"; };
 		50E7BE152C62890D008EFCAA /* DetalleMatriculacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleMatriculacionView.swift; sourceTree = "<group>"; };
 		50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				FA2A42FB2C5B253F00A021A0 /* ConsultasView.swift */,
 				FA2A42FD2C5B255C00A021A0 /* MainTabView.swift */,
+				50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				FA2AC8F02CB1E58A00B44A5E /* ObligacionesPendientesModel.swift in Sources */,
 				FA2A42D92C5B229900A021A0 /* Servicio.swift in Sources */,
 				FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */,
+				50A99E2B2CC1A7A100045E9C /* ConsultasCardView.swift in Sources */,
 				FA2A42C22C5B215400A021A0 /* ObtenerInfoVehiculoRepository.swift in Sources */,
 				FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */,
 				FA2A42DE2C5B22E000A021A0 /* ObtenerInfoVehiculoRepositoryProtocol.swift in Sources */,
@@ -921,7 +925,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -978,7 +982,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -996,13 +1000,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SriMovil/Preview Content\"";
+				DEVELOPMENT_TEAM = F4X8GYN995;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1013,6 +1018,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 16.1;
 			};
 			name = Debug;
 		};
@@ -1024,13 +1030,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SriMovil/Preview Content\"";
+				DEVELOPMENT_TEAM = F4X8GYN995;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1041,6 +1048,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 16.1;
 			};
 			name = Release;
 		};

@@ -14,7 +14,6 @@ struct SriTabView: View {
         TabView(selection: $selectedTab) {
             
             ConsultasView()
-            
                 .tabItem {
                     Image(systemName: selectedTab == 0 ? "house.fill" : "house")
                         .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
