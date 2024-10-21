@@ -16,6 +16,7 @@ struct ConsultasCardView: View {
             if let nombreImagen = nombreImagen {
                 Image(nombreImagen)
                     .resizable()
+                    .scaledToFit()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 125, height: 65)
                     .padding()
