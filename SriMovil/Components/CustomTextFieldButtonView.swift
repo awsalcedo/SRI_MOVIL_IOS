@@ -28,6 +28,17 @@ struct CustomTextFieldButtonView: View {
                     texto = String(texto.uppercased().prefix(13)) // Limitar a 13 caracteres
                 }
             
+            // Mostrar botón "X" para eliminar texto cuando no esté vacío
+            if !texto.isEmpty {
+                Button(action: {
+                    texto = ""  // Limpiar el texto
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.gray)
+                }
+                .padding(.trailing, 5)
+            }
+            
             // Botón de lupa siempre visible
             Button(action: {
                 onSearch()  // Acción de búsqueda
