@@ -11,36 +11,43 @@ struct ConsultasView: View {
     
     @State private var showModal = false
     
+    @State private var textoBuscar = ""
+    
+    var serviciosFiltrados: [Servicio] {
+        guard !textoBuscar.isEmpty else {return servicios}
+        return servicios.filter{$0.nombreServicio.localizedCaseInsensitiveContains(textoBuscar)}
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
                 
                 /*BannerView()
-                    .frame(maxHeight: 200)*/
+                 .frame(maxHeight: 200)*/
                 
                 /*List(servicios, id: \.nombreServicio) { servicio in
-                    NavigationLink(destination: viewForServicio(servicio.vista)) {
-                        ListItemView(imageName: servicio.imagenServicio, title: servicio.nombreServicio)
-                    }
-                    .listRowBackground(Color(.systemGray6))
-                    .listRowSeparator(.hidden)
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 8)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
-                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                    )
-                    
-                }
-                .listStyle(PlainListStyle())
-                */
+                 NavigationLink(destination: viewForServicio(servicio.vista)) {
+                 ListItemView(imageName: servicio.imagenServicio, title: servicio.nombreServicio)
+                 }
+                 .listRowBackground(Color(.systemGray6))
+                 .listRowSeparator(.hidden)
+                 .padding(.vertical, 5)
+                 .padding(.horizontal, 8)
+                 .background(
+                 RoundedRectangle(cornerRadius: 10)
+                 .fill(Color.white)
+                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                 )
+                 
+                 }
+                 .listStyle(PlainListStyle())
+                 */
                 
                 let columnas = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
                 
                 ScrollView {
                     LazyVGrid(columns: columnas, spacing: 10) {
-                        ForEach(servicios) { servicio in
+                        ForEach(serviciosFiltrados) { servicio in
                             NavigationLink(destination: viewForServicio(servicio.vista)) {
                                 ConsultasCardView(nombreImagen: servicio.imagenServicio, tituloServicio: servicio.nombreServicio)
                                     .padding()
@@ -59,6 +66,7 @@ struct ConsultasView: View {
             .toolbarBackground(.blue, for: .navigationBar)
             .navigationTitle("Servicios")
         }
+        .searchable(text: $textoBuscar, prompt: "Buscar servicios")
     }
     
     
