@@ -60,7 +60,6 @@
 		FA2A42F32C5B243F00A021A0 /* FormatterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42F22C5B243F00A021A0 /* FormatterUtils.swift */; };
 		FA2A42F52C5B245300A021A0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42F42C5B245300A021A0 /* HTTPMethod.swift */; };
 		FA2A42F72C5B246800A021A0 /* HttpClientErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42F62C5B246800A021A0 /* HttpClientErrorMapper.swift */; };
-		FA2A42FA2C5B24B800A021A0 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = FA2A42F92C5B24B800A021A0 /* Factory */; };
 		FA2A42FC2C5B253F00A021A0 /* ConsultasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42FB2C5B253F00A021A0 /* ConsultasView.swift */; };
 		FA2A42FE2C5B255C00A021A0 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42FD2C5B255C00A021A0 /* MainTabView.swift */; };
 		FA2A43012C5B25A300A021A0 /* NoticiasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43002C5B25A300A021A0 /* NoticiasView.swift */; };
@@ -195,7 +194,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA2A42FA2C5B24B800A021A0 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,7 +720,6 @@
 			);
 			name = SriMovil;
 			packageProductDependencies = (
-				FA2A42F92C5B24B800A021A0 /* Factory */,
 			);
 			productName = SriMovil;
 			productReference = FAB7128E2C5B076100771790 /* SriMovil.app */;
@@ -753,7 +750,6 @@
 			);
 			mainGroup = FAB712852C5B076100771790;
 			packageReferences = (
-				FA2A42F82C5B24B800A021A0 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = FAB7128F2C5B076100771790 /* Products */;
 			projectDirPath = "";
@@ -1074,25 +1070,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FA2A42F82C5B24B800A021A0 /* XCRemoteSwiftPackageReference "Factory" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hmlongco/Factory.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FA2A42F92C5B24B800A021A0 /* Factory */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA2A42F82C5B24B800A021A0 /* XCRemoteSwiftPackageReference "Factory" */;
-			productName = Factory;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		500266EE2CB568E000988A6B /* SriModel.xcdatamodeld */ = {
