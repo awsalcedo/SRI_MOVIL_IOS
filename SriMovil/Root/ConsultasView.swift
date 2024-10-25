@@ -74,7 +74,7 @@ struct ConsultasView: View {
     func viewForServicio(_ vista: ServicioViewType) -> some View {
         switch vista {
         case .comprobantes:
-            ComprobantesView()
+            LoginView()
         case .estadoTributario:
             EstadoTributarioView()
         case .valoresPagar:
