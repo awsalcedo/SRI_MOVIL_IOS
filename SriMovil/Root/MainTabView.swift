@@ -43,7 +43,7 @@ struct MainTabView: View {
                             Label("Home", systemImage: "house")
                         }
                     
-                    ComprobantesView()
+                    LoginView()
                         .tabItem {
                             Label("Login", systemImage: "person.fill")
                         }

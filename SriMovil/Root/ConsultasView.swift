@@ -51,13 +51,26 @@ struct ConsultasView: View {
                             NavigationLink(destination: viewForServicio(servicio.vista)) {
                                 ConsultasCardView(nombreImagen: servicio.imagenServicio, tituloServicio: servicio.nombreServicio)
                                     .padding()
+                                /*Permite hacer efectos a las vistas secundarias del ScrollView mediante el uso del modificador .scrollTransition, para personalizar como se activan y desactivan las vistas secundarias en la pantalla.
+                                Al modificador se le pasa un closure que acepte al menos dos parámetros: * - - content que es la vista secundaria dentro del área del SrcollView
+                                    - phase que corresponde a la fase de transición de desplazamiento, la phase puede tener uno de estos tres valores:
+                                        * phase.identity significa que la vista es visible en la pantalla
+                                        * phase.topLeading donde la vista está apunto de volverse visible
+                                          desde el borde superior o el borde principal según la dirección de desplazamiento del ScrollView
+                                        * phase.bottomTrailing es lo opuesto de .topLeading inferior/posterior
+                                 (.animated.threshold(.visible(0.9))) le podemos indicar el porcentaje de visibilidad de la vista antes de que se muestre o se elimine, en este caso el 90%
+                                    */
+                                    .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+                                        content
+                                            .opacity(phase.isIdentity ? 1 : 0)
+                                            .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                            .blur(radius: phase.isIdentity ? 0 : 10)
+                                    }
                             }
                             
                         }
                     }
                 }
-                
-                
                 
             }
             .sheet(isPresented: $showModal) {

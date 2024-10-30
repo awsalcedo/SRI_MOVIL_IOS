@@ -8,42 +8,50 @@
 import SwiftUI
 
 struct SriTabView: View {
-    @State var selectedTab = 0
+    
+    enum Tab: Int {
+        case consultas = 0
+        case noticias
+        case agencias
+        case login
+    }
+    
+    @State private var selectedTab: Tab = .consultas
     
     var body: some View {
         TabView(selection: $selectedTab) {
             
             ConsultasView()
                 .tabItem {
-                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
-                        .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
+                    Image(systemName: selectedTab == .consultas ? "house.fill" : "house")
+                        .environment(\.symbolVariants, selectedTab == .consultas ? .fill : .none)
                 }
-                .onAppear { selectedTab = 0 }
-                .tag(0)
+                //.onAppear { selectedTab = 0 }
+                .tag(Tab.consultas)
             
             NoticiasView()
                 .tabItem {
-                    Image(systemName: selectedTab == 1 ? "newspaper.fill" : "newspaper")
-                        .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
+                    Image(systemName: selectedTab == .noticias ? "newspaper.fill" : "newspaper")
+                        .environment(\.symbolVariants, selectedTab == .noticias ? .fill : .none)
                 }
-                .onAppear { selectedTab = 1 }
-                .tag(1)
+                //.onAppear { selectedTab = 1 }
+                .tag(Tab.noticias)
             
             AgenciasView()
                 .tabItem {
-                    Image(systemName: selectedTab == 2 ? "building.2.fill" : "building.2")
-                        .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
+                    Image(systemName: selectedTab == .agencias ? "building.2.fill" : "building.2")
+                        .environment(\.symbolVariants, selectedTab == .agencias ? .fill : .none)
                 }
-                .onAppear { selectedTab = 2}
-                .tag(2)
+                //.onAppear { selectedTab = 2}
+                .tag(Tab.agencias)
             
-            LoginView()
+            LoginContainerView()
                 .tabItem {
-                    Image(systemName: selectedTab == 3 ? "person.fill" : "person")
-                        .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
+                    Image(systemName: selectedTab == .login ? "person.fill" : "person")
+                        .environment(\.symbolVariants, selectedTab == .login ? .fill : .none)
                 }
-                .onAppear { selectedTab = 3 }
-                .tag(3)
+                //.onAppear { selectedTab = 3 }
+                .tag(Tab.login)
             
         }
     }

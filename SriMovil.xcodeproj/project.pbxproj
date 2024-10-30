@@ -24,7 +24,6 @@
 		FA2A428C2C5B1D9100A021A0 /* CalculadorasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A428B2C5B1D9100A021A0 /* CalculadorasView.swift */; };
 		FA2A428F2C5B1DC000A021A0 /* CertificadosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A428E2C5B1DC000A021A0 /* CertificadosView.swift */; };
 		FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42912C5B1DEB00A021A0 /* CitaPreviaView.swift */; };
-		FA2A42952C5B1E1B00A021A0 /* ComprobantesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42942C5B1E1B00A021A0 /* ComprobantesView.swift */; };
 		FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42962C5B1E3F00A021A0 /* LoginView.swift */; };
 		FA2A429A2C5B1E6B00A021A0 /* ConfiguracionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42992C5B1E6B00A021A0 /* ConfiguracionView.swift */; };
 		FA2A429D2C5B1E9D00A021A0 /* ContactenosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A429C2C5B1E9D00A021A0 /* ContactenosView.swift */; };
@@ -115,7 +114,6 @@
 		FA2A428B2C5B1D9100A021A0 /* CalculadorasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadorasView.swift; sourceTree = "<group>"; };
 		FA2A428E2C5B1DC000A021A0 /* CertificadosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificadosView.swift; sourceTree = "<group>"; };
 		FA2A42912C5B1DEB00A021A0 /* CitaPreviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitaPreviaView.swift; sourceTree = "<group>"; };
-		FA2A42942C5B1E1B00A021A0 /* ComprobantesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprobantesView.swift; sourceTree = "<group>"; };
 		FA2A42962C5B1E3F00A021A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FA2A42992C5B1E6B00A021A0 /* ConfiguracionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionView.swift; sourceTree = "<group>"; };
 		FA2A429C2C5B1E9D00A021A0 /* ContactenosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactenosView.swift; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 		FA2A42932C5B1DF700A021A0 /* ComprobantesElectronicos */ = {
 			isa = PBXGroup;
 			children = (
-				FA2A42942C5B1E1B00A021A0 /* ComprobantesView.swift */,
 				FA2A42962C5B1E3F00A021A0 /* LoginView.swift */,
 			);
 			path = ComprobantesElectronicos;
@@ -837,7 +834,6 @@
 				FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */,
 				FA2A42FC2C5B253F00A021A0 /* ConsultasView.swift in Sources */,
 				FA2A42D12C5B223900A021A0 /* DetallesRubro.swift in Sources */,
-				FA2A42952C5B1E1B00A021A0 /* ComprobantesView.swift in Sources */,
 				508C72AF2CB6CB570040D3B6 /* EstadoTributarioDetalleView.swift in Sources */,
 				FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */,
 				FA2A42D32C5B224D00A021A0 /* Deuda.swift in Sources */,
