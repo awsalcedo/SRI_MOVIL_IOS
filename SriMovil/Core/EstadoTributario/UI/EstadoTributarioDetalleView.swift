@@ -32,52 +32,68 @@ struct EstadoTributarioDetalleView: View {
     }
 }
 
-struct CabeceraInfoEstadoTributarioView: View {
-    let infoEstadoTributario: EstadoTributarioModel
-    
-    let onObligacionSeleccionada: (ObligacionesPendientesModel) -> Void
-    
-    var body: some View {
-        Form {
-            Section {
-                Text(infoEstadoTributario.razonSocial)
-                    .font(.title2)
-                    .bold()
-                CustomLabeledContent(label: "RUC:", value: infoEstadoTributario.ruc)
-                CustomLabeledContent(label: "Razón Social:", value: infoEstadoTributario.razonSocial)
-                CustomLabeledContent(label: "Estado Tributario:", value: infoEstadoTributario.descripcion)
-                CustomLabeledContent(label: "Plazo Vigencia:", value: infoEstadoTributario.plazoVigenciaDoc)
-                CustomLabeledContent(label: "Clase de Contribuyente:", value: infoEstadoTributario.claseContribuyente)
+/*
+ Se usa extension de la vista padre cuando las vistas hijas se usarán solo en esta vista 
+ */
+
+// MARK: - CabeceraInfoEstadoTributarioView
+
+private extension EstadoTributarioDetalleView {
+    struct CabeceraInfoEstadoTributarioView: View {
+        let infoEstadoTributario: EstadoTributarioModel
+        
+        let onObligacionSeleccionada: (ObligacionesPendientesModel) -> Void
+        
+        var body: some View {
+            Form {
+                Section {
+                    Text(infoEstadoTributario.razonSocial)
+                        .font(.title2)
+                        .bold()
+                    CustomLabeledContent(label: "RUC:", value: infoEstadoTributario.ruc)
+                    CustomLabeledContent(label: "Razón Social:", value: infoEstadoTributario.razonSocial)
+                    CustomLabeledContent(label: "Estado Tributario:", value: infoEstadoTributario.descripcion)
+                    CustomLabeledContent(label: "Plazo Vigencia:", value: infoEstadoTributario.plazoVigenciaDoc)
+                    CustomLabeledContent(label: "Clase de Contribuyente:", value: infoEstadoTributario.claseContribuyente)
+                    
+                }
                 
-            }
-            
-            // Lista de obligaciones pendientes
-            if let obligacionesPendientes = infoEstadoTributario.obligacionesPendientes {
-                List {
-                    Section(header: Text("OBLIGACIONES PENDIENTES")) {
-                        ForEach(obligacionesPendientes) { obligacionPendiente in
-                            ObligacionPendienteItemView(obligacionPendiente: obligacionPendiente, onObligacionSeleccionada: onObligacionSeleccionada)
+                // Lista de obligaciones pendientes
+                if let obligacionesPendientes = infoEstadoTributario.obligacionesPendientes {
+                    List {
+                        Section(header: Text("OBLIGACIONES PENDIENTES")) {
+                            ForEach(obligacionesPendientes) { obligacionPendiente in
+                                ObligacionPendienteItemView(obligacionPendiente: obligacionPendiente, onObligacionSeleccionada: onObligacionSeleccionada)
+                            }
                         }
                     }
                 }
             }
+            FooterView()
         }
-        FooterView()
     }
 }
 
-struct FooterView: View {
-    var body: some View {
-        VStack {
-            Divider()
-                .padding(.horizontal, 20)
-            Text("El tiempo reflejado en el Plazo de Vigencia de los Documentos, corresponde al tiempo que tendrá vigencia los documentos impresos en el día de hoy. ")
-                .padding(.horizontal, 20)
-                .font(.custom("", size: 9.0))
-                .foregroundColor(.gray)
+
+// MARK: - FooterView
+
+private extension EstadoTributarioDetalleView {
+    struct FooterView: View {
+        var body: some View {
+            VStack {
+                Divider()
+                    .padding(.horizontal, 20)
+                Text("El tiempo reflejado en el Plazo de Vigencia de los Documentos, corresponde al tiempo que tendrá vigencia los documentos impresos en el día de hoy. ")
+                    .padding(.horizontal, 20)
+                    .font(.custom("", size: 9.0))
+                    .foregroundColor(.gray)
+            }
         }
     }
 }
+
+
+// MARK: - CustomLabeledContent
 
 struct CustomLabeledContent: View {
     var label: String
@@ -98,71 +114,79 @@ struct CustomLabeledContent: View {
     }
 }
 
+// MARK: - ObligacionPendienteItemView
 
-struct ObligacionPendienteItemView: View {
-    let obligacionPendiente: ObligacionesPendientesModel
-    let onObligacionSeleccionada: (ObligacionesPendientesModel) -> Void
-    
-    var body: some View {
-        Button(action: {
-            // Al presionar, se selecciona la obligación y se muestra el sheet
-            onObligacionSeleccionada(obligacionPendiente)
-        }) {
-            Label(obligacionPendiente.descripcion, systemImage: "doc.text")
-                .font(.caption)
-                .bold()
-                .padding(.top, 3)
-        }
-    }
-}
-
-struct DetalleObligacionSheetView: View {
-    let obligacionPendiente: ObligacionesPendientesModel
-    var cerrarSheet: () -> Void
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                
-                Text("Detalle de la obligación")
-                    .font(.title3)
+private extension EstadoTributarioDetalleView {
+    struct ObligacionPendienteItemView: View {
+        let obligacionPendiente: ObligacionesPendientesModel
+        let onObligacionSeleccionada: (ObligacionesPendientesModel) -> Void
+        
+        var body: some View {
+            Button(action: {
+                // Al presionar, se selecciona la obligación y se muestra el sheet
+                onObligacionSeleccionada(obligacionPendiente)
+            }) {
+                Label(obligacionPendiente.descripcion, systemImage: "doc.text")
+                    .font(.caption)
                     .bold()
-                    .padding()
-                
-                Spacer()
-                
-                Button {
-                    cerrarSheet()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 15))
-                        .foregroundStyle(.black)
-                        .padding(.horizontal, 5)
-                }
-
+                    .padding(.top, 3)
             }
-            
-            
-            Text(obligacionPendiente.descripcion)
-                .font(.caption)
-            
-            Divider()
-            
-            if !obligacionPendiente.periodos.isEmpty {
-                List(obligacionPendiente.periodos, id: \.self) { periodo in
-                    CustomLabeledContent(label: "Periodo:", value: periodo)
-                }
-            } else {
-                Text("No hay periodos asociados")
-                    .padding()
-            }
-            
-            Spacer()
         }
-        .padding()
     }
 }
+
+// MARK: - DetalleObligacionSheetView
+
+private extension EstadoTributarioDetalleView {
+    struct DetalleObligacionSheetView: View {
+        let obligacionPendiente: ObligacionesPendientesModel
+        var cerrarSheet: () -> Void
+        
+        var body: some View {
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Text("Detalle de la obligación")
+                        .font(.title3)
+                        .bold()
+                        .padding()
+                    
+                    Spacer()
+                    
+                    Button {
+                        cerrarSheet()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 15))
+                            .foregroundStyle(.black)
+                            .padding(.horizontal, 5)
+                    }
+
+                }
+                
+                
+                Text(obligacionPendiente.descripcion)
+                    .font(.caption)
+                
+                Divider()
+                
+                if !obligacionPendiente.periodos.isEmpty {
+                    List(obligacionPendiente.periodos, id: \.self) { periodo in
+                        CustomLabeledContent(label: "Periodo:", value: periodo)
+                    }
+                } else {
+                    Text("No hay periodos asociados")
+                        .padding()
+                }
+                
+                Spacer()
+            }
+            .padding()
+        }
+    }
+}
+
 
 #Preview {
     let obigacionesPendientes: [ObligacionesPendientesModel] = [
