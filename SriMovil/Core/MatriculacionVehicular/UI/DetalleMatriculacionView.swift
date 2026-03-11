@@ -38,11 +38,7 @@ struct DetalleVehiculoView: View {
     var body: some View {
         List {
             
-            Section(header: Text("Detalle del Vehículo")
-                .font(.subheadline)
-                .bold()
-                .foregroundColor(.primary)
-                .padding(.bottom, 5)) {
+            Section {
                     DetalleRow(iconName: "car.fill", label: "Placa", value: infoVehiculo.placa)
                     DetalleRow(iconName: "number", label: "RAMV o CPM", value: infoVehiculo.camvCpn)
                     DetalleRow(iconName: "tag.fill", label: "Marca", value: infoVehiculo.marca)
@@ -52,7 +48,8 @@ struct DetalleVehiculoView: View {
                     DetalleRow(iconName: "clock.fill", label: "Último pago", value: String(infoVehiculo.anioUltimoPago))
                 }
         }
-        .listStyle(InsetGroupedListStyle())
+        .listStyle(.plain) // Con esto le indico que no me coloque la lista en un bloque separado y aparezca esos bordes grises
+        .listRowBackground(Color.white)
         .navigationTitle("Detalle Vehículo")
         .toolbarBackground(.blue, for: .navigationBar)
         .toolbarTitleDisplayMode(.inline)
@@ -113,8 +110,8 @@ struct ValoresPagarView: View {
                     .bold()
                     .padding(8)
             }
-            .foregroundColor(.white)
-            .background(Color.blue)
+            //.foregroundColor(.white)
+            //.background(Color.blue)
             .padding()
         }
     }

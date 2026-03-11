@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		500266F02CB568E000988A6B /* SriModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 500266EE2CB568E000988A6B /* SriModel.xcdatamodeld */; };
+		507B85642CE3FC29009320E9 /* SriAPIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B85632CE3FC28009320E9 /* SriAPIUrl.swift */; };
+		508824112CE7A23600B99481 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508824102CE7A23600B99481 /* AuthenticationManager.swift */; };
+		508824132CE7A60700B99481 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508824122CE7A60700B99481 /* ErrorHandler.swift */; };
 		508C72AF2CB6CB570040D3B6 /* EstadoTributarioDetalleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72AE2CB6CB570040D3B6 /* EstadoTributarioDetalleView.swift */; };
 		508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B02CB6F3970040D3B6 /* ViewState.swift */; };
 		508C72B32CB878180040D3B6 /* CustomTextFieldButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */; };
@@ -15,7 +18,10 @@
 		508C72B72CBDA4BC0040D3B6 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B62CBDA4BC0040D3B6 /* ErrorResponse.swift */; };
 		508C72B92CBDC1300040D3B6 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B82CBDC1300040D3B6 /* ErrorView.swift */; };
 		50A99E2B2CC1A7A100045E9C /* ConsultasCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */; };
+		50B5E6E22CE6305100428C57 /* SriApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5E6E12CE6305100428C57 /* SriApiClient.swift */; };
+		50B5E6E42CE6318600428C57 /* AuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5E6E32CE6318600428C57 /* AuthenticationType.swift */; };
 		50CDFCFC2C655D9100B334A9 /* ToastTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */; };
+		50D303422CF1213200A2BF5F /* RucValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D303412CF1213100A2BF5F /* RucValidator.swift */; };
 		50E7BE162C62890D008EFCAA /* DetalleMatriculacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE152C62890D008EFCAA /* DetalleMatriculacionView.swift */; };
 		50E7BE182C62B29D008EFCAA /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */; };
 		50E7BE1A2C62C9FA008EFCAA /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7BE192C62C9FA008EFCAA /* ToastView.swift */; };
@@ -98,6 +104,9 @@
 
 /* Begin PBXFileReference section */
 		500266EF2CB568E000988A6B /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
+		507B85632CE3FC28009320E9 /* SriAPIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriAPIUrl.swift; sourceTree = "<group>"; };
+		508824102CE7A23600B99481 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		508824122CE7A60700B99481 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		508C72AE2CB6CB570040D3B6 /* EstadoTributarioDetalleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadoTributarioDetalleView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldButtonView.swift; sourceTree = "<group>"; };
@@ -105,7 +114,10 @@
 		508C72B62CBDA4BC0040D3B6 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		508C72B82CBDC1300040D3B6 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultasCardView.swift; sourceTree = "<group>"; };
+		50B5E6E12CE6305100428C57 /* SriApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriApiClient.swift; sourceTree = "<group>"; };
+		50B5E6E32CE6318600428C57 /* AuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationType.swift; sourceTree = "<group>"; };
 		50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTwoView.swift; sourceTree = "<group>"; };
+		50D303412CF1213100A2BF5F /* RucValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RucValidator.swift; sourceTree = "<group>"; };
 		50E7BE152C62890D008EFCAA /* DetalleMatriculacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleMatriculacionView.swift; sourceTree = "<group>"; };
 		50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		50E7BE192C62C9FA008EFCAA /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -596,6 +608,11 @@
 				FA2AC8EA2CB1C8CA00B44A5E /* Extensions.swift */,
 				508C72B42CBD85800040D3B6 /* HttpClientError.swift */,
 				508C72B62CBDA4BC0040D3B6 /* ErrorResponse.swift */,
+				507B85632CE3FC28009320E9 /* SriAPIUrl.swift */,
+				50B5E6E12CE6305100428C57 /* SriApiClient.swift */,
+				50B5E6E32CE6318600428C57 /* AuthenticationType.swift */,
+				508824102CE7A23600B99481 /* AuthenticationManager.swift */,
+				508824122CE7A60700B99481 /* ErrorHandler.swift */,
 			);
 			path = CoreNetwork;
 			sourceTree = "<group>";
@@ -647,6 +664,7 @@
 			isa = PBXGroup;
 			children = (
 				FA2AC9022CB2000400B44A5E /* ObtenerInfoEstadoTributarioUseCase.swift */,
+				50D303412CF1213100A2BF5F /* RucValidator.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -786,6 +804,7 @@
 				FA2A42A32C5B1EFD00A021A0 /* DeudasView.swift in Sources */,
 				FA2A42E12C5B231400A021A0 /* ObtenerInfoVehiculoUseCase.swift in Sources */,
 				FA2A430D2C5B265000A021A0 /* SriTabView.swift in Sources */,
+				50B5E6E22CE6305100428C57 /* SriApiClient.swift in Sources */,
 				FA2AC8F52CB1E61300B44A5E /* EstadoTributarioRepository.swift in Sources */,
 				FA2A42892C5B1D5000A021A0 /* AgenciasView.swift in Sources */,
 				FA2A428F2C5B1DC000A021A0 /* CertificadosView.swift in Sources */,
@@ -816,6 +835,7 @@
 				FA2A42E82C5B237D00A021A0 /* MatriculacionVehicularDetalleView.swift in Sources */,
 				FA450BCB2C6BEB3A00DAA3FB /* CoreDataError.swift in Sources */,
 				FA2A42B72C5B20AD00A021A0 /* DetallesRubroDto.swift in Sources */,
+				508824112CE7A23600B99481 /* AuthenticationManager.swift in Sources */,
 				FA2A42EE2C5B23F100A021A0 /* RubrosView.swift in Sources */,
 				FA2AC8EB2CB1C8CA00B44A5E /* Extensions.swift in Sources */,
 				FA2A43012C5B25A300A021A0 /* NoticiasView.swift in Sources */,
@@ -838,6 +858,7 @@
 				FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */,
 				FA2A42D32C5B224D00A021A0 /* Deuda.swift in Sources */,
 				FA2A42FE2C5B255C00A021A0 /* MainTabView.swift in Sources */,
+				50D303422CF1213200A2BF5F /* RucValidator.swift in Sources */,
 				FA2A42A02C5B1ECF00A021A0 /* DenunciasView.swift in Sources */,
 				FA2A42DB2C5B22B600A021A0 /* Tasa.swift in Sources */,
 				FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */,
@@ -855,8 +876,11 @@
 				FA2A42D92C5B229900A021A0 /* Servicio.swift in Sources */,
 				FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */,
 				50A99E2B2CC1A7A100045E9C /* ConsultasCardView.swift in Sources */,
+				507B85642CE3FC29009320E9 /* SriAPIUrl.swift in Sources */,
 				FA2A42C22C5B215400A021A0 /* ObtenerInfoVehiculoRepository.swift in Sources */,
 				FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */,
+				50B5E6E42CE6318600428C57 /* AuthenticationType.swift in Sources */,
+				508824132CE7A60700B99481 /* ErrorHandler.swift in Sources */,
 				FA2A42DE2C5B22E000A021A0 /* ObtenerInfoVehiculoRepositoryProtocol.swift in Sources */,
 				50CDFCFC2C655D9100B334A9 /* ToastTwoView.swift in Sources */,
 			);

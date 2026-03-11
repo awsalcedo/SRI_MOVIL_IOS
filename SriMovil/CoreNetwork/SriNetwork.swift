@@ -40,13 +40,13 @@ public final class SriNetwork: SriNetworkProtocol, @unchecked Sendable {
         let actualDecoder = decoder ?? JSONDecoder()
         
         guard var urlComponents = URLComponents(string: endPoint.baseURL + endPoint.context + endPoint.path) else {
-            throw SriNetworkError.badURL
+            throw SriNetworkError.noHTTP
         }
         
         urlComponents.setQueryItems(with: endPoint.queryParameters)
         
         guard let url = urlComponents.url else {
-            throw SriNetworkError.badURL
+            throw SriNetworkError.noHTTP
         }
         
         var request = URLRequest(url: url)

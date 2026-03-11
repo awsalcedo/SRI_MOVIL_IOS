@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Enumeración optimizada con los posibles tipos de error en la red
+/// Enumeración optimizada con los posibles tipos de error en la red
 public enum SriNetworkError: Error {
     /// Error general con el tipo `Error` como valor asociado.
     case general(Error)
@@ -24,7 +24,7 @@ public enum SriNetworkError: Error {
     /// Error del servidor (5xx) con un mensaje opcional y un código de estado.
     case serverError(String?, Int)
     /// Error desconocido.
-    case unknown
+    case unknownStatus(Int)
     
     /// Descripción textual de cada error para facilitar su uso en la UI.
     public var descripcion: String {
@@ -51,8 +51,8 @@ public enum SriNetworkError: Error {
             } else {
                 return "Error del servidor con código: \(code)"
             }
-        case .unknown:
-            return "Ha ocurrido un error desconocido"
+        case .unknownStatus(let code):
+            return "Ha ocurrido un error desconocido: \(code)"
         }
     }
 }

@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+protocol RucValidatorProtocol {
+    /// Caso de uso para validar el tamaño del ruc y si es numérico.
+    ///
+    /// - Parameter ruc: El ruc a consultar de tipo `String`.
+    /// - Returns: `Bool` .
+    func validarRuc(_ ruc: String) -> Bool
+}
+
+struct RucValidator: RucValidatorProtocol {
+    func validarRuc(_ ruc: String) -> Bool {
+        return ruc.count == 13 && ruc.allSatisfy{ $0.isNumber }
+    }
+}

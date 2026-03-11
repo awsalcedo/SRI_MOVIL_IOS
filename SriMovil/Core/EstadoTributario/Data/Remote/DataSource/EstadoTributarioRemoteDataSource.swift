@@ -24,7 +24,7 @@ struct EstadoTributarioRemoteDataSource: EstadoTributarioRemoteDataSourceProtoco
             method: .get
         )
         
-        let estadoTributarioDTO = try await api.makeRequest(endPoint: endPoint)
+        let estadoTributarioDTO = try await api.makeRequest(ruc: ruc)
         
         return estadoTributarioDTO.toDomain
         

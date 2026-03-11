@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum AuthenticationType {
+    case none
+    case token(String)
+    case credentials(username: String, password: String)
+}

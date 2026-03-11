@@ -22,9 +22,9 @@ struct ObtenerInfoEstadoTributarioUseCase: ObtenerInfoEstadoTributarioUseCasePro
     /// Ejecuta el caso de uso para obtener la información del estado tributario.
     ///
     /// - Parameter ruc: El ruc a consultar.
-    /// - Returns: E modelo de información del estado tributario.
+    /// - Returns: El modelo de información del estado tributario.
     func execute(ruc: String) async throws -> EstadoTributarioModel {
         return try await repository.obtenerEstadoTributario(ruc: ruc)
     }
-    
+
 }
