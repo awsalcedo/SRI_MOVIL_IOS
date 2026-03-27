@@ -1,0 +1,250 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@," : {
+
+    },
+    "Agencias" : {
+
+    },
+    "Buscar servicios" : {
+
+    },
+    "Calculadoras" : {
+
+    },
+    "Cargando..." : {
+
+    },
+    "Certificados" : {
+
+    },
+    "COMMON_LOADING" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargando..."
+          }
+        }
+      }
+    },
+    "COMMON_OK" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        }
+      }
+    },
+    "COMMON_RETRY" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
+          }
+        }
+      }
+    },
+    "Configuración" : {
+
+    },
+    "Consultar" : {
+
+    },
+    "Contáctnos" : {
+
+    },
+    "Denuncias" : {
+
+    },
+    "Detalle de la obligación" : {
+
+    },
+    "Detalle de los Rubros" : {
+
+    },
+    "Detalle Vehículo" : {
+
+    },
+    "Deudas" : {
+
+    },
+    "El tiempo reflejado en el Plazo de Vigencia de los Documentos, corresponde al tiempo que tendrá vigencia los documentos impresos en el día de hoy. " : {
+
+    },
+    "ERROR_GENERIC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocurrió un error inesperado. Inténtalo nuevamente más tarde."
+          }
+        }
+      }
+    },
+    "ERROR_NETWORK" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tienes conexión a internet. Verifica tu conexión e intenta nuevamente."
+          }
+        }
+      }
+    },
+    "ERROR_NOT_FOUND" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró información para la identificación ingresada."
+          }
+        }
+      }
+    },
+    "ERROR_SERVER" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocurrió un problema en el servidor. Inténtalo nuevamente en unos minutos."
+          }
+        }
+      }
+    },
+    "ERROR_TIMEOUT" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La solicitud está tardando demasiado. Inténtalo nuevamente."
+          }
+        }
+      }
+    },
+    "ERROR_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocurrió un problema"
+          }
+        }
+      }
+    },
+    "ERROR_UNAUTHORIZED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu sesión ha expirado. Por favor inicia sesión nuevamente."
+          }
+        }
+      }
+    },
+    "Estado Tributario" : {
+
+    },
+    "ESTADO_TRIBUTARIO_RUC_INVALIDO" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RUC inválido\nIngresa un RUC de 13 dígitos numéricos."
+          }
+        }
+      }
+    },
+    "Facturador" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Home" : {
+
+    },
+    "Impuesto Renta" : {
+
+    },
+    "Ingresar" : {
+
+    },
+    "Login" : {
+
+    },
+    "No existen valores a pagar" : {
+
+    },
+    "No hay detalles disponibles" : {
+
+    },
+    "No hay periodos asociados" : {
+
+    },
+    "Noticias" : {
+
+    },
+    "OBLIGACIONES PENDIENTES" : {
+
+    },
+    "Placa, RAMV o CPN:" : {
+
+    },
+    "Política protección de datos" : {
+
+    },
+    "Por tipo de deuda" : {
+
+    },
+    "Rubros" : {
+
+    },
+    "RUC" : {
+
+    },
+    "Seguimiento trámites" : {
+
+    },
+    "Servicios" : {
+
+    },
+    "Simar" : {
+
+    },
+    "Subtotal:" : {
+
+    },
+    "Validación Documentos Físicos" : {
+
+    },
+    "Validación QR" : {
+
+    },
+    "Valor total a pagar:" : {
+
+    },
+    "Valores a pagar" : {
+
+    }
+  },
+  "version" : "1.1"
+}
