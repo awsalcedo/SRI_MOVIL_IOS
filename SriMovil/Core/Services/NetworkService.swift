@@ -42,15 +42,34 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
         
         self.decoder = JSONDecoder()
         self.decoder.keyDecodingStrategy = .convertFromSnakeCase
-        self.decoder.dateDecodingStrategy = .iso8601
+        //self.decoder.dateDecodingStrategy = .iso8601
+        
+        self.decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            
+            if let timestamp = try? container.decode(Double.self) {
+                return Date(timeIntervalSince1970: timestamp / 1000)
+            }
+            
+            if let dateString = try? container.decode(String.self) {
+                let isoFormatter = ISO8601DateFormatter()
+                
+                if let date = isoFormatter.date(from: dateString) {
+                    return date
+                }
+            }
+            
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Formato de fecha no soportado"
+            )
+        }
     }
     
     // MARK: - Functions
     
     func get<T: Decodable & Sendable>(endpoint: String) async throws -> T {
-        let url = baseURL.appending(path: endpoint, directoryHint: .notDirectory)
-        
-        guard let url = URL(string: url.absoluteString) else {
+        guard let url = buildURL(from: endpoint) else {
             throw NetworkError.invalidURL
         }
         
@@ -65,10 +84,66 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
     
     // MARK: - Private Functions
     
+    private func buildURL(from endpoint: String) -> URL? {
+        let parts = endpoint.split(separator: "?", maxSplits: 1, omittingEmptySubsequences: false)
+        
+        let rawPath = String(parts[0])
+        let rawQuery = parts.count > 1 ? String(parts[1]) : nil
+        
+        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false) else {
+            return nil
+        }
+        
+        let normalizedBasePath = components.path.hasSuffix("/")
+        ? String(components.path.dropLast())
+        : components.path
+        
+        let normalizedEndpointPath = rawPath.hasPrefix("/")
+        ? rawPath
+        : "/\(rawPath)"
+        
+        let fullPath = normalizedBasePath + normalizedEndpointPath
+        
+        components.percentEncodedPath = fullPath.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+        ?? fullPath
+        
+        if let rawQuery, !rawQuery.isEmpty {
+            components.queryItems = parseQueryItems(from: rawQuery)
+        }
+        
+        return components.url
+    }
+    
+    private func parseQueryItems(from rawQuery: String) -> [URLQueryItem] {
+        rawQuery
+            .split(separator: "&")
+            .compactMap { pair in
+                let elements = pair.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+                
+                guard let name = elements.first, !name.isEmpty else {
+                    return nil
+                }
+                
+                let value: String?
+                if elements.count > 1 {
+                    value = String(elements[1]).removingPercentEncoding ?? String(elements[1])
+                } else {
+                    value = nil
+                }
+                
+                return URLQueryItem(name: String(name), value: value)
+            }
+    }
+    
+    
     private func perform<T: Decodable>(_ request: URLRequest) async throws -> T {
         // Si aquí falla por: no internet, DNS no resuelve, servidor caído, timeout , SSL falla, da un URLError y no pasa al validateResponse()
         let(data, response) = try await session.data(for: request)
         print("Response:", response)
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Body:", jsonString)
+        }
         
         try validateResponse(data: data, response: response)
         return try decoder.decode(T.self, from: data)
@@ -85,8 +160,14 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
         case 401:
             throw NetworkError.unauthorized
         case 404:
-            let backError = try? decoder.decode(SRIErrorResponseDTO.self, from: data)
-            throw NetworkError.notFound(message: backError?.mensaje)
+            let contentType = httpResponse.value(forHTTPHeaderField: "Content-Type") ?? ""
+            
+            if contentType.localizedCaseInsensitiveContains("application/json"),
+               let backError = try? decoder.decode(SRIErrorResponseDTO.self, from: data) {
+                throw NetworkError.notFound(message: backError.mensaje)
+            } else {
+                throw NetworkError.serverError(httpResponse.statusCode)
+            }
         case 406:
             throw NetworkError.notAcceptable
         case 422:

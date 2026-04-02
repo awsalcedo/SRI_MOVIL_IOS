@@ -28,4 +28,15 @@ enum AppStrings {
     enum EstadoTributario {
         static let invalidRuc = String(localized: "ESTADO_TRIBUTARIO_RUC_INVALIDO")
     }
+    
+    enum Deudas {
+        static let invalidRuc = String(localized: "DEUDAS_RUC_INVALIDO")
+        static let invalidRucLength = String(localized: "DEUDAS_RUC_LONGITUD_INVALIDA")
+        static let emptyRuc = String(localized: "DEUDAS_RUC_VACIO")
+        
+        static let emptyCedula = String(localized: "DEUDAS_CEDULA_VACIA")
+        static let invalidCedula = String(localized: "DEUDAS_CEDULA_INVALIDA")
+        
+        static let emptyLastName = String(localized: "DEUDAS_APELLIDOS_VACIO")
+    }
 }

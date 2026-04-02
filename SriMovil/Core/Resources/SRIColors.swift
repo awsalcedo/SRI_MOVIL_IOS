@@ -15,6 +15,9 @@ enum SRIColors {
     static let border = Color(hex: "#CCD1D9")
     static let error = Color(hex: "#D64545").opacity(0.8) // o el rojo/coral definido en el manual
     static let background = Color(.systemGroupedBackground)
+    static let surface = Color(.secondarySystemGroupedBackground)
+    static let cardBackground = Color(.systemBackground)
+    
 }
 
 extension Color {

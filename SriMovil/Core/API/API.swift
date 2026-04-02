@@ -22,5 +22,15 @@ enum API {
         static func estadoTributario(ruc: String) -> String {
             "movil-servicios/api/v1.0/estadoTributario/\(ruc)"
         }
+        
+        // MARK: Deudas
+        
+        static func deudasPorIdentificacion(identificacion: String, tipoPersona: String) -> String {
+            "movil-servicios/api/v1.0/deudas/porIdentificacion/\(identificacion)?tipoPersona=\(tipoPersona)"
+        }
+        
+        static func deudasPorNombre(nombre: String, tipoPersona: String, resultados: Int) -> String {
+            "movil-servicios/api/v1.0/deudas/porDenominacion/\(nombre)?tipoPersona=\(tipoPersona)&resultados=\(resultados)"
+        }
     }
 }
