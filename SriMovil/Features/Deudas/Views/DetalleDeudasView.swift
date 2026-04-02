@@ -154,7 +154,7 @@ struct DeudasDetailView: View {
         systemImage: String,
         highlightValue: Bool = false
     ) -> some View {
-        HStack(spacing: 14) {
+        HStack(alignment: .top, spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .fill(SRIColors.primary.opacity(0.08))
@@ -178,6 +178,8 @@ struct DeudasDetailView: View {
                 .font(.body.weight(highlightValue ? .semibold : .regular))
                 .foregroundStyle(highlightValue ? SRIColors.primary : SRIColors.textPrimary)
                 .multilineTextAlignment(.trailing)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: 150, alignment: .trailing)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 18)
@@ -186,11 +188,11 @@ struct DeudasDetailView: View {
     private func noteItem(_ text: String) -> some View {
         HStack(alignment: .top, spacing: 10) {
             Text("•")
-                .font(.body.weight(.bold))
+                .font(.footnote.weight(.bold))
                 .foregroundStyle(SRIColors.textSecondary)
             
             Text(text)
-                .font(.body)
+                .font(.footnote)
                 .foregroundStyle(SRIColors.textSecondary)
                 .lineSpacing(4)
                 .fixedSize(horizontal: false, vertical: true)
