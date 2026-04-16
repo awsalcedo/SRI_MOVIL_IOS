@@ -24,7 +24,7 @@ enum EstadoContribuyente: Sendable, Hashable {
     }
 }
 
-struct EstadoTributarioModel: Hashable {
+struct EstadoTributarioModel: Hashable, Sendable {
     //let id: UUID
     let ruc: String
     let razonSocial: String

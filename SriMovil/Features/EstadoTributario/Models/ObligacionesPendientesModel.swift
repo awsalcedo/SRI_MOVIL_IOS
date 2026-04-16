@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ObligacionesPendientesModel: Hashable, Identifiable {
+struct ObligacionesPendientesModel: Hashable, Identifiable, Sendable {
     let id: UUID = UUID()
     let descripcion: String
     let periodos: [String]

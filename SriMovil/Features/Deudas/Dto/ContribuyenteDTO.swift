@@ -2,12 +2,12 @@
 //  ContribuyenteDTO.swift
 //  SriMovil
 //
-//  Created by usradmin on 30/3/26.
+//  Created by ALEX WLADIMIR SALCEDO SILVA on 30/3/26.
 //
 
 import Foundation
 
-struct ContribuyenteDTO: Codable, Hashable {
+struct ContribuyenteDTO: Codable, Hashable, Sendable {
     let identificacion: String
     let denominacion: String?
     let tipo: String?

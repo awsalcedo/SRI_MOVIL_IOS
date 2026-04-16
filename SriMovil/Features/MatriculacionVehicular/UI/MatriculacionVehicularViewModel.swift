@@ -13,7 +13,7 @@ final class MatriculacionVehicularViewModel: ObservableObject {
     // Estado que se actualizará en la UI
     var vehiculoState: ViewStates<InfoVehiculoModel> = .idle
     
-    private let useCase: ObtenerInfoVehiculoUseCaseProtocol
+    /*private let useCase: ObtenerInfoVehiculoUseCaseProtocol
     
     init(useCase: ObtenerInfoVehiculoUseCaseProtocol = ObtenerInfoVehiculoUseCase()) {
         self.useCase = useCase
@@ -35,5 +35,5 @@ final class MatriculacionVehicularViewModel: ObservableObject {
                 vehiculoState = .failure("Error desconocido: \(error.localizedDescription)")
             }
         }
-    }
+    }*/
 }

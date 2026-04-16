@@ -2,12 +2,12 @@
 //  DeudaDto.swift
 //  SriMovil
 //
-//  Created by usradmin on 30/3/26.
+//  Created by ALEX WLADIMIR SALCEDO SILVA on 30/3/26.
 //
 
 import Foundation
 
-struct DeudasDTO: Codable, Hashable {
+struct DeudasDTO: Codable, Hashable, Sendable {
     let contribuyente: ContribuyenteDTO
     let deuda: DeudaDTO?
     let impugnacion: String?

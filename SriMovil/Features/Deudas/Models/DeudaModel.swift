@@ -2,12 +2,12 @@
 //  DeudaModel.swift
 //  SriMovil
 //
-//  Created by usradmin on 30/3/26.
+//  Created by ALEX WLADIMIR SALCEDO SILVA on 30/3/26.
 //
 
 import Foundation
 
-struct DeudaModel: Hashable {
+struct DeudaModel: Hashable, Sendable {
     let descripcion: String
     let valor: Double
     let periodoFiscal: String?

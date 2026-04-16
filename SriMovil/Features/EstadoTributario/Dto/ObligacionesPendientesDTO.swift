@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ObligacionesPendientesDTO: Codable, Hashable {
+struct ObligacionesPendientesDTO: Codable, Hashable, Sendable {
     let descripcion: String
     let periodos: [String]
 }

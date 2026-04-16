@@ -4,10 +4,28 @@
     "" : {
 
     },
+    "(opcional)" : {
+
+    },
+    "*" : {
+
+    },
     "%@," : {
 
     },
+    "•" : {
+
+    },
     "Agencias" : {
+
+    },
+    "APELLIDOS" : {
+
+    },
+    "Aquí puedes renderizar el detalle de deudas usando el modelo que retorna tu servicio." : {
+
+    },
+    "Atrás" : {
 
     },
     "Buscar servicios" : {
@@ -17,6 +35,9 @@
 
     },
     "Cargando..." : {
+
+    },
+    "Cerrar" : {
 
     },
     "Certificados" : {
@@ -58,7 +79,25 @@
     "Configuración" : {
 
     },
+    "Consulta de Deudas" : {
+
+    },
+    "Consulta disponible" : {
+
+    },
+    "Consulta realizada correctamente" : {
+
+    },
+    "Consultando información del contribuyente" : {
+
+    },
+    "Consultando obligaciones pendientes" : {
+
+    },
     "Consultar" : {
+
+    },
+    "Consultar Deuda" : {
 
     },
     "Contáctnos" : {
@@ -67,7 +106,7 @@
     "Denuncias" : {
 
     },
-    "Detalle de la obligación" : {
+    "Detalle" : {
 
     },
     "Detalle de los Rubros" : {
@@ -79,7 +118,31 @@
     "Deudas" : {
 
     },
-    "El tiempo reflejado en el Plazo de Vigencia de los Documentos, corresponde al tiempo que tendrá vigencia los documentos impresos en el día de hoy. " : {
+    "DEUDAS_APELLIDOS_VACIO" : {
+
+    },
+    "DEUDAS_CEDULA_INVALIDA" : {
+
+    },
+    "DEUDAS_CEDULA_VACIA" : {
+
+    },
+    "DEUDAS_RUC_INVALIDO" : {
+
+    },
+    "DEUDAS_RUC_LONGITUD_INVALIDA" : {
+
+    },
+    "DEUDAS_RUC_VACIO" : {
+
+    },
+    "Ej: Juan Carlos" : {
+
+    },
+    "Ej: Pérez González" : {
+
+    },
+    "El tiempo reflejado en el Plazo de Vigencia de los Documentos corresponde al tiempo que tendrán vigencia los documentos impresos en el día de hoy." : {
 
     },
     "ERROR_GENERIC" : {
@@ -185,7 +248,16 @@
     "Impuesto Renta" : {
 
     },
+    "Ingresa un RUC para consultar el estado tributario" : {
+
+    },
     "Ingresar" : {
+
+    },
+    "Ingrese los datos para verificar sus obligaciones pendientes con el SRI." : {
+
+    },
+    "Limpiar RUC" : {
 
     },
     "Login" : {
@@ -200,10 +272,19 @@
     "No hay periodos asociados" : {
 
     },
+    "NOMBRES" : {
+
+    },
     "Noticias" : {
 
     },
-    "OBLIGACIONES PENDIENTES" : {
+    "Obligación" : {
+
+    },
+    "Obligaciones pendientes" : {
+
+    },
+    "Periodos" : {
 
     },
     "Placa, RAMV o CPN:" : {
@@ -215,6 +296,9 @@
     "Por tipo de deuda" : {
 
     },
+    "Resultado de la consulta" : {
+
+    },
     "Rubros" : {
 
     },
@@ -224,6 +308,9 @@
     "Seguimiento trámites" : {
 
     },
+    "Selecciona el tipo de documento e ingresa la información requerida para consultar tus deudas." : {
+
+    },
     "Servicios" : {
 
     },
@@ -231,6 +318,15 @@
 
     },
     "Subtotal:" : {
+
+    },
+    "Tipo de contribuyente" : {
+
+    },
+    "TIPO DE CONTRIBUYENTE" : {
+
+    },
+    "TIPO DE DOCUMENTO" : {
 
     },
     "Validación Documentos Físicos" : {

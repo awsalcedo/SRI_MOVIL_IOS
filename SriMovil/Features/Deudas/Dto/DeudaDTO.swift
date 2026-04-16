@@ -2,12 +2,12 @@
 //  DeudaDTO.swift
 //  SriMovil
 //
-//  Created by usradmin on 30/3/26.
+//  Created by ALEX WLADIMIR SALCEDO SILVA on 30/3/26.
 //
 
 import Foundation
 
-struct DeudaDTO: Codable, Hashable {
+struct DeudaDTO: Codable, Hashable, Sendable {
     let descripcion: String
     let valor: Double
     let periodoFiscal: String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EstadoTributarioDTO: Codable, Hashable {
+struct EstadoTributarioDTO: Codable, Hashable, Sendable {
     let ruc: String
     let razonSocial: String
     let descripcion: String

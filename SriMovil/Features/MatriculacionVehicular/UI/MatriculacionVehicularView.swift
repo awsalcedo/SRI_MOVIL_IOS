@@ -24,7 +24,7 @@ struct MatriculacionVehicularView: View {
                     
                     CustomTextFieldView(texto: $placa, placeholder: "Ej: AAA0123", icono: "car.fill") {
                         Task {
-                            await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
+                            //await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
                         }
                     }
                     
