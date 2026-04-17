@@ -10,218 +10,219 @@ import SwiftUI
 struct MatriculacionVehicularDetalleView: View {
     let infoVehiculo: InfoVehiculoModel
     
+    private var hasValoresPendientes: Bool {
+        !(infoVehiculo.deudas?.isEmpty ?? true)
+    }
+    
+    private var hasDeudas: Bool {
+        !(infoVehiculo.deudas?.isEmpty ?? true)
+    }
+    
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 24) {
+            vehicleSummaryCard
             
-            VStack {
-                CabeceraInfoVehiculoView(infoVehiculo: infoVehiculo)
-                
+            NavigationLink {
+                DetalleMatriculacionView(infoVehiculo: infoVehiculo)
+            } label: {
+                Label("Ver detalle del vehículo", systemImage: "list.bullet.rectangle")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(SRIColors.primary)
+            
+            
+            if hasValoresPendientes {
                 NavigationLink {
-                    DetalleMatriculacionView(infoVehiculo: infoVehiculo)
+                    TipoDeudasView(deudas: infoVehiculo.deudas ?? [])
                 } label: {
-                    Text("Detalle Vehículo")
-                        .font(.headline)
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
+                    totalToPayCard
                 }
-                
-                
-                if infoVehiculo.tasas != nil {
-                    ValorPagarView(infoVehiculo: infoVehiculo)
-                } else {
-                    NoExistenValoresPagarView()
-                }
-                
-                if let deudas = infoVehiculo.deudas {
-                    NavigationView {
-                        List {
-                            Section("Por tipo de deuda") {
-                                ForEach(deudas) { deuda in
-                                    TipoDeudaItemView(deuda: deuda)
-                                }
-                            }
-                        }
-                    }
+                .buttonStyle(.plain)
+            } else {
+                noPendingValuesCard
+            }
+        }
+    }
+    
+    private var vehicleSummaryCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(infoVehiculo.placa)
+                        .font(.title2.weight(.semibold))
+                        .foregroundStyle(SRIColors.textPrimary)
+                    
+                    Text("\(infoVehiculo.marca) · \(infoVehiculo.modelo)")
+                        .font(.subheadline)
+                        .foregroundStyle(SRIColors.textSecondary)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 
                 Spacer()
-            }
-            
-        }
-    }
-}
-
-struct CabeceraInfoVehiculoView: View {
-    let infoVehiculo: InfoVehiculoModel
-    
-    var body: some View {
-        VStack {
-            Text(infoVehiculo.placa)
-                .font(.title)
-                .bold()
-            
-            HStack {
-                Text("\(infoVehiculo.marca),")
-                    .font(.subheadline)
-                    .bold()
-                Text(String(infoVehiculo.anioModelo))
-                    .font(.subheadline)
-            }
-        }
-        .padding()
-    }
-}
-
-struct NoExistenValoresPagarView: View {
-    var body: some View {
-        Text("No existen valores a pagar")
-            .frame(width: 350)
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .bold()
-            .padding(10)
-    }
-}
-
-struct ValorPagarView: View {
-    let infoVehiculo: InfoVehiculoModel
-    
-    var body: some View {
-        HStack {
-            Text("Valor total a pagar:")
-                .font(.title3)
-                .bold()
-                .padding(8)
-            Spacer()
-            Text(FormatterUtils.formattedCurrency(value: infoVehiculo.total ?? 0.00))
-                .font(.title3)
-                .bold()
-                .padding(8)
-        }
-        .foregroundColor(.white)
-        .background(Color.blue)
-        .padding()
-    }
-}
-
-
-
-struct TipoDeudaItemView: View {
-    let deuda: Deuda
-    
-    var body: some View {
-        NavigationLink {
-            RubrosView(rubros: deuda.rubros)
-        } label: {
-            Label(deuda.descripcion, systemImage: "star")
-                .font(.footnote)
-                .bold()
-            
-            VStack(alignment: .trailing) {
-                Text("Subtotal:")
-                    .font(.footnote)
-                    .padding(.horizontal)
                 
-                Text(FormatterUtils.formattedCurrency(value: deuda.subtotal))
-                    .font(.footnote)
-                    .padding(.horizontal)
+                VehicleYearBadge(year: infoVehiculo.anioModelo)
+            }
+  
+            Divider()
+
+            VehicleSummaryRow(label: "RAMV o CPN", value: infoVehiculo.camvCpn)
+            VehicleSummaryRow(label: "Servicio", value: infoVehiculo.servicio)
+            VehicleSummaryRow(label: "Clase", value: infoVehiculo.clase)
+            VehicleSummaryRow(label: "Último pago", value: String(infoVehiculo.anioUltimoPago))
+        }
+        .padding(20)
+        .sriContentSurface()
+    }
+    
+    struct VehicleSummaryRow: View {
+        let label: String
+        let value: String
+        
+        var body: some View {
+            HStack(alignment: .top, spacing: 16) {
+                Text(label)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(SRIColors.textPrimary)
+                    .frame(width: 110, alignment: .leading)
+                
+                Text(value)
+                    .font(.subheadline)
+                    .foregroundStyle(SRIColors.textSecondary)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-        .padding(.vertical, 8)
+    }
+    
+    
+    private var totalToPayCard: some View {
+        HStack(alignment: .center, spacing: 16) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Valor total a pagar")
+                    .font(.subheadline)
+                    .foregroundStyle(SRIColors.textSecondary)
+                
+                Text(FormatterUtils.formattedCurrency(value: infoVehiculo.total ?? 0.00))
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(SRIColors.textPrimary)
+                
+                Text("Ver rubros y deudas por tipo")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(SRIColors.primary)
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(SRIColors.textSecondary)
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(SRIColors.border.opacity(0.35), lineWidth: 1)
+        )
+        .shadow(color: .black.opacity(0.03), radius: 6, y: 2)
+        .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .padding(.top, 8)
+    }
+    
+    private var noPendingValuesCard: some View {
+        ContentUnavailableView(
+            "No existen valores a pagar",
+            systemImage: "checkmark.seal",
+            description: Text("El vehículo no presenta valores pendientes en este momento.")
+        )
+        .frame(maxWidth: .infinity)
+        .padding(20)
+        .sriContentSurface()
     }
 }
 
-
-
-struct MatriculacionVehicularDetalleView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        let detallesRubroDto1 = [
-            DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2022, valor: 535.7),
-            DetallesRubroDto(descripcion: "INT_AJU_IMPUESTO", anio: 2022, valor: 104.87),
-            DetallesRubroDto(descripcion: "REMISION_SRI_2023", anio: 2022, valor: -104.87),
-            DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2021, valor: 965.12),
-            DetallesRubroDto(descripcion: "INT_AJU_IMPUESTO", anio: 2021, valor: 283.79),
-            DetallesRubroDto(descripcion: "REMISION_SRI_2023", anio: 2021, valor: -283.79),
-            DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2020, valor: 1411.4),
-            DetallesRubroDto(descripcion: "INT_AJU_IMPUESTO", anio: 2020, valor: 444.65),
-            DetallesRubroDto(descripcion: "REMISION_SRI_2023", anio: 2020, valor: -444.65)
-        ]
-        
-        let detallesRubroDto2 = [
-            DetallesRubroDto(descripcion: "TASA", anio: 2024, valor: 26.74)
-        ]
-        
-        let detallesRubroDto3 = [
-            DetallesRubroDto(descripcion: "TASA", anio: 2024, valor: 26.74)
-        ]
-        
-        let detallesRubroDto4 = [
-            DetallesRubroDto(descripcion: "TASA", anio: 2024, valor: 36)
-        ]
-        
-        let detallesRubroDto5 = [
-            DetallesRubroDto(descripcion: "INTERES", anio: 2024, valor: 6.85),
-            DetallesRubroDto(descripcion: "TRANSF_DOM", anio: 2024, valor: 200)
-        ]
-        
-        let rubrosDto1 = [
-            RubroDto(descripcion: "IMPUESTO A LA PROPIEDAD", valor: 2912.22, periodoFiscal: "2020 - 2022", beneficiario: "SRI", detallesRubro: detallesRubroDto1)
-        ]
-        
-        let rubrosDto2 = [
-            RubroDto(descripcion: "TASA SPPAT", valor: 26.74, periodoFiscal: "2024 - 2024", beneficiario: "SPPAT", detallesRubro: detallesRubroDto2),
-            RubroDto(descripcion: "IMPUESTO A LA PROPIEDAD", valor: 0, periodoFiscal: "2024 - 2024", beneficiario: "SRI", detallesRubro: detallesRubroDto3),
-            RubroDto(descripcion: "TASAS ANT", valor: 36, periodoFiscal: "2024 - 2024", beneficiario: "MUNICIPIO METROPOLITANO DE QUITO", detallesRubro: detallesRubroDto4)
-        ]
-        
-        let rubrosDto3 = [
-            RubroDto(descripcion: "1% TRANSFERENCIA DE DOMINIO", valor: 206.85, periodoFiscal: "2024 - 2024", beneficiario: "SRI", detallesRubro: detallesRubroDto5),
-        ]
-        
-        let deudas = [
-            DeudaDto(descripcion: "PAGO DE AJUSTES", rubros: rubrosDto1, subtotal: 2912.22),
-            DeudaDto(descripcion: "PAGO DEL VALOR DE LA MATRÍCULA", rubros: rubrosDto2 , subtotal: 62.74),
-            DeudaDto(descripcion: "PAGO DEL VALOR DE TRANSFERENCIA DE DOMINIO", rubros: rubrosDto3 , subtotal: 206.85)
-        ]
-        
-        
-        
-        let tasas = [
-            TasaDto(descripcion: "NACIONAL", deudas: deudas, subtotal: 2912.22)
-        ]
-        
-        let infoVehiculoDto = InfoVehiculoDto(
-            fechaUltimaMatricula: 1687842000000,
-            fechaCaducidadMatricula: 1859173200000,
-            cantonMatricula: "QUITO",
-            fechaRevision: 1687842000000,
-            total: 3181.81,
-            informacion: nil,
-            estadoAuto: "ASIGNADO",
-            mensajeMotivoAuto: nil,
-            placa: "PFE8576",
-            camvCpn: "U02506654",
-            cilindraje: 1987,
-            fechaCompra: 1575954000000,
-            anioUltimoPago: 2023,
-            marca: "TOYOTA",
-            modelo: "RAV4 LS AC 2.0 5P 4X2 TM",
-            anioModelo: 2020,
-            paisFabricacion: "JAPON",
-            clase: "JEEP",
-            servicio: "PARTICULAR",
-            tipoUso: "NO APLICA",
-            deudas: deudas,
-            tasas: tasas,
-            remision: nil
-        )
-        
-        let infoVehiculoModel = infoVehiculoDto.toDomain
-        
-        MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculoModel)
+struct VehicleYearBadge: View {
+    let year: Int
+    
+    var body: some View {
+        Text(String(year))
+            .font(.subheadline.weight(.semibold))
+            .foregroundStyle(SRIColors.primary)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(
+                Capsule(style: .continuous)
+                    .fill(SRIColors.primary.opacity(0.12))
+            )
     }
+}
+
+#Preview("Con deudas") {
+    NavigationStack {
+        MatriculacionVehicularDetalleView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConDeudas
+        )
+        .padding()
+        .background(SRIColors.background)
+    }
+}
+
+#Preview("Sin deudas") {
+    NavigationStack {
+        MatriculacionVehicularDetalleView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoSinDeudas
+        )
+        .padding()
+        .background(SRIColors.background)
+    }
+}
+
+#Preview("Textos largos") {
+    NavigationStack {
+        MatriculacionVehicularDetalleView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConTextosLargos
+        )
+        .padding()
+        .background(SRIColors.background)
+    }
+}
+
+#Preview("Dark Mode - Con deudas") {
+    NavigationStack {
+        MatriculacionVehicularDetalleView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConDeudas
+        )
+        .padding()
+        .background(SRIColors.background)
+    }
+    .preferredColorScheme(.dark)
+}
+
+#Preview("Dark Mode - Sin deudas") {
+    NavigationStack {
+        MatriculacionVehicularDetalleView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoSinDeudas
+        )
+        .padding()
+        .background(SRIColors.background)
+    }
+    .preferredColorScheme(.dark)
+}
+
+#Preview("Dark Mode - Textos largos") {
+    NavigationStack {
+        MatriculacionVehicularDetalleView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConTextosLargos
+        )
+        .padding()
+        .background(SRIColors.background)
+    }
+    .preferredColorScheme(.dark)
 }

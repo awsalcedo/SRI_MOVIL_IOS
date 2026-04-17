@@ -109,6 +109,7 @@ struct EstadoTributarioView: View {
                 texto: $ruc,
                 placeholder: "Ej: 1700000000001",
                 icono: "creditcard.fill",
+                inputMode: .numeric(maxLength: 13),
                 hasValidationError: isInlineFieldError
             )
             

@@ -9,72 +9,133 @@ import SwiftUI
 
 struct RubrosView: View {
     let rubros: [Rubro]
-    // Permite que la vista se actualice su estado correctamente y se reactive cuando cambie su valor
     @State private var rubroSeleccionado: Rubro?
     
     var body: some View {
-        NavigationStack {
-            List(rubros) { rubro in
-                Button(action: {
-                    rubroSeleccionado = rubro // Establecer el rubro seleccionado
-                }) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(rubro.descripcion)
-                                .font(.caption)
-                                .bold()
-                            Spacer()
-                            Text((FormatterUtils.formattedCurrency(value: rubro.valor)))
-                                .font(.caption)
+        Group {
+            if rubros.isEmpty {
+                ContentUnavailableView(
+                    "Sin rubros",
+                    systemImage: "doc.text.magnifyingglass",
+                    description: Text("No existen rubros disponibles para este concepto.")
+                )
+            } else {
+                List {
+                    Section {
+                        ForEach(rubros) { rubro in
+                            Button {
+                                rubroSeleccionado = rubro
+                            } label: {
+                                RubroRowView(rubro: rubro)
+                            }
+                            .buttonStyle(.plain)
+                            .listRowInsets(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
                         }
-                        
-                        Text(rubro.periodoFiscal)
-                            .font(.caption2)
-                        Text(rubro.beneficiario)
-                            .font(.caption2)
                     }
                 }
+                .listStyle(.insetGrouped)
             }
-            .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Rubros")
-            .toolbarBackground(.blue, for: .navigationBar)
-            .toolbarTitleDisplayMode(.inline)
-            .sheet(item: $rubroSeleccionado) { rubroSeleccionado in
-                DetalleRubrosView(detalleRubros: rubroSeleccionado.detallesRubro, descripcionRubro: rubroSeleccionado.descripcion) {
-                    //El uso de self asegura que acceda a la variable @State de la vista
-                    // Cierra el sheet
-                    self.rubroSeleccionado = nil
-                }
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
+        }
+        .navigationTitle("Rubros")
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(item: $rubroSeleccionado) { rubroSeleccionado in
+            DetalleRubrosView(
+                detalleRubros: rubroSeleccionado.detallesRubro,
+                descripcionRubro: rubroSeleccionado.descripcion
+            ) {
+                self.rubroSeleccionado = nil
             }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
         }
     }
 }
 
-
-
-struct RubrosView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Crear datos de ejemplo para la vista previa
-        let detallesRubroDto = [
-            DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2022, valor: 535.7),
-            DetallesRubroDto(descripcion: "INT_AJU_IMPUESTO", anio: 2022, valor: 104.87),
-            DetallesRubroDto(descripcion: "REMISION_SRI_2023", anio: 2022, valor: -104.87),
-            DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2021, valor: 965.12),
-            DetallesRubroDto(descripcion: "INT_AJU_IMPUESTO", anio: 2021, valor: 283.79),
-            DetallesRubroDto(descripcion: "REMISION_SRI_2023", anio: 2021, valor: -283.79),
-            DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2020, valor: 1411.4),
-            DetallesRubroDto(descripcion: "INT_AJU_IMPUESTO", anio: 2020, valor: 444.65),
-            DetallesRubroDto(descripcion: "REMISION_SRI_2023", anio: 2020, valor: -444.65)
-        ]
-        
-        let rubrosDto =
-        RubroDto(descripcion: "IMPUESTO A LA PROPIEDAD", valor: 2912.22, periodoFiscal: "2020 - 2022", beneficiario: "SRI", detallesRubro: detallesRubroDto)
-        
-        
-        let rubrosModel = [rubrosDto.toDomain]
-        
-        RubrosView(rubros: rubrosModel)
+private struct RubroRowView: View {
+    let rubro: Rubro
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            
+            // IZQUIERDA (contenido)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(rubro.descripcion)
+                    .font(.headline)
+                    .foregroundStyle(SRIColors.textPrimary)
+                
+                Text(rubro.periodoFiscal)
+                    .font(.subheadline)
+                    .foregroundStyle(SRIColors.textSecondary)
+                
+                Text(rubro.beneficiario)
+                    .font(.subheadline)
+                    .foregroundStyle(SRIColors.textSecondary)
+            }
+            
+            Spacer(minLength: 12)
+            
+            // DERECHA (valor + chevron centrados)
+            HStack(spacing: 12) {
+                Text(FormatterUtils.formattedCurrency(value: rubro.valor))
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(SRIColors.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
+                
+                Image(systemName: "chevron.right")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(SRIColors.textSecondary)
+            }
+            .frame(alignment: .center)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 }
+
+#Preview("Un rubro") {
+    NavigationStack {
+        RubrosView(
+            rubros: [
+                MatriculacionPreviewData.rubroImpuesto
+            ]
+        )
+    }
+}
+
+#Preview("Varios rubros") {
+    NavigationStack {
+        RubrosView(
+            rubros: [
+                MatriculacionPreviewData.rubroImpuesto,
+                MatriculacionPreviewData.rubroTasa,
+                MatriculacionPreviewData.rubroTransferencia
+            ]
+        )
+    }
+}
+
+#Preview("Sin rubros") {
+    NavigationStack {
+        RubrosView(
+            rubros: []
+        )
+    }
+}
+
+#Preview("Dark Mode") {
+    NavigationStack {
+        RubrosView(
+            rubros: [
+                MatriculacionPreviewData.rubroImpuesto,
+                MatriculacionPreviewData.rubroTasa,
+                MatriculacionPreviewData.rubroTransferencia
+            ]
+        )
+    }
+    .preferredColorScheme(.dark)
+}
+
+
+
+

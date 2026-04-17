@@ -29,7 +29,7 @@ enum ServicioViewType {
 }
 
 
-struct Servicio: Identifiable, Sendable {
+/*struct Servicio: Identifiable, Sendable {
     let id: UUID
     let nombreServicio: String
     let imagenServicio: String?
@@ -55,4 +55,4 @@ let servicios: [Servicio] = [
     Servicio(id: UUID(), nombreServicio: "Facturador SRI", imagenServicio: "facturador_boton", vista: .facturadorSRI),
     Servicio(id: UUID(), nombreServicio: "Configuración", imagenServicio: "configuracion_boton", vista: .configuracion),
     Servicio(id: UUID(), nombreServicio: "Política Protección de Datos", imagenServicio: "politica_boton", vista: .politicaProteccionDatos)
-]
+]*/

@@ -103,6 +103,10 @@
 		500684692F917BD200911301 /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
 		5006846C2F91870D00911301 /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
 		5006846D2F9187B500911301 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		500684FF2F92D5F400911301 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
+		500685062F92D81A00911301 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		5006850A2F92D8AD00911301 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
+		500685102F92DA2700911301 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		502EB8182F7588C200BF64DD /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		502EB8192F75898600BF64DD /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
 		502EB8232F759BDB00BF64DD /* UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UI; sourceTree = "<group>"; };
@@ -136,6 +140,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		500684FE2F92D5D900911301 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				500685102F92DA2700911301 /* ViewModel */,
+				5006850A2F92D8AD00911301 /* Interactor */,
+				500685062F92D81A00911301 /* Data */,
+				500684FF2F92D5F400911301 /* Model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		FA2A42832C5B1CE000A021A0 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +162,7 @@
 		FA2A42842C5B1CE800A021A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				500684FE2F92D5D900911301 /* Home */,
 				FA2A43112C5B26AA00A021A0 /* ValidacionQR */,
 				FA2A430E2C5B267900A021A0 /* ValidacionDocumentos */,
 				FA2A430B2C5B263E00A021A0 /* TabBar */,
@@ -468,6 +484,10 @@
 				500684692F917BD200911301 /* Dto */,
 				5006846C2F91870D00911301 /* Dto */,
 				5006846D2F9187B500911301 /* Models */,
+				500684FF2F92D5F400911301 /* Model */,
+				500685062F92D81A00911301 /* Data */,
+				5006850A2F92D8AD00911301 /* Interactor */,
+				500685102F92DA2700911301 /* ViewModel */,
 				502EB8182F7588C200BF64DD /* ViewModel */,
 				502EB8192F75898600BF64DD /* Dto */,
 				502EB8232F759BDB00BF64DD /* UI */,

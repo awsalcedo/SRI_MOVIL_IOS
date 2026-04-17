@@ -79,7 +79,6 @@ struct ConsultasView: View {
             .toolbarBackground(.blue, for: .navigationBar)
             .navigationTitle("Servicios")
         }
-        .searchable(text: $textoBuscar, prompt: "Buscar servicios")
     }
     
     

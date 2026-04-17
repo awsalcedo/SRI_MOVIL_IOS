@@ -8,84 +8,114 @@
 import SwiftUI
 
 struct DetalleRubrosView: View {
-    let detalleRubros: [DetallesRubro] // Pasamos los detalles del rubro
+    let detalleRubros: [DetallesRubro]
     let descripcionRubro: String
-    // Closure para cerrar el sheet
-    var cerrarSheet: () -> Void
+    let cerrarSheet: () -> Void
     
     var body: some View {
         NavigationStack {
-            VStack {
-                // Encabezado con botón "X" para cerrar el sheet
-                HStack {
-                    Spacer()
-                    Text("Detalle de los Rubros")
-                        .font(.title3)
-                        .bold()
-                        .padding()
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        cerrarSheet()  // Llamar la closure para cerrar el sheet
-                    }) {
-                        Image(systemName: "xmark")
-                            .font(.system(size: 15))
-                            //.foregroundColor(.black)
-                            .foregroundStyle(.black)
-                            .padding(.horizontal, 5)
-                    }
-                }
-                
-                Text(descripcionRubro)
-                    .font(.caption)
-                
-                Divider()
-                
-                if !detalleRubros.isEmpty {
-                    List(detalleRubros) { detalle in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(detalle.descripcion)
-                                    .font(.subheadline)
-                                    .bold()
-                                
-                                Spacer()
-                                
-                                Text(FormatterUtils.formattedCurrency(value: detalle.valor))
-                                    .font(.footnote)
+            Group {
+                if detalleRubros.isEmpty {
+                    ContentUnavailableView(
+                        "No hay detalles disponibles",
+                        systemImage: "tray",
+                        description: Text("Este rubro no tiene un desglose adicional.")
+                    )
+                } else {
+                    List {
+                        Section {
+                            ForEach(detalleRubros) { detalle in
+                                DetalleRubroRowView(detalle: detalle)
+                                    .listRowInsets(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
                             }
-                            
-                            
-                            Text(String(detalle.anio))
-                                .font(.footnote)
-                            
+                        } header: {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Concepto")
+                                    .font(.caption)
+                                    .foregroundStyle(SRIColors.textSecondary)
+                                
+                                Text(descripcionRubro)
+                                    .font(.subheadline.weight(.medium))
+                                    .foregroundStyle(SRIColors.textPrimary)
+                            }
+                            .textCase(nil)
+                            .padding(.bottom, 4)
                         }
                     }
-                } else {
-                    Text("No hay detalles disponibles")
-                        .padding()
+                    .listStyle(.insetGrouped)
                 }
             }
-            .padding()
+            .navigationTitle("Detalle de rubros")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        cerrarSheet()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                    .accessibilityLabel("Cerrar")
+                }
+            }
         }
-        
     }
 }
 
-
-
-struct DetalleRubrosView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Crear datos de ejemplo para la vista previa
-        let detalleRubro = DetallesRubroDto(descripcion: "AJU_IMPUESTO", anio: 2022, valor: 535.7)
-        
-        let detallesRubrosModel = [detalleRubro.toDomain]
-        
-        // Estado temporal para simular el Binding de tipo Bool
-        //@State var rubro: Rubro? = nil
-        @State var isPresented = true
-        
-        DetalleRubrosView(detalleRubros: detallesRubrosModel, descripcionRubro: "TASA JUNTA BEN. GUAYAQUIL", cerrarSheet: {})
+private struct DetalleRubroRowView: View {
+    let detalle: DetallesRubro
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(detalle.descripcion)
+                    .font(.headline)
+                    .foregroundStyle(SRIColors.textPrimary)
+                
+                Text(String(detalle.anio))
+                    .font(.subheadline)
+                    .foregroundStyle(SRIColors.textSecondary)
+            }
+            
+            Spacer(minLength: 12)
+            
+            Text(FormatterUtils.formattedCurrency(value: detalle.valor))
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(SRIColors.textPrimary)
+                .multilineTextAlignment(.trailing)
+        }
+        .contentShape(Rectangle())
     }
+}
+
+#Preview("Con detalles") {
+    DetalleRubrosView(
+        detalleRubros: MatriculacionPreviewData.detallesRubroImpuesto,
+        descripcionRubro: MatriculacionPreviewData.rubroImpuesto.descripcion,
+        cerrarSheet: {}
+    )
+}
+
+#Preview("Sin detalles") {
+    DetalleRubrosView(
+        detalleRubros: [],
+        descripcionRubro: "Rubro sin desglose",
+        cerrarSheet: {}
+    )
+}
+
+#Preview("Transferencia") {
+    DetalleRubrosView(
+        detalleRubros: MatriculacionPreviewData.detallesRubroTransferencia,
+        descripcionRubro: MatriculacionPreviewData.rubroTransferencia.descripcion,
+        cerrarSheet: {}
+    )
+}
+
+#Preview("Dark Mode") {
+    DetalleRubrosView(
+        detalleRubros: MatriculacionPreviewData.detallesRubroImpuesto,
+        descripcionRubro: MatriculacionPreviewData.rubroImpuesto.descripcion,
+        cerrarSheet: {}
+    )
+    .preferredColorScheme(.dark)
 }

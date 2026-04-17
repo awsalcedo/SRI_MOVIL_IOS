@@ -9,6 +9,10 @@ import SwiftUI
 
 struct MatriculacionVehicularView: View {
     
+    // MARK: - Environment
+    
+    @Environment(\.dismiss) private var dismiss
+    
     // MARK: - Propiedades
     
     @State private var placa: String = ""
@@ -26,185 +30,220 @@ struct MatriculacionVehicularView: View {
     
     // MARK: - Propiedades Computadas
     
-    private var isConsultButtonDisabled: Bool {
-            placa.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isLoading
-        }
+    private var trimmedPlaca: String {
+        placa.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     
     private var isLoading: Bool {
-            if case .loading = viewModel.state {
-                return true
-            }
-            return false
+        if case .loading = viewModel.state { return true }
+        return false
+    }
+    
+    private var isConsultButtonDisabled: Bool {
+        trimmedPlaca.isEmpty || isLoading
+    }
+    
+    private var inlineErrorMessage: String? {
+        guard case .failure(let message, let isInlineFieldError) = viewModel.state,
+              isInlineFieldError else {
+            return nil
         }
+        return message
+    }
     
     // MARK: - Body
     
     var body: some View {
-        NavigationStack {
-                    ScrollView {
-                        VStack(spacing: 24) {
-                            inputSection
-                            contentSection
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.top, 24)
-                        .padding(.bottom, 32)
-                    }
-                    .background(SRIColors.background)
-                    .navigationTitle("Valores a pagar")
-                    .toolbarTitleDisplayMode(.inline)
-                    .onAppear {
-                        viewModel.resetState()
-                    }
-                    .onChange(of: placa) { _, newValue in
-                        let trimmedValue = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
-                        
-                        guard trimmedValue != lastQueriedVehiculo else { return }
-                        
-                        withAnimation(.easeInOut(duration: 0.22)) {
-                            viewModel.resetState()
-                        }
-                    }
+        ScrollView {
+            VStack(spacing: 24) {
+                heroSection
+                statusSection
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+            .padding(.bottom, 32)
+        }
+        .background(SRIColors.background.ignoresSafeArea())
+        .navigationTitle("Valores a pagar")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.headline.weight(.semibold))
                 }
+                .accessibilityLabel("Regresar")
+            }
+        }
+        .onAppear {
+            viewModel.resetState()
+        }
+        .onChange(of: placa) { _, newValue in
+            let trimmedValue = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard trimmedValue != lastQueriedVehiculo else { return }
+            
+            withAnimation(.easeInOut(duration: 0.22)) {
+                viewModel.resetState()
+            }
+        }
     }
     
-    // MARK: - Views Privadas
+    // MARK: - Sections
     
-    private var inputSection: some View {
+    private var heroSection: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            heroHeader
+            
             VStack(alignment: .leading, spacing: 12) {
-                Text("Placa, RAMV o CPN")
+                Text("Identificador del vehículo")
                     .font(.headline)
                     .foregroundStyle(SRIColors.textPrimary)
                 
-                CustomTextFieldView(
+                SRITextFieldButtonView(
                     texto: $placa,
                     placeholder: "Ej: AAA0123",
-                    icono: "car.fill"
-                ) {
-                    consultar()
-                }
+                    icono: "car.fill",
+                    inputMode: .alphanumeric(maxLength: 20, uppercase: true),
+                    hasValidationError: inlineErrorMessage != nil
+                )
                 
-                if case .failure(let message, let isInlineFieldError) = viewModel.state,
-                   isInlineFieldError {
-                    HStack(alignment: .top, spacing: 8) {
-                        Image(systemName: "exclamationmark.circle.fill")
-                            .font(.footnote)
-                            .foregroundStyle(SRIColors.error)
-                        
-                        Text(message)
-                            .font(.footnote)
-                            .foregroundStyle(SRIColors.error)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
+                if let inlineErrorMessage {
+                    InlineErrorMessageView(message: inlineErrorMessage)
+                        .transition(.opacity.combined(with: .move(edge: .top)))
                 }
                 
                 Button {
                     consultar()
                 } label: {
-                    Text("Consultar")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .fill(
-                                    isConsultButtonDisabled
-                                    ? SRIColors.textSecondary.opacity(0.6)
-                                    : SRIColors.primary
-                                )
-                        )
+                    HStack(spacing: 10) {
+                        if isLoading {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Image(systemName: "magnifyingglass")
+                                .font(.headline)
+                        }
+                        
+                        Text(isLoading ? "Consultando…" : "Consultar valores")
+                            .font(.headline)
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 15)
+                    .background(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(
+                                isConsultButtonDisabled
+                                ? SRIColors.primary.opacity(0.35)
+                                : SRIColors.primary
+                            )
+                    )
                 }
                 .buttonStyle(.plain)
                 .disabled(isConsultButtonDisabled)
-                .opacity(isConsultButtonDisabled ? 0.5 : 1)
+                .opacity(isConsultButtonDisabled ? 0.9 : 1)
             }
         }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .stroke(SRIColors.border.opacity(0.35), lineWidth: 1)
+        )
+        .shadow(color: .black.opacity(0.04), radius: 10, y: 4)
+    }
+    
+    private var heroHeader: some View {
+        HStack(alignment: .top, spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(SRIColors.primary.opacity(0.12))
+                    .frame(width: 44, height: 44)
+                
+                Image(systemName: "car.circle.fill")
+                    .font(.title3)
+                    .foregroundStyle(SRIColors.primary)
+            }
+            
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Consulta vehicular")
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(SRIColors.textPrimary)
+                
+                Text("Ingresa la placa, RAMV o CPN para consultar valores pendientes y acceder al detalle del vehículo.")
+                    .font(.subheadline)
+                    .foregroundStyle(SRIColors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+    }
     
     @ViewBuilder
-        private var contentSection: some View {
-            switch viewModel.state {
-            case .idle:
-                initialSection
-                
-            case .loading:
-                loadingSection
-                
-            case .success(let infoVehiculo):
-                DetalleMatriculacionView(infoVehiculo: infoVehiculo)
-                
-            case .failure(let message, let isInlineFieldError):
-                if isInlineFieldError {
-                    EmptyView()
-                } else {
-                    networkErrorView(message: message)
-                }
+    private var statusSection: some View {
+        switch viewModel.state {
+        case .idle:
+            MatriculacionEmptyStateView()
+                .transition(.opacity)
+            
+        case .loading:
+            MatriculacionLoadingStateView()
+                .transition(.opacity)
+            
+        case .success(let infoVehiculo):
+            MatriculacionVehicularDetalleView(infoVehiculo: infoVehiculo)
+                .transition(.opacity.combined(with: .move(edge: .bottom)))
+            
+        case .failure(let message, let isInlineFieldError):
+            if isInlineFieldError {
+                MatriculacionEmptyStateView()
+                    .transition(.opacity)
+            } else {
+                networkErrorView(message: message)
+                    .transition(.opacity)
             }
         }
+    }
     
-    private var loadingSection: some View {
-            VStack(spacing: 12) {
-                ProgressView(AppStrings.Common.loading)
-                    .tint(SRIColors.primary)
-                
-                Text("Consultando información del vehículo")
-                    .font(.subheadline)
-                    .foregroundStyle(SRIColors.textSecondary)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.top, 24)
-        }
+    // MARK: - Helpers
+    
+    private func consultar() {
+        lastQueriedVehiculo = trimmedPlaca
         
-        private var initialSection: some View {
-            VStack(spacing: 12) {
-                Image(systemName: "car.circle")
-                    .font(.system(size: 36))
-                    .foregroundStyle(SRIColors.textSecondary)
-                
-                Text("Ingresa una placa, RAMV o CPN para consultar los valores a pagar")
-                    .font(.subheadline)
-                    .foregroundStyle(SRIColors.textSecondary)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.top, 32)
+        Task {
+            await viewModel.obtenerInfoVehiculo(idVehiculo: trimmedPlaca)
         }
+    }
     
     private func networkErrorView(message: String) -> some View {
-            ContentUnavailableView(
-                AppStrings.Error.title,
-                systemImage: errorIcon(for: message),
-                description: Text(message)
-                    .foregroundStyle(SRIColors.textPrimary)
-            )
-            .frame(maxWidth: .infinity)
-            .padding(.top, 24)
-        }
+        ContentUnavailableView(
+            AppStrings.Error.title,
+            systemImage: errorIcon(for: message),
+            description: Text(message)
+                .foregroundStyle(SRIColors.textPrimary)
+        )
+        .frame(maxWidth: .infinity)
+        .padding(.top, 12)
+    }
     
-    // MARK: - Funciones Privadas
-        
-        private func consultar() {
-            lastQueriedVehiculo = placa.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            Task {
-                await viewModel.obtenerInfoVehiculo(idVehiculo: placa)
-            }
+    private func errorIcon(for message: String) -> String {
+        switch message {
+        case AppStrings.Error.network:
+            return "wifi.exclamationmark"
+        case AppStrings.Error.timeout:
+            return "clock.badge.exclamationmark"
+        default:
+            return "exclamationmark.triangle"
         }
-        
-        private func errorIcon(for message: String) -> String {
-            switch message {
-            case AppStrings.Error.network:
-                return "wifi.exclamationmark"
-            case AppStrings.Error.timeout:
-                return "clock.badge.exclamationmark"
-            default:
-                return "exclamationmark.triangle"
-            }
-        }
-    
+    }
 }
 
-
 #Preview {
-    MatriculacionVehicularView()
+    NavigationStack {
+        MatriculacionVehicularView()
+    }
 }

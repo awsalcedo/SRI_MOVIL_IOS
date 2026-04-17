@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ViewState<T> {
+enum ViewState<T: Sendable> {
     case idle // Estado inicial, sin hacer nada
     case loading // Mientras se cargan los datos
     case success(T) // Cuando los datos se cargan correctamente

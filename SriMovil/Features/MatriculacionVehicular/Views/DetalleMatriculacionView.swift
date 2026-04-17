@@ -11,168 +11,136 @@ struct DetalleMatriculacionView: View {
     let infoVehiculo: InfoVehiculoModel
     
     var body: some View {
-        NavigationStack {
-            
-            CabeceraDetalleMatriculacionView(infoVehiculo: infoVehiculo)
-            
-            DetalleVehiculoView(infoVehiculo: infoVehiculo)
-            
-        }
-    }
-}
-
-struct CabeceraDetalleMatriculacionView: View {
-    let infoVehiculo: InfoVehiculoModel
-    var body: some View {
-        if infoVehiculo.tasas != nil {
-            ValoresPagarView(infoVehiculo: infoVehiculo)
-            
-        } else {
-            NoExistenValoresPagarView()
-        }
-    }
-}
-
-struct DetalleVehiculoView: View {
-    let infoVehiculo: InfoVehiculoModel
-    var body: some View {
         List {
-            
             Section {
-                    DetalleRow(iconName: "car.fill", label: "Placa", value: infoVehiculo.placa)
-                    DetalleRow(iconName: "number", label: "RAMV o CPM", value: infoVehiculo.camvCpn)
-                    DetalleRow(iconName: "tag.fill", label: "Marca", value: infoVehiculo.marca)
-                    DetalleRow(iconName: "doc.text.fill", label: "Modelo", value: infoVehiculo.modelo)
-                    DetalleRow(iconName: "calendar", label: "Año", value: String(infoVehiculo.anioModelo))
-                    DetalleRow(iconName: "flag.fill", label: "País", value: infoVehiculo.paisFabricacion)
-                    DetalleRow(iconName: "clock.fill", label: "Último pago", value: String(infoVehiculo.anioUltimoPago))
+                if let deudas = infoVehiculo.deudas, !deudas.isEmpty {
+                    valoresPagarRow
+                } else {
+                    noValuesRow
                 }
+            }
+            
+            Section("Información del vehículo") {
+                MatriculacionDetailRow(iconName: "car.fill", label: "Placa", value: infoVehiculo.placa)
+                MatriculacionDetailRow(iconName: "number", label: "RAMV o CPN", value: infoVehiculo.camvCpn)
+                MatriculacionDetailRow(iconName: "tag.fill", label: "Marca", value: infoVehiculo.marca)
+                MatriculacionDetailRow(iconName: "doc.text.fill", label: "Modelo", value: infoVehiculo.modelo)
+                MatriculacionDetailRow(iconName: "calendar", label: "Año modelo", value: String(infoVehiculo.anioModelo))
+                MatriculacionDetailRow(iconName: "flag.fill", label: "País de fabricación", value: infoVehiculo.paisFabricacion)
+                MatriculacionDetailRow(iconName: "clock.fill", label: "Último pago", value: String(infoVehiculo.anioUltimoPago))
+                MatriculacionDetailRow(iconName: "shippingbox.fill", label: "Clase", value: infoVehiculo.clase)
+                MatriculacionDetailRow(iconName: "person.2.fill", label: "Servicio", value: infoVehiculo.servicio)
+                MatriculacionDetailRow(iconName: "car.rear.fill", label: "Tipo de uso", value: infoVehiculo.tipoUso)
+            }
         }
-        .listStyle(.plain) // Con esto le indico que no me coloque la lista en un bloque separado y aparezca esos bordes grises
-        .listRowBackground(Color.white)
-        .navigationTitle("Detalle Vehículo")
-        .toolbarBackground(.blue, for: .navigationBar)
-        .toolbarTitleDisplayMode(.inline)
+        .listStyle(.insetGrouped)
+        .navigationTitle("Detalle del vehículo")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private var valoresPagarRow: some View {
+        NavigationLink {
+            TipoDeudasView(deudas: infoVehiculo.deudas ?? [])
+        } label: {
+            LabeledContent("Valor total a pagar") {
+                Text(FormatterUtils.formattedCurrency(value: infoVehiculo.total ?? 0.00))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(SRIColors.primary)
+            }
+        }
+    }
+    
+    private var noValuesRow: some View {
+        HStack(spacing: 12) {
+            Text("Estado")
+                .foregroundStyle(SRIColors.textPrimary)
+            
+            Spacer()
+            
+            Label("Sin valores pendientes", systemImage: "checkmark.seal.fill")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.green)
+        }
     }
 }
 
-struct DetalleRow: View {
+struct MatriculacionDetailRow: View {
     let iconName: String
     let label: String
     let value: String
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top, spacing: 12) {
             Image(systemName: iconName)
-                .foregroundColor(.blue)
-                .padding()
-            VStack(alignment: .leading) {
+                .font(.title3)
+                .foregroundStyle(SRIColors.textSecondary)
+                .frame(width: 28, alignment: .center)
+                .padding(.top, 2)
+            
+            VStack(alignment: .leading, spacing: 4) {
                 Text(label)
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Text(value)
-                    .font(.caption)
-                    .foregroundColor(.primary)
-            }
-        }
-        //.padding(.vertical, 5)
-    }
-}
-
-struct ValoresPagarView: View {
-    let infoVehiculo: InfoVehiculoModel
-    
-    var body: some View {
-    
-        NavigationLink {
-            if let deudas = infoVehiculo.deudas {
-                NavigationView {
-                    List {
-                        ForEach(deudas) { deuda in
-                            TipoDeudaItemsView(deuda: deuda)
-                        }
-                    }
-                    .listStyle(InsetGroupedListStyle())
-                    .navigationTitle("Por tipo de deuda")
-                    .toolbarBackground(.blue, for: .navigationBar)
-                    .toolbarTitleDisplayMode(.inline)
-                }
-            }
-        } label: {
-            HStack {
-                Text("Valor total a pagar:")
-                    .font(.subheadline)
-                    .bold()
-                    .padding(8)
-                Spacer()
-                Text(FormatterUtils.formattedCurrency(value: infoVehiculo.total ?? 0.00))
-                    .font(.subheadline)
-                    .bold()
-                    .padding(8)
-            }
-            //.foregroundColor(.white)
-            //.background(Color.blue)
-            .padding()
-        }
-    }
-}
-
-struct TipoDeudaItemsView: View {
-    let deuda: Deuda
-    
-    var body: some View {
-        NavigationLink {
-            RubrosView(rubros: deuda.rubros)
-        } label: {
-            Label(deuda.descripcion, systemImage: "star")
-                .font(.footnote)
-                .bold()
-            
-            VStack(alignment: .trailing) {
-                Text("Subtotal:")
-                    .font(.footnote)
-                    .padding(.horizontal)
+                    .foregroundStyle(SRIColors.textSecondary)
                 
-                Text(FormatterUtils.formattedCurrency(value: deuda.subtotal))
-                    .font(.footnote)
-                    .padding(.horizontal)
+                Text(value)
+                    .font(.body)
+                    .foregroundStyle(SRIColors.textPrimary)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 2)
     }
 }
 
-struct DetalleMatriculacionView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        let infoVehiculoDto = InfoVehiculoDto(
-            fechaUltimaMatricula: 1687842000000,
-            fechaCaducidadMatricula: 1859173200000,
-            cantonMatricula: "QUITO",
-            fechaRevision: 1687842000000,
-            total: 3181.81,
-            informacion: nil,
-            estadoAuto: "ASIGNADO",
-            mensajeMotivoAuto: nil,
-            placa: "PFE8576",
-            camvCpn: "U02506654",
-            cilindraje: 1987,
-            fechaCompra: 1575954000000,
-            anioUltimoPago: 2023,
-            marca: "TOYOTA",
-            modelo: "RAV4 LS AC 2.0 5P 4X2 TM",
-            anioModelo: 2020,
-            paisFabricacion: "JAPON",
-            clase: "JEEP",
-            servicio: "PARTICULAR",
-            tipoUso: "NO APLICA",
-            deudas: nil,
-            tasas: nil,
-            remision: nil
+#Preview("Con deudas") {
+    NavigationStack {
+        DetalleMatriculacionView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConDeudas
         )
-        
-        let infoVehiculoModel = infoVehiculoDto.toDomain
-        
-        DetalleMatriculacionView(infoVehiculo: infoVehiculoModel)
     }
+}
+
+#Preview("Sin deudas") {
+    NavigationStack {
+        DetalleMatriculacionView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoSinDeudas
+        )
+    }
+}
+
+#Preview("Dark Mode - Con deudas") {
+    NavigationStack {
+        DetalleMatriculacionView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConDeudas
+        )
+    }
+    .preferredColorScheme(.dark)
+}
+
+#Preview("Dark Mode - Sin deudas") {
+    NavigationStack {
+        DetalleMatriculacionView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoSinDeudas
+        )
+    }
+    .preferredColorScheme(.dark)
+}
+
+#Preview("Textos largos") {
+    NavigationStack {
+        DetalleMatriculacionView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConTextosLargos
+        )
+    }
+}
+
+#Preview("Dark Mode - Textos largos") {
+    NavigationStack {
+        DetalleMatriculacionView(
+            infoVehiculo: MatriculacionPreviewData.vehiculoConTextosLargos
+        )
+    }
+    .preferredColorScheme(.dark)
 }
