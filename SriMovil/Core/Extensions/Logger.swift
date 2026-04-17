@@ -22,6 +22,9 @@ extension Logger {
     /// Logger for Deudas
     static let deudas = Logger(subsystem: subsystem, category: "Deudas")
     
+    /// Logger para Matriculación Vehicular
+    static let matriculacion = Logger(subsystem: subsystem, category: "Matriculacion")
+    
     // MARK: - Log for Core Services
     
     static let core = Logger(subsystem: subsystem, category: "Core")

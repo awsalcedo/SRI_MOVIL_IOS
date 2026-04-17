@@ -7,14 +7,18 @@
 
 import Foundation
 
-struct TasaDto: Codable {
+struct TasaDto: Codable, Sendable {
     let descripcion: String
     let deudas: [DeudaDto]
     let subtotal: Double
 }
 
 extension TasaDto {
-    var toDomain: Tasa {
-        Tasa(descripcion: descripcion, deudas: deudas.map{ $0.toDomain }, subtotal: subtotal)
+    func toDomain() -> Tasa {
+        Tasa(
+            descripcion: descripcion,
+            deudas: deudas.map{ $0.toDomain() },
+            subtotal: subtotal
+        )
     }
 }

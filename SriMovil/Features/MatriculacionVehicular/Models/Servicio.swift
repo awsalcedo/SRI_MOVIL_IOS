@@ -29,7 +29,7 @@ enum ServicioViewType {
 }
 
 
-struct Servicio: Identifiable {
+struct Servicio: Identifiable, Sendable {
     let id: UUID
     let nombreServicio: String
     let imagenServicio: String?

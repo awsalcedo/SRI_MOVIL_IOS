@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum ViewStates<T> {
+enum ViewState<T> {
     case idle // Estado inicial, sin hacer nada
     case loading // Mientras se cargan los datos
     case success(T) // Cuando los datos se cargan correctamente
-    case failure(String) // En caso de error
+    case failure(message: String, isInlineFieldError: Bool) // En caso de error
 }

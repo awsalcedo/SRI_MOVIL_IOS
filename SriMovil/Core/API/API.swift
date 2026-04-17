@@ -40,7 +40,9 @@ extension URL {
     
     // MARK: - Matriculacion Vehicular
     
-    static let matriculacionVehicular = API.baseURL.appending(path: "movil-servicios/api/v1.0/matriculacion/valor/")
+    static func matriculacionVehicular(idVehiculo: String) -> URL {
+        API.baseURL.appending(path: "movil-servicios/api/v1.0/matriculacion/valor/\(idVehiculo)")
+    }
     
     // MARK: - Estado Tributario
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RubroDto: Codable {
+struct RubroDto: Codable, Sendable {
     let descripcion: String
     let valor: Double
     let periodoFiscal: String
@@ -16,7 +16,13 @@ struct RubroDto: Codable {
 }
 
 extension RubroDto {
-    var toDomain: Rubro {
-        Rubro(descripcion: descripcion, valor: valor, periodoFiscal: periodoFiscal, beneficiario: beneficiario, detallesRubro: detallesRubro.map { $0.toDomain })
+    func toDomain() -> Rubro {
+        Rubro(
+            descripcion: descripcion,
+            valor: valor,
+            periodoFiscal: periodoFiscal,
+            beneficiario: beneficiario,
+            detallesRubro: detallesRubro.map { $0.toDomain() }
+        )
     }
 }

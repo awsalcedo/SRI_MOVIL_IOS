@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InfoVehiculoDto: Codable {
+struct InfoVehiculoDto: Codable, Sendable {
     let fechaUltimaMatricula: Int
     let fechaCaducidadMatricula: Int
     let cantonMatricula: String
@@ -34,7 +34,31 @@ struct InfoVehiculoDto: Codable {
 }
 
 extension InfoVehiculoDto {
-    var toDomain: InfoVehiculoModel {
-        InfoVehiculoModel(fechaUltimaMatricula: fechaUltimaMatricula, fechaCaducidadMatricula: fechaCaducidadMatricula, cantonMatricula: cantonMatricula, fechaRevision: fechaRevision, total: total, informacion: informacion, estadoAuto: estadoAuto, mensajeMotivoAuto: mensajeMotivoAuto, placa: placa, camvCpn: camvCpn, cilindraje: cilindraje, fechaCompra: fechaCompra, anioUltimoPago: anioUltimoPago, marca: marca, modelo: modelo, anioModelo: anioModelo, paisFabricacion: paisFabricacion, clase: clase, servicio: servicio, tipoUso: tipoUso, deudas: deudas?.map{ $0.toDomain }, tasas: tasas?.map{ $0.toDomain }, remision: remision)
+    func toDomain() -> InfoVehiculoModel {
+        InfoVehiculoModel(
+            fechaUltimaMatricula: fechaUltimaMatricula,
+            fechaCaducidadMatricula: fechaCaducidadMatricula,
+            cantonMatricula: cantonMatricula,
+            fechaRevision: fechaRevision,
+            total: total,
+            informacion: informacion,
+            estadoAuto: estadoAuto,
+            mensajeMotivoAuto: mensajeMotivoAuto,
+            placa: placa,
+            camvCpn: camvCpn,
+            cilindraje: cilindraje,
+            fechaCompra: fechaCompra,
+            anioUltimoPago: anioUltimoPago,
+            marca: marca,
+            modelo: modelo,
+            anioModelo: anioModelo,
+            paisFabricacion: paisFabricacion,
+            clase: clase,
+            servicio: servicio,
+            tipoUso: tipoUso,
+            deudas: deudas?.map{ $0.toDomain() },
+            tasas: tasas?.map{ $0.toDomain() },
+            remision: remision
+        )
     }
 }
