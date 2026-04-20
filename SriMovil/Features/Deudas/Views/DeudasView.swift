@@ -118,8 +118,7 @@ struct DeudasView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    headerSection
+                VStack(alignment: .leading, spacing: 20) {
                     formCard
                     contentSection
                 }
@@ -198,15 +197,6 @@ struct DeudasView: View {
     }
     
     // MARK: - Sections
-    
-    private var headerSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Ingrese los datos para verificar sus obligaciones pendientes con el SRI.")
-                .font(.body)
-                .foregroundStyle(SRIColors.textSecondary)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-    }
     
     private var formCard: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -457,7 +447,6 @@ struct DeudasView: View {
                 .foregroundStyle(SRIColors.textSecondary)
         )
         .frame(maxWidth: .infinity)
-        .padding(.top, 12)
     }
     
     private func networkErrorView(message: String) -> some View {

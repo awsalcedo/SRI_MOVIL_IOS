@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		500266F02CB568E000988A6B /* SriModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 500266EE2CB568E000988A6B /* SriModel.xcdatamodeld */; };
-		5071956D2F967692000A3677 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071956C2F967692000A3677 /* AppTabView.swift */; };
+		5071956D2F967692000A3677 /* SriTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071956C2F967692000A3677 /* SriTabView.swift */; };
 		508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B02CB6F3970040D3B6 /* ViewState.swift */; };
 		508C72B32CB878180040D3B6 /* CustomTextFieldButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */; };
 		508C72B52CBD85800040D3B6 /* HttpClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B42CBD85800040D3B6 /* HttpClientError.swift */; };
@@ -38,7 +38,6 @@
 		FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43032C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift */; };
 		FA2A43072C5B25F700A021A0 /* SeguimientoTramitesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43062C5B25F700A021A0 /* SeguimientoTramitesView.swift */; };
 		FA2A430A2C5B261F00A021A0 /* SimarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43092C5B261F00A021A0 /* SimarView.swift */; };
-		FA2A430D2C5B265000A021A0 /* SriTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A430C2C5B265000A021A0 /* SriTabView.swift */; };
 		FA2A43102C5B268900A021A0 /* ValidacionDocumentosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A430F2C5B268900A021A0 /* ValidacionDocumentosView.swift */; };
 		FA2A43132C5B26B900A021A0 /* ValidacionQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43122C5B26B900A021A0 /* ValidacionQRView.swift */; };
 		FA2A43152C5B271F00A021A0 /* BarraProgresoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43142C5B271F00A021A0 /* BarraProgresoView.swift */; };
@@ -53,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		500266EF2CB568E000988A6B /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
-		5071956C2F967692000A3677 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
+		5071956C2F967692000A3677 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldButtonView.swift; sourceTree = "<group>"; };
 		508C72B42CBD85800040D3B6 /* HttpClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientError.swift; sourceTree = "<group>"; };
@@ -83,7 +82,6 @@
 		FA2A43032C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticaProteccionDatosView.swift; sourceTree = "<group>"; };
 		FA2A43062C5B25F700A021A0 /* SeguimientoTramitesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeguimientoTramitesView.swift; sourceTree = "<group>"; };
 		FA2A43092C5B261F00A021A0 /* SimarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimarView.swift; sourceTree = "<group>"; };
-		FA2A430C2C5B265000A021A0 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		FA2A430F2C5B268900A021A0 /* ValidacionDocumentosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacionDocumentosView.swift; sourceTree = "<group>"; };
 		FA2A43122C5B26B900A021A0 /* ValidacionQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacionQRView.swift; sourceTree = "<group>"; };
 		FA2A43142C5B271F00A021A0 /* BarraProgresoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraProgresoView.swift; sourceTree = "<group>"; };
@@ -375,8 +373,7 @@
 		FA2A430B2C5B263E00A021A0 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				FA2A430C2C5B265000A021A0 /* SriTabView.swift */,
-				5071956C2F967692000A3677 /* AppTabView.swift */,
+				5071956C2F967692000A3677 /* SriTabView.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -571,7 +568,6 @@
 				508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */,
 				FA2A43132C5B26B900A021A0 /* ValidacionQRView.swift in Sources */,
 				FA2A430A2C5B261F00A021A0 /* SimarView.swift in Sources */,
-				FA2A430D2C5B265000A021A0 /* SriTabView.swift in Sources */,
 				FA2A42892C5B1D5000A021A0 /* AgenciasView.swift in Sources */,
 				FA2A428F2C5B1DC000A021A0 /* CertificadosView.swift in Sources */,
 				50D6D2872F76C7D10000820B /* SRIPrimaryButtonStyle.swift in Sources */,
@@ -595,7 +591,7 @@
 				FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */,
 				FA2A42A02C5B1ECF00A021A0 /* DenunciasView.swift in Sources */,
 				FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */,
-				5071956D2F967692000A3677 /* AppTabView.swift in Sources */,
+				5071956D2F967692000A3677 /* SriTabView.swift in Sources */,
 				FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */,
 				50D6D2852F76C6BD0000820B /* SRITextFieldButtonView.swift in Sources */,
 				FA2A429A2C5B1E6B00A021A0 /* ConfiguracionView.swift in Sources */,

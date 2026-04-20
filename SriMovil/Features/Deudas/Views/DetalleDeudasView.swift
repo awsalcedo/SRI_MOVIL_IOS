@@ -165,21 +165,19 @@ struct DeudasDetailView: View {
                     .foregroundStyle(SRIColors.textPrimary)
             }
 
-            Text(title)
-                .font(.body.weight(.semibold))
-                .foregroundStyle(SRIColors.textPrimary)
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
-                .layoutPriority(1)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(SRIColors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
 
-            Spacer(minLength: 12)
+                Text(value)
+                    .font(highlightValue ? .body.weight(.semibold) : .subheadline)
+                    .foregroundStyle(highlightValue ? SRIColors.primary : SRIColors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
 
-            Text(value)
-                .font(.body.weight(highlightValue ? .semibold : .regular))
-                .foregroundStyle(highlightValue ? SRIColors.primary : SRIColors.textPrimary)
-                .multilineTextAlignment(.trailing)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: 150, alignment: .trailing)
+            Spacer(minLength: 0)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 18)

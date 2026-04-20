@@ -11,7 +11,7 @@ import SwiftUI
 struct SriMovilApp: App {
     var body: some Scene {
         WindowGroup {
-            AppTabView()
+            SriTabView()
         }
     }
 }
