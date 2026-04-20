@@ -32,27 +32,28 @@ struct ConsultasView: View {
                     errorView(message: message)
                 }
             }
-            .background(AppColors.background)
+            .background(SRIColors.background)
             .navigationTitle("Servicios")
             .navigationBarTitleDisplayMode(.large)
-            .searchable(
-                text: $viewModel.textoBuscar,
-                placement: .navigationBarDrawer(displayMode: .automatic),
-                prompt: "Buscar servicio"
-            )
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button {
-                        showLogin = true
-                    } label: {
-                        Label("Ingresar", systemImage: "person.crop.circle")
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 8) {
+                        
+                        Button {
+                            showLogin = true
+                        } label: {
+                            Image(systemName: "person.crop.circle")
+                        }
+                        
+                        Button {
+                            showConfiguracion = true
+                        } label: {
+                            Image(systemName: "gearshape")
+                        }
                     }
-                    
-                    Button {
-                        showConfiguracion = true
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
+                    .padding(8)
+                    .background(.ultraThinMaterial)
+                    .clipShape(Capsule())
                 }
             }
             .sheet(isPresented: $showConfiguracion) {
@@ -85,7 +86,7 @@ struct ConsultasView: View {
     
     private var contentView: some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: AppSpacing.xLarge) {
+            LazyVStack(alignment: .leading, spacing: SRISpacing.xxLarge) {
                 BannerHeroView()
                     .padding(.top, 8)
                 
@@ -102,7 +103,7 @@ struct ConsultasView: View {
                                     .buttonStyle(.plain)
                                 }
                             }
-                            .padding(.horizontal, AppSpacing.large)
+                            .padding(.horizontal, SRISpacing.large)
                         }
                     }
                 }
@@ -111,7 +112,7 @@ struct ConsultasView: View {
                     let items = viewModel.servicios(for: categoria)
                     
                     SectionBlock(title: categoria.titulo) {
-                        VStack(spacing: 12) {
+                        VStack(spacing: 10) {
                             ForEach(items) { servicio in
                                 NavigationLink {
                                     ServicioDestinationBuilder.build(for: servicio.destino)
@@ -121,7 +122,7 @@ struct ConsultasView: View {
                                 .buttonStyle(.plain)
                             }
                         }
-                        .padding(.horizontal, AppSpacing.large)
+                        .padding(.horizontal)
                     }
                 }
                 
@@ -151,7 +152,7 @@ struct ConsultasView: View {
                 }
             }
             .buttonStyle(.borderedProminent)
-            .tint(AppColors.primary)
+            .tint(SRIColors.primary)
         }
     }
 }

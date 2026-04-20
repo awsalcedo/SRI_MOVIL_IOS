@@ -24,7 +24,7 @@ struct SectionBlock<Content: View>: View {
         VStack(alignment: .leading, spacing: 14) {
             Text(title)
                 .font(.title3.weight(.semibold))
-                .padding(.horizontal, AppSpacing.large)
+                .padding(.horizontal, SRISpacing.large)
             
             content
         }

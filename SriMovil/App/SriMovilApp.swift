@@ -11,14 +11,7 @@ import SwiftUI
 struct SriMovilApp: App {
     var body: some Scene {
         WindowGroup {
-            /*ConsultasView()
-             .environmentObject(MatriculacionVehicularViewModel())*/
-            
-            //ConsultasView()
-            
-            //MainTabView()
-            
-            SriTabView()
+            AppTabView()
         }
     }
 }

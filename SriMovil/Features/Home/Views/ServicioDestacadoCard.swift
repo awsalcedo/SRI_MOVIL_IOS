@@ -12,49 +12,43 @@ struct ServicioDestacadoCard: View {
     let servicio: Servicio
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(alignment: .top) {
-                iconView
-                
-                Spacer(minLength: 0)
-                
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
+        VStack(alignment: .leading, spacing: 12) {
             
-            Spacer(minLength: 0)
+            ZStack {
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(SRIColors.primary.opacity(0.12))
+                
+                Image(systemName: iconName)
+                    .font(.title2)
+                    .foregroundStyle(SRIColors.primary)
+            }
+            .frame(width: 44, height: 44)
             
             Text(servicio.nombreServicio)
-                .font(.headline)
-                .foregroundStyle(AppColors.textPrimary)
-                .multilineTextAlignment(.leading)
-                .lineLimit(3)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
+                .lineLimit(2)
+            
+            Spacer()
         }
-        .padding(18)
-        .frame(width: 200, height: 148, alignment: .topLeading)
+        .padding(16)
+        .frame(width: 150, height: 120)
         .background(
-            RoundedRectangle(cornerRadius: AppCornerRadius.large, style: .continuous)
-                .fill(.regularMaterial)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.background)
         )
         .overlay {
-            RoundedRectangle(cornerRadius: AppCornerRadius.large, style: .continuous)
-                .stroke(Color.white.opacity(0.28), lineWidth: 0.8)
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.black.opacity(0.04))
         }
-        .shadow(color: .black.opacity(0.06), radius: 12, x: 0, y: 6)
     }
     
-    @ViewBuilder
-    private var iconView: some View {
-        if let nombreImagen = servicio.imagenServicio {
-            Image(nombreImagen)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 54, height: 54)
-        } else {
-            Image(systemName: "square.grid.2x2.fill")
-                .font(.title2)
-                .foregroundStyle(AppColors.primary)
+    private var iconName: String {
+        switch servicio.destino {
+        case .valoresPagar: return "car.fill"
+        case .estadoTributario: return "doc.text.fill"
+        case .deudas: return "exclamationmark.triangle.fill"
+        default: return "square.grid.2x2.fill"
         }
     }
 }
@@ -70,5 +64,5 @@ struct ServicioDestacadoCard: View {
         )
     )
     .padding()
-    .background(AppColors.background)
+    .background(SRIColors.background)
 }

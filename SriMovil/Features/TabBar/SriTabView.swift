@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SriTabView: View {
     
-    enum Tab: CaseIterable, Hashable {
+    enum Tabss: CaseIterable, Hashable {
         case consultas
         case noticias
         case agencias
@@ -43,7 +43,7 @@ struct SriTabView: View {
         }
     }
     
-    @State private var selectedTab: Tab = .consultas
+    @State private var selectedTab: Tabss = .consultas
     @Namespace private var tabAnimation
     
     var body: some View {
@@ -83,7 +83,7 @@ struct SriTabView: View {
 
 private struct FloatingSriBottomBar: View {
     
-    @Binding var selectedTab: SriTabView.Tab
+    @Binding var selectedTab: SriTabView.Tabss
     let namespace: Namespace.ID
     let onSearchTapped: () -> Void
     
@@ -102,7 +102,7 @@ private struct FloatingSriBottomBar: View {
     
     private var tabsContainer: some View {
         HStack(spacing: 6) {
-            ForEach(SriTabView.Tab.allCases, id: \.self) { tab in
+            ForEach(SriTabView.Tabss.allCases, id: \.self) { tab in
                 tabButton(for: tab)
             }
         }
@@ -178,7 +178,7 @@ private struct FloatingSriBottomBar: View {
         .accessibilityLabel("Buscar")
     }
     
-    private func tabButton(for tab: SriTabView.Tab) -> some View {
+    private func tabButton(for tab: SriTabView.Tabss) -> some View {
         let isSelected = selectedTab == tab
         
         return Button {

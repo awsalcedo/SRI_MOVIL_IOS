@@ -11,12 +11,12 @@ struct BannerHeroView: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            RoundedRectangle(cornerRadius: AppCornerRadius.hero, style: .continuous)
+            RoundedRectangle(cornerRadius: SRICornerRadius.hero, style: .continuous)
                 .fill(
                     LinearGradient(
                         colors: [
-                            AppColors.primary,
-                            AppColors.primaryLight
+                            SRIColors.primary,
+                            SRIColors.primaryLight
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
@@ -46,12 +46,12 @@ struct BannerHeroView: View {
             }
             .padding(20)
         }
-        .padding(.horizontal, AppSpacing.large)
+        .padding(.horizontal, SRISpacing.large)
     }
 }
 
 #Preview {
     BannerHeroView()
         .padding(.vertical)
-        .background(AppColors.background)
+        .background(SRIColors.background)
 }

@@ -50,8 +50,6 @@ struct DeudasView: View {
     
     // MARK: - Properties
     
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var tipoContribuyente: TipoContribuyente = .personaNatural
     @State private var tipoDocumento: TipoDocumentoDeuda = .ruc
     
@@ -132,17 +130,6 @@ struct DeudasView: View {
             .background(SRIColors.background.ignoresSafeArea())
             .navigationTitle("Consulta de Deudas")
             .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Label("Atrás", systemImage: "chevron.left")
-                            .labelStyle(.titleAndIcon)
-                    }
-                    .tint(SRIColors.primary)
-                }
-            }
             .safeAreaInset(edge: .bottom) {
                 bottomActionBar
             }
@@ -272,13 +259,13 @@ struct DeudasView: View {
             } label: {
                 HStack(spacing: 12) {
                     Text(tipoDocumento.rawValue)
-                        .font(.title3.weight(.medium))
+                        .font(.body.weight(.semibold))
                         .foregroundStyle(SRIColors.textPrimary)
                     
                     Spacer()
                     
                     Image(systemName: "chevron.up.chevron.down")
-                        .font(.footnote.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(SRIColors.textSecondary)
                 }
                 .padding(.horizontal, 16)
@@ -338,18 +325,18 @@ struct DeudasView: View {
             
             HStack(spacing: 12) {
                 TextField(tipoDocumento.placeholder, text: $numeroDocumento)
-                    .font(.title3.weight(.medium))
+                    .font(.body)
                     .foregroundStyle(SRIColors.textPrimary)
                     .keyboardType(.numberPad)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                 
                 Image(systemName: "circle.grid.3x3.fill")
-                    .font(.title3)
+                    .font(.caption)
                     .foregroundStyle(SRIColors.textSecondary.opacity(0.45))
             }
             .padding(.horizontal, 16)
-            .padding(.vertical, 18)
+            .padding(.vertical, 14)
             .background(
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .fill(SRIColors.cardBackground)

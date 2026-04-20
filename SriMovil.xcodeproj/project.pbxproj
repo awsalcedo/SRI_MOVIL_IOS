@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		500266F02CB568E000988A6B /* SriModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 500266EE2CB568E000988A6B /* SriModel.xcdatamodeld */; };
+		5071956D2F967692000A3677 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071956C2F967692000A3677 /* AppTabView.swift */; };
 		508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B02CB6F3970040D3B6 /* ViewState.swift */; };
 		508C72B32CB878180040D3B6 /* CustomTextFieldButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */; };
 		508C72B52CBD85800040D3B6 /* HttpClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B42CBD85800040D3B6 /* HttpClientError.swift */; };
@@ -33,7 +34,6 @@
 		FA2A42F32C5B243F00A021A0 /* FormatterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42F22C5B243F00A021A0 /* FormatterUtils.swift */; };
 		FA2A42F72C5B246800A021A0 /* HttpClientErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42F62C5B246800A021A0 /* HttpClientErrorMapper.swift */; };
 		FA2A42FC2C5B253F00A021A0 /* ConsultasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42FB2C5B253F00A021A0 /* ConsultasView.swift */; };
-		FA2A42FE2C5B255C00A021A0 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42FD2C5B255C00A021A0 /* MainTabView.swift */; };
 		FA2A43012C5B25A300A021A0 /* NoticiasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43002C5B25A300A021A0 /* NoticiasView.swift */; };
 		FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43032C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift */; };
 		FA2A43072C5B25F700A021A0 /* SeguimientoTramitesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A43062C5B25F700A021A0 /* SeguimientoTramitesView.swift */; };
@@ -46,7 +46,6 @@
 		FA2AC8E82CB1C84C00B44A5E /* AuthorizationMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2AC8E22CB1C84C00B44A5E /* AuthorizationMethod.swift */; };
 		FA450BCB2C6BEB3A00DAA3FB /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BCA2C6BEB3A00DAA3FB /* CoreDataError.swift */; };
 		FA450BCD2C6BEBB600DAA3FB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA450BCC2C6BEBB600DAA3FB /* CoreDataStack.swift */; };
-		FA7DA7AE2C7D82F000D942E6 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */; };
 		FAB712922C5B076100771790 /* SriMovilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB712912C5B076100771790 /* SriMovilApp.swift */; };
 		FAB712962C5B076300771790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712952C5B076300771790 /* Assets.xcassets */; };
 		FAB712992C5B076300771790 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712982C5B076300771790 /* Preview Assets.xcassets */; };
@@ -54,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		500266EF2CB568E000988A6B /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
+		5071956C2F967692000A3677 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldButtonView.swift; sourceTree = "<group>"; };
 		508C72B42CBD85800040D3B6 /* HttpClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientError.swift; sourceTree = "<group>"; };
@@ -79,7 +79,6 @@
 		FA2A42F22C5B243F00A021A0 /* FormatterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterUtils.swift; sourceTree = "<group>"; };
 		FA2A42F62C5B246800A021A0 /* HttpClientErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientErrorMapper.swift; sourceTree = "<group>"; };
 		FA2A42FB2C5B253F00A021A0 /* ConsultasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultasView.swift; sourceTree = "<group>"; };
-		FA2A42FD2C5B255C00A021A0 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FA2A43002C5B25A300A021A0 /* NoticiasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticiasView.swift; sourceTree = "<group>"; };
 		FA2A43032C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticaProteccionDatosView.swift; sourceTree = "<group>"; };
 		FA2A43062C5B25F700A021A0 /* SeguimientoTramitesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeguimientoTramitesView.swift; sourceTree = "<group>"; };
@@ -92,7 +91,6 @@
 		FA2AC8E22CB1C84C00B44A5E /* AuthorizationMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationMethod.swift; sourceTree = "<group>"; };
 		FA450BCA2C6BEB3A00DAA3FB /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		FA450BCC2C6BEBB600DAA3FB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		FAB7128E2C5B076100771790 /* SriMovil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SriMovil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB712912C5B076100771790 /* SriMovilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriMovilApp.swift; sourceTree = "<group>"; };
 		FAB712952C5B076300771790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				FA2A42FB2C5B253F00A021A0 /* ConsultasView.swift */,
-				FA2A42FD2C5B255C00A021A0 /* MainTabView.swift */,
 				50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */,
 			);
 			path = Root;
@@ -207,7 +204,6 @@
 				50E7BE172C62B29D008EFCAA /* CustomTextFieldView.swift */,
 				50E7BE192C62C9FA008EFCAA /* ToastView.swift */,
 				50CDFCFB2C655D9100B334A9 /* ToastTwoView.swift */,
-				FA7DA7AD2C7D82F000D942E6 /* CustomTabBarView.swift */,
 				508C72B02CB6F3970040D3B6 /* ViewState.swift */,
 				508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */,
 				508C72B82CBDC1300040D3B6 /* ErrorView.swift */,
@@ -380,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				FA2A430C2C5B265000A021A0 /* SriTabView.swift */,
+				5071956C2F967692000A3677 /* AppTabView.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -590,16 +587,15 @@
 				FA2A43012C5B25A300A021A0 /* NoticiasView.swift in Sources */,
 				FA2A428C2C5B1D9100A021A0 /* CalculadorasView.swift in Sources */,
 				508C72B32CB878180040D3B6 /* CustomTextFieldButtonView.swift in Sources */,
-				FA7DA7AE2C7D82F000D942E6 /* CustomTabBarView.swift in Sources */,
 				FA2A43102C5B268900A021A0 /* ValidacionDocumentosView.swift in Sources */,
 				508C72B92CBDC1300040D3B6 /* ErrorView.swift in Sources */,
 				FA2A42F72C5B246800A021A0 /* HttpClientErrorMapper.swift in Sources */,
 				FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */,
 				FA2A42FC2C5B253F00A021A0 /* ConsultasView.swift in Sources */,
 				FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */,
-				FA2A42FE2C5B255C00A021A0 /* MainTabView.swift in Sources */,
 				FA2A42A02C5B1ECF00A021A0 /* DenunciasView.swift in Sources */,
 				FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */,
+				5071956D2F967692000A3677 /* AppTabView.swift in Sources */,
 				FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */,
 				50D6D2852F76C6BD0000820B /* SRITextFieldButtonView.swift in Sources */,
 				FA2A429A2C5B1E6B00A021A0 /* ConfiguracionView.swift in Sources */,
@@ -670,7 +666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -728,7 +724,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -754,7 +750,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -784,7 +780,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

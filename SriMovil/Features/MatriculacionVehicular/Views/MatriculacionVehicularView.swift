@@ -9,10 +9,6 @@ import SwiftUI
 
 struct MatriculacionVehicularView: View {
     
-    // MARK: - Environment
-    
-    @Environment(\.dismiss) private var dismiss
-    
     // MARK: - Propiedades
     
     @State private var placa: String = ""
@@ -66,17 +62,6 @@ struct MatriculacionVehicularView: View {
         .background(SRIColors.background.ignoresSafeArea())
         .navigationTitle("Valores a pagar")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.headline.weight(.semibold))
-                }
-                .accessibilityLabel("Regresar")
-            }
-        }
         .onAppear {
             viewModel.resetState()
         }

@@ -18,12 +18,12 @@ struct ServicioRowCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(servicio.nombreServicio)
                     .font(.body.weight(.semibold))
-                    .foregroundStyle(AppColors.textPrimary)
+                    .foregroundStyle(SRIColors.textPrimary)
                     .multilineTextAlignment(.leading)
                 
                 Text(subtitulo(for: servicio.categoria))
                     .font(.footnote)
-                    .foregroundStyle(AppColors.textSecondary)
+                    .foregroundStyle(SRIColors.textSecondary)
             }
             
             Spacer()
@@ -33,8 +33,8 @@ struct ServicioRowCard: View {
                 .foregroundStyle(.tertiary)
         }
         .padding(16)
-        .background(AppColors.surface)
-        .clipShape(RoundedRectangle(cornerRadius: AppCornerRadius.medium, style: .continuous))
+        .background(SRIColors.surface)
+        .clipShape(RoundedRectangle(cornerRadius: SRICornerRadius.medium, style: .continuous))
     }
     
     private var iconContainer: some View {
@@ -47,12 +47,12 @@ struct ServicioRowCard: View {
             } else {
                 Image(systemName: "square.grid.2x2")
                     .font(.title3)
-                    .foregroundStyle(AppColors.primary)
+                    .foregroundStyle(SRIColors.primary)
             }
         }
         .frame(width: 52, height: 52)
-        .background(AppColors.surfaceSecondary)
-        .clipShape(RoundedRectangle(cornerRadius: AppCornerRadius.small, style: .continuous))
+        .background(SRIColors.surfaceSecondary)
+        .clipShape(RoundedRectangle(cornerRadius: SRICornerRadius.small, style: .continuous))
     }
     
     private func subtitulo(for categoria: CategoriaServicio) -> String {
@@ -83,5 +83,5 @@ struct ServicioRowCard: View {
         )
     )
     .padding()
-    .background(AppColors.background)
+    .background(SRIColors.background)
 }

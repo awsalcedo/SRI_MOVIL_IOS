@@ -10,8 +10,15 @@
     "*" : {
 
     },
-    "%@," : {
-
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
     },
     "•" : {
 
@@ -22,16 +29,28 @@
     "APELLIDOS" : {
 
     },
+    "Aquí podrás centralizar el acceso del usuario y opciones relacionadas." : {
+
+    },
+    "Aquí podrás centralizar una búsqueda avanzada de servicios." : {
+
+    },
     "Aquí puedes renderizar el detalle de deudas usando el modelo que retorna tu servicio." : {
 
     },
-    "Atrás" : {
+    "Aún no hay resultados" : {
 
     },
-    "Buscar servicios" : {
+    "Buscar" : {
+
+    },
+    "Buscar servicio" : {
 
     },
     "Calculadoras" : {
+
+    },
+    "Cargando servicios..." : {
 
     },
     "Cargando..." : {
@@ -76,6 +95,9 @@
         }
       }
     },
+    "Concepto" : {
+
+    },
     "Configuración" : {
 
     },
@@ -88,10 +110,22 @@
     "Consulta realizada correctamente" : {
 
     },
+    "Consulta servicios tributarios y vehiculares de forma rápida y segura." : {
+
+    },
+    "Consulta vehicular" : {
+
+    },
     "Consultando información del contribuyente" : {
 
     },
+    "Consultando información del vehículo" : {
+
+    },
     "Consultando obligaciones pendientes" : {
+
+    },
+    "Consultando…" : {
 
     },
     "Consultar" : {
@@ -100,7 +134,16 @@
     "Consultar Deuda" : {
 
     },
+    "Consultar valores" : {
+
+    },
     "Contáctnos" : {
+
+    },
+    "Cuando ingreses una placa, RAMV o CPN y presiones “Consultar valores”, aquí verás el resumen del vehículo y sus rubros asociados." : {
+
+    },
+    "Cuenta" : {
 
     },
     "Denuncias" : {
@@ -109,10 +152,10 @@
     "Detalle" : {
 
     },
-    "Detalle de los Rubros" : {
+    "Detalle de rubros" : {
 
     },
-    "Detalle Vehículo" : {
+    "Detalle del vehículo" : {
 
     },
     "Deudas" : {
@@ -143,6 +186,12 @@
 
     },
     "El tiempo reflejado en el Plazo de Vigencia de los Documentos corresponde al tiempo que tendrán vigencia los documentos impresos en el día de hoy." : {
+
+    },
+    "El vehículo no presenta valores pendientes en este momento." : {
+
+    },
+    "El vehículo no registra deudas por tipo en este momento." : {
 
     },
     "ERROR_GENERIC" : {
@@ -222,6 +271,9 @@
         }
       }
     },
+    "Estado" : {
+
+    },
     "Estado Tributario" : {
 
     },
@@ -236,16 +288,28 @@
         }
       }
     },
+    "Este rubro no tiene un desglose adicional." : {
+
+    },
+    "Esto puede tardar unos segundos." : {
+
+    },
     "Facturador" : {
 
     },
     "Hello, World!" : {
 
     },
-    "Home" : {
+    "Identificador del vehículo" : {
 
     },
     "Impuesto Renta" : {
+
+    },
+    "Información del vehículo" : {
+
+    },
+    "Ingresa la placa, RAMV o CPN para consultar valores pendientes y acceder al detalle del vehículo." : {
 
     },
     "Ingresa un RUC para consultar el estado tributario" : {
@@ -257,10 +321,13 @@
     "Ingrese los datos para verificar sus obligaciones pendientes con el SRI." : {
 
     },
-    "Limpiar RUC" : {
+    "Limpiar campo" : {
 
     },
-    "Login" : {
+    "No existen deudas" : {
+
+    },
+    "No existen rubros disponibles para este concepto." : {
 
     },
     "No existen valores a pagar" : {
@@ -270,6 +337,12 @@
 
     },
     "No hay periodos asociados" : {
+
+    },
+    "No se encontraron servicios" : {
+
+    },
+    "No se pudieron cargar los servicios" : {
 
     },
     "NOMBRES" : {
@@ -287,13 +360,19 @@
     "Periodos" : {
 
     },
-    "Placa, RAMV o CPN:" : {
-
-    },
     "Política protección de datos" : {
 
     },
     "Por tipo de deuda" : {
+
+    },
+    "Próximamente este espacio mostrará banners informativos dinámicos." : {
+
+    },
+    "Prueba con otro término de búsqueda." : {
+
+    },
+    "Reintentar" : {
 
     },
     "Resultado de la consulta" : {
@@ -317,7 +396,16 @@
     "Simar" : {
 
     },
-    "Subtotal:" : {
+    "Sin rubros" : {
+
+    },
+    "Sin valores pendientes" : {
+
+    },
+    "SRIMOVIL" : {
+
+    },
+    "Subtotal" : {
 
     },
     "Tipo de contribuyente" : {
@@ -335,10 +423,16 @@
     "Validación QR" : {
 
     },
-    "Valor total a pagar:" : {
+    "Valor total a pagar" : {
 
     },
     "Valores a pagar" : {
+
+    },
+    "Ver detalle del vehículo" : {
+
+    },
+    "Ver rubros y deudas por tipo" : {
 
     }
   },

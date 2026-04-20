@@ -10,6 +10,7 @@ import SwiftUI
 enum SRIColors {
     
     static let primary = Color(hex: "#0401a9") // usa el azul fuerte exacto del manual en tu catálogo/asset - #0C5974
+    static let primaryLight = Color(red: 0.02, green: 0.52, blue: 0.86)
     static let textPrimary = Color(hex: "#434A54") // gris fuerte institucional
     static let textSecondary = Color(hex: "#AAB2BD") // gris neutro institucional
     static let border = Color(hex: "#CCD1D9")
@@ -17,6 +18,7 @@ enum SRIColors {
     static let background = Color(.systemGroupedBackground)
     static let surface = Color(.secondarySystemGroupedBackground)
     static let cardBackground = Color(.systemBackground)
+    static let surfaceSecondary = Color(uiColor: .tertiarySystemBackground)
     
 }
 
