@@ -124,6 +124,7 @@
 		50D6D2D22F7AFC890000820B /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
 		50D6D2E92F7B14310000820B /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		50D6D2EF2F7B23C80000820B /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		FA06C96C2F93C45E001CC5C2 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		FAF562722F91AAB800861757 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
 		FAF5627A2F91C25D00861757 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		FAF5627E2F91D64400861757 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		500684FE2F92D5D900911301 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				FA06C96C2F93C45E001CC5C2 /* Views */,
 				500685102F92DA2700911301 /* ViewModel */,
 				5006850A2F92D8AD00911301 /* Interactor */,
 				500685062F92D81A00911301 /* Data */,
@@ -505,6 +507,7 @@
 				50D6D2D22F7AFC890000820B /* Dto */,
 				50D6D2E92F7B14310000820B /* ViewModel */,
 				50D6D2EF2F7B23C80000820B /* Views */,
+				FA06C96C2F93C45E001CC5C2 /* Views */,
 				FAF562722F91AAB800861757 /* Interactor */,
 				FAF5627A2F91C25D00861757 /* ViewModel */,
 				FAF5627E2F91D64400861757 /* Views */,
