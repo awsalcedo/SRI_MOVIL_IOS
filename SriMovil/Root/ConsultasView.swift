@@ -38,7 +38,6 @@ struct ConsultasView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 8) {
-                        
                         Button {
                             showLogin = true
                         } label: {
@@ -52,8 +51,6 @@ struct ConsultasView: View {
                         }
                     }
                     .padding(8)
-                    .background(.ultraThinMaterial)
-                    .clipShape(Capsule())
                 }
             }
             .sheet(isPresented: $showConfiguracion) {
