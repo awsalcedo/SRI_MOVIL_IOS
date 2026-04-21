@@ -35,7 +35,7 @@ struct ServicioDestacadoCard: View {
         .frame(width: 150, height: 120)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(.background)
+                .fill(SRIColors.background)
         )
         .overlay {
             RoundedRectangle(cornerRadius: 20)
