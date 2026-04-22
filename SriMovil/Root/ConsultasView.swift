@@ -86,6 +86,7 @@ struct ConsultasView: View {
             LazyVStack(alignment: .leading, spacing: SRISpacing.xxLarge) {
                 BannerHeroView()
                     .padding(.top, 8)
+                    .padding(.horizontal, SRISpacing.large)
                 
                 if !viewModel.serviciosDestacados.isEmpty {
                     SectionBlock(title: "Consultas frecuentes") {

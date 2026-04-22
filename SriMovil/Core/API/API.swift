@@ -71,4 +71,8 @@ extension URL {
     
     static let login = API.baseURL.appending(path: "movil-servicios/api/v2.0/secured")
     
+    // MARK: - Banner
+    
+    static let banner = API.baseURL.appending(path: "movil-servicios/api/v1.0/banner")
+    
 }

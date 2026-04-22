@@ -16,7 +16,7 @@ extension Logger {
     
     // MARK: - Feature Loggers
     
-    /// Logger for Estado Tributario
+    /// Logger para Estado Tributario
     static let estadoTributario = Logger(subsystem: subsystem, category: "Estado Tributario")
     
     /// Logger for Deudas
@@ -24,6 +24,9 @@ extension Logger {
     
     /// Logger para Matriculación Vehicular
     static let matriculacion = Logger(subsystem: subsystem, category: "Matriculacion")
+    
+    /// Logger para Banner
+    static let banner = Logger(subsystem: subsystem, category: "Banner")
     
     // MARK: - Log for Core Services
     

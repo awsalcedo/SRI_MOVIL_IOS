@@ -109,6 +109,11 @@
 		502EB8242F759DB600BF64DD /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		502EB8292F75C26000BF64DD /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		502EB82C2F75D07D00BF64DD /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
+		5071956F2F980B00000A3677 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
+		507195732F980C39000A3677 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
+		507195782F980E8B000A3677 /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
+		5071957F2F9816A8000A3677 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
+		507195852F982009000A3677 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		509ACB302F747D3A00894155 /* API */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = API; sourceTree = "<group>"; };
 		509ACB392F74802800894155 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
 		509ACDB02F748D8C00894155 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
@@ -149,6 +154,18 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		5071956E2F980ADE000A3677 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				507195852F982009000A3677 /* Views */,
+				5071957F2F9816A8000A3677 /* ViewModel */,
+				507195782F980E8B000A3677 /* Dto */,
+				507195732F980C39000A3677 /* Model */,
+				5071956F2F980B00000A3677 /* Interactor */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
 		FA2A42832C5B1CE000A021A0 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +177,7 @@
 		FA2A42842C5B1CE800A021A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5071956E2F980ADE000A3677 /* Banner */,
 				500684FE2F92D5D900911301 /* Home */,
 				FA2A43112C5B26AA00A021A0 /* ValidacionQR */,
 				FA2A430E2C5B267900A021A0 /* ValidacionDocumentos */,
@@ -490,6 +508,11 @@
 				502EB8242F759DB600BF64DD /* Resources */,
 				502EB8292F75C26000BF64DD /* Views */,
 				502EB82C2F75D07D00BF64DD /* Domain */,
+				5071956F2F980B00000A3677 /* Interactor */,
+				507195732F980C39000A3677 /* Model */,
+				507195782F980E8B000A3677 /* Dto */,
+				5071957F2F9816A8000A3677 /* ViewModel */,
+				507195852F982009000A3677 /* Views */,
 				509ACB302F747D3A00894155 /* API */,
 				509ACB392F74802800894155 /* Extensions */,
 				509ACDB02F748D8C00894155 /* Interactor */,
