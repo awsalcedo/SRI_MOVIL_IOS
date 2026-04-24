@@ -25,7 +25,6 @@
 		FA2A428C2C5B1D9100A021A0 /* CalculadorasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A428B2C5B1D9100A021A0 /* CalculadorasView.swift */; };
 		FA2A428F2C5B1DC000A021A0 /* CertificadosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A428E2C5B1DC000A021A0 /* CertificadosView.swift */; };
 		FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42912C5B1DEB00A021A0 /* CitaPreviaView.swift */; };
-		FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42962C5B1E3F00A021A0 /* LoginView.swift */; };
 		FA2A429A2C5B1E6B00A021A0 /* ConfiguracionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A42992C5B1E6B00A021A0 /* ConfiguracionView.swift */; };
 		FA2A429D2C5B1E9D00A021A0 /* ContactenosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A429C2C5B1E9D00A021A0 /* ContactenosView.swift */; };
 		FA2A42A02C5B1ECF00A021A0 /* DenunciasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A429F2C5B1ECF00A021A0 /* DenunciasView.swift */; };
@@ -69,7 +68,6 @@
 		FA2A428B2C5B1D9100A021A0 /* CalculadorasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadorasView.swift; sourceTree = "<group>"; };
 		FA2A428E2C5B1DC000A021A0 /* CertificadosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificadosView.swift; sourceTree = "<group>"; };
 		FA2A42912C5B1DEB00A021A0 /* CitaPreviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitaPreviaView.swift; sourceTree = "<group>"; };
-		FA2A42962C5B1E3F00A021A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FA2A42992C5B1E6B00A021A0 /* ConfiguracionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionView.swift; sourceTree = "<group>"; };
 		FA2A429C2C5B1E9D00A021A0 /* ContactenosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactenosView.swift; sourceTree = "<group>"; };
 		FA2A429F2C5B1ECF00A021A0 /* DenunciasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenunciasView.swift; sourceTree = "<group>"; };
@@ -109,11 +107,18 @@
 		502EB8242F759DB600BF64DD /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		502EB8292F75C26000BF64DD /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		502EB82C2F75D07D00BF64DD /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
+		505B7D992F9961CF006A404F /* Constants */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Constants; sourceTree = "<group>"; };
+		505B7D9C2F99620C006A404F /* Security */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Security; sourceTree = "<group>"; };
+		505B7DC52F9A6E46006A404F /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
+		505B7DD32F9A9C27006A404F /* Mapper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mapper; sourceTree = "<group>"; };
 		5071956F2F980B00000A3677 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
 		507195732F980C39000A3677 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
 		507195782F980E8B000A3677 /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
 		5071957F2F9816A8000A3677 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		507195852F982009000A3677 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		507195872F9901DB000A3677 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
+		5071958B2F9903A4000A3677 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+		5071958E2F9915E6000A3677 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
 		509ACB302F747D3A00894155 /* API */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = API; sourceTree = "<group>"; };
 		509ACB392F74802800894155 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
 		509ACDB02F748D8C00894155 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
@@ -166,6 +171,19 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
+		507195862F9901CE000A3677 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				505B7DD32F9A9C27006A404F /* Mapper */,
+				505B7DC52F9A6E46006A404F /* ViewModel */,
+				5071958E2F9915E6000A3677 /* Model */,
+				5071958B2F9903A4000A3677 /* View */,
+				507195872F9901DB000A3677 /* Interactor */,
+				500684692F917BD200911301 /* Dto */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		FA2A42832C5B1CE000A021A0 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +195,7 @@
 		FA2A42842C5B1CE800A021A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				507195862F9901CE000A3677 /* Login */,
 				5071956E2F980ADE000A3677 /* Banner */,
 				500684FE2F92D5D900911301 /* Home */,
 				FA2A43112C5B26AA00A021A0 /* ValidacionQR */,
@@ -264,8 +283,6 @@
 		FA2A42932C5B1DF700A021A0 /* ComprobantesElectronicos */ = {
 			isa = PBXGroup;
 			children = (
-				500684692F917BD200911301 /* Dto */,
-				FA2A42962C5B1E3F00A021A0 /* LoginView.swift */,
 			);
 			path = ComprobantesElectronicos;
 			sourceTree = "<group>";
@@ -415,6 +432,8 @@
 		FA2AC8DB2CB1C36E00B44A5E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				505B7D9C2F99620C006A404F /* Security */,
+				505B7D992F9961CF006A404F /* Constants */,
 				50D6D2C62F7716870000820B /* Models */,
 				502EB82C2F75D07D00BF64DD /* Domain */,
 				502EB8242F759DB600BF64DD /* Resources */,
@@ -508,11 +527,18 @@
 				502EB8242F759DB600BF64DD /* Resources */,
 				502EB8292F75C26000BF64DD /* Views */,
 				502EB82C2F75D07D00BF64DD /* Domain */,
+				505B7D992F9961CF006A404F /* Constants */,
+				505B7D9C2F99620C006A404F /* Security */,
+				505B7DC52F9A6E46006A404F /* ViewModel */,
+				505B7DD32F9A9C27006A404F /* Mapper */,
 				5071956F2F980B00000A3677 /* Interactor */,
 				507195732F980C39000A3677 /* Model */,
 				507195782F980E8B000A3677 /* Dto */,
 				5071957F2F9816A8000A3677 /* ViewModel */,
 				507195852F982009000A3677 /* Views */,
+				507195872F9901DB000A3677 /* Interactor */,
+				5071958B2F9903A4000A3677 /* View */,
+				5071958E2F9915E6000A3677 /* Model */,
 				509ACB302F747D3A00894155 /* API */,
 				509ACB392F74802800894155 /* Extensions */,
 				509ACDB02F748D8C00894155 /* Interactor */,
@@ -611,7 +637,6 @@
 				FA2A42F72C5B246800A021A0 /* HttpClientErrorMapper.swift in Sources */,
 				FA2A42922C5B1DEB00A021A0 /* CitaPreviaView.swift in Sources */,
 				FA2A42FC2C5B253F00A021A0 /* ConsultasView.swift in Sources */,
-				FA2A42972C5B1E3F00A021A0 /* LoginView.swift in Sources */,
 				FA2A42A02C5B1ECF00A021A0 /* DenunciasView.swift in Sources */,
 				FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */,
 				5071956D2F967692000A3677 /* SriTabView.swift in Sources */,

@@ -28,6 +28,9 @@ extension Logger {
     /// Logger para Banner
     static let banner = Logger(subsystem: subsystem, category: "Banner")
     
+    /// Logger para Login
+    static let login = Logger(subsystem: subsystem, category: "Login")
+    
     // MARK: - Log for Core Services
     
     static let core = Logger(subsystem: subsystem, category: "Core")

@@ -13,3 +13,5 @@ enum ViewState<T: Sendable> {
     case success(T) // Cuando los datos se cargan correctamente
     case failure(message: String, isInlineFieldError: Bool) // En caso de error
 }
+
+extension ViewState: Equatable where T: Equatable {}

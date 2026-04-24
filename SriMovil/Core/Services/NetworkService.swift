@@ -31,7 +31,7 @@ import Foundation
 final class NetworkService: NetworkServiceProtocol, Sendable {
     
     // MARK: - Propiedades Privadas
-        
+    
     /// Sesión utilizada para ejecutar solicitudes HTTP.
     ///
     /// Puede ser inyectada externamente para pruebas o configuraciones
@@ -58,7 +58,7 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
     private let pinningDelegate: SSLPinningDelegate?
     
     // MARK: - Inicializador
-        
+    
     /// Crea una nueva instancia de `NetworkService`.
     ///
     /// - Parameters:
@@ -119,7 +119,7 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
     }
     
     // MARK: - Funciones Públicas
-        
+    
     /// Ejecuta una solicitud HTTP GET y decodifica la respuesta al tipo esperado.
     ///
     /// - Parameter url: URL del endpoint a consumir.
@@ -192,21 +192,21 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
     /// )
     ///
     func post<Body: Encodable & Sendable, Response: Decodable & Sendable>(
-            url: URL,
-            body: Body,
-            auth: AuthType? = nil
-        ) async throws -> Response {
-            let request = try URLRequest.jsonPOST(
-                url: url,
-                body: body,
-                auth: auth,
-                encoder: encoder
-            )
-            return try await perform(request)
-        }
+        url: URL,
+        body: Body,
+        auth: AuthType? = nil
+    ) async throws -> Response {
+        let request = try URLRequest.jsonPOST(
+            url: url,
+            body: body,
+            auth: auth,
+            encoder: encoder
+        )
+        return try await perform(request)
+    }
     
     // MARK: - Funciones Privadas
-        
+    
     /// Ejecuta el `URLRequest`, valida la respuesta HTTP y decodifica el cuerpo
     /// al tipo esperado.
     ///
@@ -249,17 +249,27 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
     /// transforman a errores tipados para facilitar su manejo en capas superiores.
     ///
     /// - Note:
-    /// En el caso de `404`, si la respuesta contiene JSON compatible con
+    /// En los estados `401` y `404`, si la respuesta contiene JSON compatible con
     /// `SRIErrorResponseDTO`, se intenta extraer el mensaje proporcionado
     /// por el backend para enriquecer el error.
     private func validateResponse(data: Data, response: HTTPURLResponse) throws {
         switch response.statusCode {
         case 200...299:
             return
+            
         case 400:
             throw NetworkError.badRequest
+            
         case 401:
-            throw NetworkError.unauthorized
+            let contentType = response.value(forHTTPHeaderField: "Content-Type") ?? ""
+            
+            if contentType.localizedCaseInsensitiveContains("application/json"),
+               let backError = try? decoder.decode(SRIErrorResponseDTO.self, from: data) {
+                throw NetworkError.unauthorized(message: backError.mensaje)
+            } else {
+                throw NetworkError.unauthorized()
+            }
+            
         case 404:
             let contentType = response.value(forHTTPHeaderField: "Content-Type") ?? ""
             
@@ -269,12 +279,16 @@ final class NetworkService: NetworkServiceProtocol, Sendable {
             } else {
                 throw NetworkError.serverError(response.statusCode)
             }
+            
         case 406:
             throw NetworkError.notAcceptable
+            
         case 422:
             throw NetworkError.validateError
+            
         case 500...599:
             throw NetworkError.serverError(response.statusCode)
+            
         default:
             throw NetworkError.unknown(response.statusCode)
         }

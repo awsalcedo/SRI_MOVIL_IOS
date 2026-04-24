@@ -56,6 +56,9 @@
     "Calculadoras" : {
 
     },
+    "Cambiar de usuario" : {
+
+    },
     "Cargando banner informativo..." : {
 
     },
@@ -324,10 +327,10 @@
     "Ingresa un RUC para consultar el estado tributario" : {
 
     },
-    "Ingresar" : {
+    "Limpiar campo" : {
 
     },
-    "Limpiar campo" : {
+    "Mostrar contraseña" : {
 
     },
     "No existen deudas" : {
@@ -363,6 +366,9 @@
     "Obligaciones pendientes" : {
 
     },
+    "Ocultar contraseña" : {
+
+    },
     "Periodos" : {
 
     },
@@ -396,6 +402,9 @@
     "Selecciona el tipo de documento e ingresa la información requerida para consultar tus deudas." : {
 
     },
+    "Servicio de Rentas Internas" : {
+
+    },
     "Servicios" : {
 
     },
@@ -406,6 +415,9 @@
 
     },
     "Sin valores pendientes" : {
+
+    },
+    "SRI Móvil" : {
 
     },
     "SRIMOVIL" : {
