@@ -14,7 +14,6 @@ struct ConsultasView: View {
     
     @State private var viewModel = ServiciosConsultaViewModel()
     @State private var showConfiguracion = false
-    @State private var showLogin = false
     
     // MARK: - Body
     
@@ -38,11 +37,11 @@ struct ConsultasView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 8) {
-                        Button {
-                            showLogin = true
-                        } label: {
-                            Image(systemName: "person.crop.circle")
-                        }
+                        /*Button {
+                         showLogin = true
+                         } label: {
+                         Image(systemName: "person.crop.circle")
+                         }*/
                         
                         Button {
                             showConfiguracion = true
@@ -56,8 +55,27 @@ struct ConsultasView: View {
             .sheet(isPresented: $showConfiguracion) {
                 ConfiguracionView()
             }
-            .sheet(isPresented: $showLogin) {
-                LoginView()
+            .sheet(
+                isPresented: Binding(
+                    get: { viewModel.showLogin },
+                    set: { newValue in
+                        if !newValue {
+                            viewModel.dismissLogin()
+                        }
+                    }
+                )
+            ) {
+                LoginView { model in
+                    viewModel.didLoginSuccessfully(model)
+                }
+            }
+            .navigationDestination(
+                isPresented: Binding(
+                    get: { viewModel.showComprobantesElectronicos },
+                    set: { viewModel.showComprobantesElectronicos = $0 }
+                )
+            ) {
+                ComprobantesElectronicosView(razonSocial: viewModel.razonSocialAutenticada)
             }
             .task {
                 if case .idle = viewModel.state {
@@ -93,12 +111,7 @@ struct ConsultasView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
                                 ForEach(viewModel.serviciosDestacados) { servicio in
-                                    NavigationLink {
-                                        ServicioDestinationBuilder.build(for: servicio.destino)
-                                    } label: {
-                                        ServicioDestacadoCard(servicio: servicio)
-                                    }
-                                    .buttonStyle(.plain)
+                                    servicioDestacadoDestination(for: servicio)
                                 }
                             }
                             .padding(.horizontal, SRISpacing.large)
@@ -112,12 +125,7 @@ struct ConsultasView: View {
                     SectionBlock(title: categoria.titulo) {
                         VStack(spacing: 10) {
                             ForEach(items) { servicio in
-                                NavigationLink {
-                                    ServicioDestinationBuilder.build(for: servicio.destino)
-                                } label: {
-                                    ServicioRowCard(servicio: servicio)
-                                }
-                                .buttonStyle(.plain)
+                                servicioRowDestination(for: servicio)
                             }
                         }
                         .padding(.horizontal)
@@ -137,6 +145,48 @@ struct ConsultasView: View {
         }
         .scrollIndicators(.hidden)
     }
+    
+    // MARK: - Navigation Builders
+    
+    @ViewBuilder
+    private func servicioRowDestination(for servicio: Servicio) -> some View {
+        if viewModel.requiresLogin(servicio) {
+            Button {
+                viewModel.didSelectServicio(servicio)
+            } label: {
+                ServicioRowCard(servicio: servicio)
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                ServicioDestinationBuilder.build(for: servicio.destino)
+            } label: {
+                ServicioRowCard(servicio: servicio)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+    
+    @ViewBuilder
+    private func servicioDestacadoDestination(for servicio: Servicio) -> some View {
+        if viewModel.requiresLogin(servicio) {
+            Button {
+                viewModel.didSelectServicio(servicio)
+            } label: {
+                ServicioDestacadoCard(servicio: servicio)
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                ServicioDestinationBuilder.build(for: servicio.destino)
+            } label: {
+                ServicioDestacadoCard(servicio: servicio)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+    
+    // MARK: - Helpers
     
     private func errorView(message: String) -> some View {
         ContentUnavailableView {

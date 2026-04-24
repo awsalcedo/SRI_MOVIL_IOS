@@ -34,14 +34,23 @@ struct LoginView: View {
     @State private var viewModel: LoginViewModel
     @Environment(\.openURL) private var openURL
     @FocusState private var focusedField: Field?
+    @State private var didAttemptLogin = false
+    private let onLoginSuccess: (LoginScreenModel) -> Void
+    private let onSessionEnded: () -> Void
     
     // MARK: - Initializers
     
     /// Crea una nueva instancia de la pantalla de login.
     ///
     /// - Parameter viewModel: ViewModel que coordina la lógica de presentación.
-    init(viewModel: LoginViewModel = LoginViewModel()) {
+    init(
+        viewModel: LoginViewModel = LoginViewModel(),
+        onLoginSuccess: @escaping (LoginScreenModel) -> Void = {_ in },
+        onSessionEnded: @escaping () -> Void = {}
+    ) {
         self.viewModel = viewModel
+        self.onLoginSuccess = onLoginSuccess
+        self.onSessionEnded = onSessionEnded
     }
     
     // MARK: - Computed Properties
@@ -132,6 +141,15 @@ struct LoginView: View {
                 withAnimation(.easeInOut(duration: 0.22)) {
                     proxy.scrollTo(newValue, anchor: .center)
                 }
+            }
+            .onChange(of: viewModel.state) { _, newState in
+                guard didAttemptLogin,
+                      case .success(let model) = newState,
+                      model.autenticado else { return }
+                
+                didAttemptLogin = false
+                
+                onLoginSuccess(model)
             }
         }
     }
@@ -260,6 +278,8 @@ struct LoginView: View {
                         dismissKeyboard()
                         
                         if !isSubmitDisabled {
+                            didAttemptLogin = true
+                            
                             Task {
                                 await viewModel.autenticar()
                             }
@@ -285,6 +305,7 @@ struct LoginView: View {
                 isEnabled: !isSubmitDisabled
             ) {
                 dismissKeyboard()
+                didAttemptLogin = true
                 
                 Task {
                     await viewModel.autenticar()
@@ -320,6 +341,8 @@ struct LoginView: View {
                             dismissKeyboard()
                             
                             if !isSubmitDisabled {
+                                didAttemptLogin = true
+                                
                                 Task {
                                     await viewModel.autenticar()
                                 }
@@ -345,6 +368,7 @@ struct LoginView: View {
                     isEnabled: !isSubmitDisabled
                 ) {
                     dismissKeyboard()
+                    didAttemptLogin = true
                     
                     Task {
                         await viewModel.autenticar()
@@ -370,13 +394,11 @@ struct LoginView: View {
                     isLoading: false,
                     isEnabled: true
                 ) {
-                    dismissKeyboard()
-                    viewModel.cerrarSesion()
+                    cerrarSesion()
                 }
                 
                 Button {
-                    dismissKeyboard()
-                    viewModel.cambiarUsuario()
+                    cambiarUsuario()
                 } label: {
                     Text("Cambiar de usuario")
                         .font(.headline)
@@ -485,6 +507,22 @@ struct LoginView: View {
     
     private func dismissKeyboard() {
         focusedField = nil
+    }
+    
+    /// Cierra la sesión actual y notifica a la vista contenedora
+    /// que el usuario ya no debe permanecer en una pantalla protegida.
+    private func cerrarSesion() {
+        dismissKeyboard()
+        viewModel.cerrarSesion()
+        onSessionEnded()
+    }
+
+    /// Elimina la sesión e identidad actual y notifica a la vista contenedora
+    /// que el usuario debe salir del flujo protegido.
+    private func cambiarUsuario() {
+        dismissKeyboard()
+        viewModel.cambiarUsuario()
+        onSessionEnded()
     }
 }
 
