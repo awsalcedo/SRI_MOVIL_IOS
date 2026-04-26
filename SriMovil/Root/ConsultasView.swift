@@ -14,6 +14,7 @@ struct ConsultasView: View {
     
     @State private var viewModel = ServiciosConsultaViewModel()
     @State private var showConfiguracion = false
+    @State private var showAccountLogin = false
     
     // MARK: - Body
     
@@ -75,7 +76,33 @@ struct ConsultasView: View {
                     set: { viewModel.showComprobantesElectronicos = $0 }
                 )
             ) {
-                ComprobantesElectronicosView(razonSocial: viewModel.razonSocialAutenticada)
+                ComprobantesElectronicosView(
+                    razonSocial: viewModel.razonSocialAutenticada,
+                    onOpenAccount: {
+                        showAccountLogin = true
+                    }
+                )
+            }
+            .fullScreenCover(isPresented: $showAccountLogin) {
+                NavigationStack {
+                    LoginView(
+                        onLoginSuccess: { _ in
+                            showAccountLogin = false
+                        },
+                        onSessionEnded: {
+                            viewModel.showComprobantesElectronicos = false
+                            showAccountLogin = false
+                        },
+                        onSwitchUser: {
+                            viewModel.showComprobantesElectronicos = false
+                        },
+                        onCancelAfterSwitchUser: {
+                            showAccountLogin = false
+                        }
+                    )
+                    .navigationTitle("Cuenta")
+                    .navigationBarTitleDisplayMode(.inline)
+                }
             }
             .task {
                 if case .idle = viewModel.state {

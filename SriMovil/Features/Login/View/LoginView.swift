@@ -35,8 +35,11 @@ struct LoginView: View {
     @Environment(\.openURL) private var openURL
     @FocusState private var focusedField: Field?
     @State private var didAttemptLogin = false
+    @State private var didSwitchUser = false
     private let onLoginSuccess: (LoginScreenModel) -> Void
     private let onSessionEnded: () -> Void
+    private let onSwitchUser: () -> Void
+    private let onCancelAfterSwitchUser: () -> Void
     
     // MARK: - Initializers
     
@@ -46,11 +49,15 @@ struct LoginView: View {
     init(
         viewModel: LoginViewModel = LoginViewModel(),
         onLoginSuccess: @escaping (LoginScreenModel) -> Void = {_ in },
-        onSessionEnded: @escaping () -> Void = {}
+        onSessionEnded: @escaping () -> Void = {},
+        onSwitchUser: @escaping () -> Void = {},
+        onCancelAfterSwitchUser: @escaping () -> Void = {}
     ) {
         self.viewModel = viewModel
         self.onLoginSuccess = onLoginSuccess
         self.onSessionEnded = onSessionEnded
+        self.onSwitchUser = onSwitchUser
+        self.onCancelAfterSwitchUser = onCancelAfterSwitchUser
     }
     
     // MARK: - Computed Properties
@@ -148,6 +155,7 @@ struct LoginView: View {
                       model.autenticado else { return }
                 
                 didAttemptLogin = false
+                didSwitchUser = false
                 
                 onLoginSuccess(model)
             }
@@ -310,6 +318,22 @@ struct LoginView: View {
                 Task {
                     await viewModel.autenticar()
                 }
+            }
+            
+            if didSwitchUser {
+                Button {
+                    dismissKeyboard()
+                    onCancelAfterSwitchUser()
+                } label: {
+                    Text("Volver a Consultas")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(SRIColors.primary)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.plain)
+                .transition(.opacity)
+
             }
         }
     }
@@ -522,7 +546,8 @@ struct LoginView: View {
     private func cambiarUsuario() {
         dismissKeyboard()
         viewModel.cambiarUsuario()
-        onSessionEnded()
+        didSwitchUser = true
+        onSwitchUser()
     }
 }
 

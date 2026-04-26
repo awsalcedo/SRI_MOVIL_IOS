@@ -10,9 +10,15 @@ import SwiftUI
 struct ComprobantesElectronicosView: View {
     
     let razonSocial: String
+    let onOpenAccount: () -> Void
     
-    @Environment(\.dismiss) private var dismiss
-    @State private var showLogin = false
+    init(
+        razonSocial: String,
+        onOpenAccount: @escaping () -> Void = {}
+    ) {
+        self.razonSocial = razonSocial
+        self.onOpenAccount = onOpenAccount
+    }
     
     var body: some View {
         ScrollView {
@@ -46,20 +52,12 @@ struct ComprobantesElectronicosView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    showLogin = true
+                    onOpenAccount()
                 } label: {
                     Image(systemName: "person.crop.circle")
                 }
                 .accessibilityLabel("Cuenta")
             }
-        }
-        .sheet(isPresented: $showLogin) {
-            LoginView(
-                onSessionEnded: {
-                    showLogin = false
-                    dismiss()
-                }
-            )
         }
     }
 }
