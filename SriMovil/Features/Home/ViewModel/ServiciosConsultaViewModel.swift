@@ -29,6 +29,8 @@ final class ServiciosConsultaViewModel: ServiciosConsultaViewModelProtocol {
     @ObservationIgnored
     private let loadStoredSessionInteractor: LoadStoredSessionInteractorProtocol
     
+    private let maxServiciosPrincipales = 4
+    
     // MARK: - Inicializadores
     
     init(
@@ -57,14 +59,44 @@ final class ServiciosConsultaViewModel: ServiciosConsultaViewModelProtocol {
         }
     }
     
-    var serviciosDestacados: [Servicio] {
-        serviciosFiltrados.filter(\.esDestacado)
+    var serviciosNativosFiltrados: [Servicio] {
+        serviciosFiltrados.filter { !$0.destino.isExternal }
+    }
+
+    var serviciosExternosFiltrados: [Servicio] {
+        serviciosFiltrados.filter { $0.destino.isExternal }
     }
     
-    var categoriasVisibles: [CategoriaServicio] {
-        CategoriaServicio.allCases.filter { categoria in
-            serviciosFiltrados.contains(where: {$0.categoria == categoria})
+    var serviciosDestacados: [Servicio] {
+        serviciosNativosFiltrados.filter { servicio in
+            servicio.esDestacado || servicio.destino == .comprobantes
         }
+    }
+
+    var serviciosDisponibles: [Servicio] {
+        let destinosDestacados = Set(serviciosDestacados.map(\.destino))
+        
+        return serviciosNativosFiltrados.filter { servicio in
+            !destinosDestacados.contains(servicio.destino)
+        }
+    }
+
+    var serviciosPrincipales: [Servicio] {
+        Array(serviciosDisponibles.prefix(maxServiciosPrincipales))
+    }
+
+    var hasMoreServiciosNativos: Bool {
+        serviciosDisponibles.count > maxServiciosPrincipales
+    }
+
+    var categoriasVisibles: [CategoriaServicio] {
+        CategoriaServicio.ordered.filter { categoria in
+            serviciosDisponibles.contains { $0.categoria == categoria }
+        }
+    }
+
+    var hasServiciosFiltrados: Bool {
+        !serviciosNativosFiltrados.isEmpty || !serviciosExternosFiltrados.isEmpty
     }
     
     // MARK: - Funciones
@@ -86,7 +118,7 @@ final class ServiciosConsultaViewModel: ServiciosConsultaViewModelProtocol {
     }
     
     func servicios(for categoria: CategoriaServicio) -> [Servicio] {
-        serviciosFiltrados.filter { $0.categoria == categoria }
+        serviciosDisponibles.filter { $0.categoria == categoria }
     }
     
     func reintentarCarga() async {

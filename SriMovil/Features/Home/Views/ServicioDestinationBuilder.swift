@@ -2,11 +2,12 @@
 //  ServicioDestinationBuilder.swift
 //  SriMovil
 //
-//  Created by usradmin on 20/4/26.
+//  Created by ALEX WLADIMIR SALCEDO SILVA on 20/4/26.
 //
 
 import SwiftUI
 
+@MainActor
 struct ServicioDestinationBuilder {
     
     @ViewBuilder
@@ -22,16 +23,10 @@ struct ServicioDestinationBuilder {
             DeudasView()
         case .validezDocumentos:
             ValidacionDocumentosView()
-        case .impuestoRenta:
-            ImpuestoRentaView()
-        case .certificados:
-            CertificadosView()
         case .seguimientoTramites:
             SeguimientoTramitesView()
         case .validacionQR:
             ValidacionQRView()
-        case .citaPrevia:
-            CitaPreviaView()
         case .calculadoras:
             CalculadorasView()
         case .denuncias:
@@ -40,8 +35,11 @@ struct ServicioDestinationBuilder {
             ContactenosView()
         case .simar:
             SimarView()
-        case .facturadorSRI:
-            FacturadorSRIView()
+        case .impuestoRenta,
+                .certificados,
+                .citaPrevia,
+                .facturadorSRI:
+            EmptyView()
         }
     }
 }

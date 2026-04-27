@@ -133,6 +133,13 @@ struct ConsultasView: View {
                     .padding(.top, 8)
                     .padding(.horizontal, SRISpacing.large)
                 
+                if !viewModel.serviciosExternosFiltrados.isEmpty {
+                    SectionBlock(title: "Servicios en línea") {
+                        ServiciosExternosGroupedList(servicios: viewModel.serviciosExternosFiltrados)
+                            .padding(.horizontal, SRISpacing.large)
+                    }
+                }
+                
                 if !viewModel.serviciosDestacados.isEmpty {
                     SectionBlock(title: "Consultas frecuentes") {
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -146,20 +153,36 @@ struct ConsultasView: View {
                     }
                 }
                 
-                ForEach(viewModel.categoriasVisibles) { categoria in
-                    let items = viewModel.servicios(for: categoria)
-                    
-                    SectionBlock(title: categoria.titulo) {
+                if !viewModel.serviciosPrincipales.isEmpty {
+                    SectionBlock(title: "Consultas disponibles") {
                         VStack(spacing: 10) {
-                            ForEach(items) { servicio in
+                            ForEach(viewModel.serviciosPrincipales) { servicio in
                                 servicioRowDestination(for: servicio)
+                            }
+                            
+                            if viewModel.hasMoreServiciosNativos {
+                                NavigationLink {
+                                    ServiciosDisponiblesView(
+                                        categorias: viewModel.categoriasVisibles,
+                                        serviciosProvider: { categoria in
+                                            viewModel.servicios(for: categoria)
+                                        },
+                                        rowBuilder: { servicio in
+                                            AnyView(servicioRowDestination(for: servicio))
+                                        }
+                                    )
+                                } label: {
+                                    VerMasServiciosRow()
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
                         .padding(.horizontal)
                     }
                 }
                 
-                if viewModel.serviciosFiltrados.isEmpty {
+                
+                if !viewModel.hasServiciosFiltrados {
                     ContentUnavailableView(
                         "No se encontraron servicios",
                         systemImage: "magnifyingglass",

@@ -2,7 +2,7 @@
 //  ServicioRowCard.swift
 //  SriMovil
 //
-//  Created by usradmin on 17/4/26.
+//  Created by ALEX WLADIMIR SALCEDO SILVA on 17/4/26.
 //
 
 import SwiftUI

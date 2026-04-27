@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		500266F02CB568E000988A6B /* SriModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 500266EE2CB568E000988A6B /* SriModel.xcdatamodeld */; };
+		5030F42C2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F42B2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift */; };
+		5030F4302F9FEEA300B704BD /* VerMasServiciosRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */; };
+		5030F4322F9FEEE000B704BD /* ServiciosDisponiblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */; };
 		5071956D2F967692000A3677 /* SriTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071956C2F967692000A3677 /* SriTabView.swift */; };
 		508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B02CB6F3970040D3B6 /* ViewState.swift */; };
 		508C72B32CB878180040D3B6 /* CustomTextFieldButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */; };
@@ -51,6 +54,9 @@
 
 /* Begin PBXFileReference section */
 		500266EF2CB568E000988A6B /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
+		5030F42B2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosExternosGroupedList.swift; sourceTree = "<group>"; };
+		5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMasServiciosRow.swift; sourceTree = "<group>"; };
+		5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosDisponiblesView.swift; sourceTree = "<group>"; };
 		5071956C2F967692000A3677 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldButtonView.swift; sourceTree = "<group>"; };
@@ -228,6 +234,9 @@
 			children = (
 				FA2A42FB2C5B253F00A021A0 /* ConsultasView.swift */,
 				50A99E2A2CC1A7A100045E9C /* ConsultasCardView.swift */,
+				5030F42B2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift */,
+				5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */,
+				5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -627,6 +636,7 @@
 				FA2A429D2C5B1E9D00A021A0 /* ContactenosView.swift in Sources */,
 				FA2A42F32C5B243F00A021A0 /* FormatterUtils.swift in Sources */,
 				FA2AC8E82CB1C84C00B44A5E /* AuthorizationMethod.swift in Sources */,
+				5030F4302F9FEEA300B704BD /* VerMasServiciosRow.swift in Sources */,
 				508C72B52CBD85800040D3B6 /* HttpClientError.swift in Sources */,
 				508C72B72CBDA4BC0040D3B6 /* ErrorResponse.swift in Sources */,
 				500266F02CB568E000988A6B /* SriModel.xcdatamodeld in Sources */,
@@ -643,8 +653,10 @@
 				FA2A42A02C5B1ECF00A021A0 /* DenunciasView.swift in Sources */,
 				FA2A43042C5B25CE00A021A0 /* PoliticaProteccionDatosView.swift in Sources */,
 				5071956D2F967692000A3677 /* SriTabView.swift in Sources */,
+				5030F4322F9FEEE000B704BD /* ServiciosDisponiblesView.swift in Sources */,
 				FA2A43172C5B273500A021A0 /* ButtonPersonalizadoView.swift in Sources */,
 				50D6D2852F76C6BD0000820B /* SRITextFieldButtonView.swift in Sources */,
+				5030F42C2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift in Sources */,
 				FA2A429A2C5B1E6B00A021A0 /* ConfiguracionView.swift in Sources */,
 				FA2A42AC2C5B1FD700A021A0 /* ImpuestoRentaView.swift in Sources */,
 				FA2A42A92C5B1FA000A021A0 /* FacturadorSRIView.swift in Sources */,
