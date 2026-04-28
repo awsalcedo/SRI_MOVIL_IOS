@@ -12,13 +12,3 @@ struct BannerDto: Decodable, Sendable {
     let url: String
     let predeterminado: Bool
 }
-
-extension BannerDto {
-    func toDomain() -> BannerModel {
-        BannerModel(
-            imagen64: imagen64,
-            url: url,
-            predeterminado: predeterminado
-        )
-    }
-}

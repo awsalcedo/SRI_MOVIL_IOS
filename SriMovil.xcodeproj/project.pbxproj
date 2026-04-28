@@ -113,16 +113,14 @@
 		502EB8242F759DB600BF64DD /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		502EB8292F75C26000BF64DD /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		502EB82C2F75D07D00BF64DD /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
+		5030F47E2FA1143300B704BD /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
+		5030F4862FA1159800B704BD /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		5030F4962FA12A7600B704BD /* Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Presentation; sourceTree = "<group>"; };
 		505B7D992F9961CF006A404F /* Constants */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Constants; sourceTree = "<group>"; };
 		505B7D9C2F99620C006A404F /* Security */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Security; sourceTree = "<group>"; };
 		505B7DC52F9A6E46006A404F /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		505B7DD32F9A9C27006A404F /* Mapper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mapper; sourceTree = "<group>"; };
 		505B7DE52F9BB631006A404F /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
-		5071956F2F980B00000A3677 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
-		507195732F980C39000A3677 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
-		507195782F980E8B000A3677 /* Dto */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dto; sourceTree = "<group>"; };
-		5071957F2F9816A8000A3677 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
-		507195852F982009000A3677 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		507195872F9901DB000A3677 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
 		5071958B2F9903A4000A3677 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		5071958E2F9915E6000A3677 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
@@ -169,11 +167,9 @@
 		5071956E2F980ADE000A3677 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
-				507195852F982009000A3677 /* Views */,
-				5071957F2F9816A8000A3677 /* ViewModel */,
-				507195782F980E8B000A3677 /* Dto */,
-				507195732F980C39000A3677 /* Model */,
-				5071956F2F980B00000A3677 /* Interactor */,
+				5030F4962FA12A7600B704BD /* Presentation */,
+				5030F4862FA1159800B704BD /* Data */,
+				5030F47E2FA1143300B704BD /* Domain */,
 			);
 			path = Banner;
 			sourceTree = "<group>";
@@ -538,16 +534,14 @@
 				502EB8242F759DB600BF64DD /* Resources */,
 				502EB8292F75C26000BF64DD /* Views */,
 				502EB82C2F75D07D00BF64DD /* Domain */,
+				5030F47E2FA1143300B704BD /* Domain */,
+				5030F4862FA1159800B704BD /* Data */,
+				5030F4962FA12A7600B704BD /* Presentation */,
 				505B7D992F9961CF006A404F /* Constants */,
 				505B7D9C2F99620C006A404F /* Security */,
 				505B7DC52F9A6E46006A404F /* ViewModel */,
 				505B7DD32F9A9C27006A404F /* Mapper */,
 				505B7DE52F9BB631006A404F /* Views */,
-				5071956F2F980B00000A3677 /* Interactor */,
-				507195732F980C39000A3677 /* Model */,
-				507195782F980E8B000A3677 /* Dto */,
-				5071957F2F9816A8000A3677 /* ViewModel */,
-				507195852F982009000A3677 /* Views */,
 				507195872F9901DB000A3677 /* Interactor */,
 				5071958B2F9903A4000A3677 /* View */,
 				5071958E2F9915E6000A3677 /* Model */,
