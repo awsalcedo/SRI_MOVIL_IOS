@@ -12,4 +12,10 @@ struct DetallesRubro: Identifiable, Hashable, Codable, Sendable {
     let descripcion: String
     let anio: Int
     let valor: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case descripcion
+        case anio
+        case valor
+    }
 }

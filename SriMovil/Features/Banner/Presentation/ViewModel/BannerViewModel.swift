@@ -25,7 +25,7 @@ final class BannerViewModel: BannerViewModelProtocol {
     // MARK: Propiedades Privadas
     
     @ObservationIgnored
-    private let obtenerBannerUsecase: ObtenerBannerUseCaseProtocol
+    private let obtenerBannerUseCase: ObtenerBannerUseCaseProtocol
     
     // MARK: Propiedades
     
@@ -34,7 +34,7 @@ final class BannerViewModel: BannerViewModelProtocol {
     // MARK: Inicializadores
     
     init(obtenerBannerUseCase: ObtenerBannerUseCaseProtocol = ObtenerBannerUseCase()) {
-        self.obtenerBannerUsecase = obtenerBannerUseCase
+        self.obtenerBannerUseCase = obtenerBannerUseCase
     }
     
     // MARK: Funciones
@@ -43,7 +43,7 @@ final class BannerViewModel: BannerViewModelProtocol {
         state = .loading
         
         do {
-            let banner = try await obtenerBannerUsecase.execute()
+            let banner = try await obtenerBannerUseCase.execute()
             state = .success(banner)
         } catch {
             state = mapErrorToState(error)

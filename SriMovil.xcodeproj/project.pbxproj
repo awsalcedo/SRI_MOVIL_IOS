@@ -57,6 +57,7 @@
 		5030F42B2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosExternosGroupedList.swift; sourceTree = "<group>"; };
 		5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMasServiciosRow.swift; sourceTree = "<group>"; };
 		5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosDisponiblesView.swift; sourceTree = "<group>"; };
+		5030F4A32FA1624200B704BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5071956C2F967692000A3677 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldButtonView.swift; sourceTree = "<group>"; };
@@ -471,6 +472,7 @@
 			children = (
 				FAB712902C5B076100771790 /* SriMovil */,
 				FAB7128F2C5B076100771790 /* Products */,
+				5030F4A32FA1624200B704BD /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
