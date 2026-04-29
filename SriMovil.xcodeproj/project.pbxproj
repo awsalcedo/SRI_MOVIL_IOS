@@ -52,12 +52,23 @@
 		FAB712992C5B076300771790 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB712982C5B076300771790 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5030F4AC2FA25F6400B704BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAB712862C5B076100771790 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAB7128D2C5B076100771790;
+			remoteInfo = SriMovil;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		500266EF2CB568E000988A6B /* SriModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SriModel.xcdatamodel; sourceTree = "<group>"; };
 		5030F42B2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosExternosGroupedList.swift; sourceTree = "<group>"; };
 		5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMasServiciosRow.swift; sourceTree = "<group>"; };
 		5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosDisponiblesView.swift; sourceTree = "<group>"; };
 		5030F4A32FA1624200B704BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5030F4A82FA25F6400B704BD /* SriMovilTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SriMovilTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5071956C2F967692000A3677 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		508C72B22CB878180040D3B6 /* CustomTextFieldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldButtonView.swift; sourceTree = "<group>"; };
@@ -117,6 +128,7 @@
 		5030F47E2FA1143300B704BD /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
 		5030F4862FA1159800B704BD /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
 		5030F4962FA12A7600B704BD /* Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Presentation; sourceTree = "<group>"; };
+		5030F4A92FA25F6400B704BD /* SriMovilTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SriMovilTests; sourceTree = "<group>"; };
 		505B7D992F9961CF006A404F /* Constants */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Constants; sourceTree = "<group>"; };
 		505B7D9C2F99620C006A404F /* Security */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Security; sourceTree = "<group>"; };
 		505B7DC52F9A6E46006A404F /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
@@ -143,6 +155,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5030F4A52FA25F6400B704BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAB7128B2C5B076100771790 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB712902C5B076100771790 /* SriMovil */,
+				5030F4A92FA25F6400B704BD /* SriMovilTests */,
 				FAB7128F2C5B076100771790 /* Products */,
 				5030F4A32FA1624200B704BD /* README.md */,
 			);
@@ -480,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB7128E2C5B076100771790 /* SriMovil.app */,
+				5030F4A82FA25F6400B704BD /* SriMovilTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -510,6 +531,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5030F4A72FA25F6400B704BD /* SriMovilTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5030F4AE2FA25F6400B704BD /* Build configuration list for PBXNativeTarget "SriMovilTests" */;
+			buildPhases = (
+				5030F4A42FA25F6400B704BD /* Sources */,
+				5030F4A52FA25F6400B704BD /* Frameworks */,
+				5030F4A62FA25F6400B704BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5030F4AD2FA25F6400B704BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5030F4A92FA25F6400B704BD /* SriMovilTests */,
+			);
+			name = SriMovilTests;
+			packageProductDependencies = (
+			);
+			productName = SriMovilTests;
+			productReference = 5030F4A82FA25F6400B704BD /* SriMovilTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FAB7128D2C5B076100771790 /* SriMovil */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAB7129C2C5B076300771790 /* Build configuration list for PBXNativeTarget "SriMovil" */;
@@ -577,9 +621,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					5030F4A72FA25F6400B704BD = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = FAB7128D2C5B076100771790;
+					};
 					FAB7128D2C5B076100771790 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -601,11 +649,19 @@
 			projectRoot = "";
 			targets = (
 				FAB7128D2C5B076100771790 /* SriMovil */,
+				5030F4A72FA25F6400B704BD /* SriMovilTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5030F4A62FA25F6400B704BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAB7128C2C5B076100771790 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -618,6 +674,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5030F4A42FA25F6400B704BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAB7128A2C5B076100771790 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -668,7 +731,59 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5030F4AD2FA25F6400B704BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAB7128D2C5B076100771790 /* SriMovil */;
+			targetProxy = 5030F4AC2FA25F6400B704BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5030F4AF2FA25F6400B704BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92KHF647E9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asalcedo.SriMovilTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SriMovil.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SriMovil";
+			};
+			name = Debug;
+		};
+		5030F4B02FA25F6400B704BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92KHF647E9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asalcedo.SriMovilTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SriMovil.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SriMovil";
+			};
+			name = Release;
+		};
 		FAB7129A2C5B076300771790 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -853,6 +968,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5030F4AE2FA25F6400B704BD /* Build configuration list for PBXNativeTarget "SriMovilTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5030F4AF2FA25F6400B704BD /* Debug */,
+				5030F4B02FA25F6400B704BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FAB712892C5B076100771790 /* Build configuration list for PBXProject "SriMovil" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

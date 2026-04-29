@@ -1172,41 +1172,254 @@ DTO ❌ View
 
 ## Testing
 
-La arquitectura facilita pruebas unitarias mediante protocolos.
+El proyecto debe usar **Swift Testing**, el framework moderno de pruebas de Apple, para los nuevos tests unitarios.
 
-### Pruebas recomendadas
-
-#### UseCase
-
-Validar que el caso de uso invoque correctamente al repositorio.
+Swift Testing se identifica por el uso de:
 
 ```swift
-final class MockBannerRepository: BannerRepositoryProtocol {
-    var didCallObtenerBanner = false
+import Testing
+```
 
-    func obtenerBanner() async throws -> BannerModel {
-        didCallObtenerBanner = true
-        return BannerModel(
-            imagen64: "mock",
-            url: "https://example.com",
+y por sus APIs principales:
+
+```swift
+@Suite
+@Test
+#expect
+#require
+Issue.record
+```
+
+No se debe usar `XCTestCase` para los nuevos tests salvo que exista una razón puntual de compatibilidad.
+
+### Ubicación recomendada de tests
+
+Los tests deben vivir en un target separado, por ejemplo:
+
+```text
+SriMovilTests/
+```
+
+Estructura recomendada para mantener simetría con `Features/`:
+
+```text
+SriMovilTests/
+└── Features/
+    └── Banner/
+        ├── Data/
+        │   ├── Mappers/
+        │   │   └── BannerMapperTests.swift
+        │   └── Repositories/
+        │       └── BannerRepositoryTests.swift
+        │
+        ├── Domain/
+        │   ├── Models/
+        │   │   └── BannerModelTests.swift
+        │   └── UseCases/
+        │       └── ObtenerBannerUseCaseTests.swift
+        │
+        └── Presentation/
+            └── ViewModel/
+                └── BannerViewModelTests.swift
+```
+
+Los archivos de prueba deben pertenecer al target de tests:
+
+```text
+Target Membership → SriMovilTests ✅
+Target Membership → SriMovil ❌
+```
+
+### Cómo escribir tests con Swift Testing
+
+Un test básico con Swift Testing tiene esta forma:
+
+```swift
+import Testing
+@testable import SriMovil
+
+@Suite("BannerMapper Tests")
+struct BannerMapperTests {
+
+    @Test("toDomain maps all fields from BannerDto to BannerModel")
+    func toDomainMapsAllFields() {
+        // Given
+        let dto = BannerDto(
+            imagen64: "data:image/png;base64,dGVzdA==",
+            url: "https://www.sri.gob.ec",
             predeterminado: true
         )
+
+        // When
+        let model = BannerMapper.toDomain(dto)
+
+        // Then
+        #expect(model.imagen64 == dto.imagen64)
+        #expect(model.url == dto.url)
+        #expect(model.predeterminado == dto.predeterminado)
     }
 }
 ```
 
-#### ViewModel
+### `@Suite`
 
-Validar transiciones de estado:
+`@Suite` agrupa tests relacionados.
+
+Ejemplo:
+
+```swift
+@Suite("BannerModel Tests")
+struct BannerModelTests {
+}
+```
+
+Se recomienda usar `struct` para suites de Swift Testing.
+
+Cuando los tests comparten estado mutable global o usan recursos que no deben ejecutarse en paralelo, se puede marcar la suite como serializada:
+
+```swift
+@Suite("KeychainService Tests", .serialized)
+struct KeychainServiceTests {
+}
+```
+
+### `@Test`
+
+`@Test` declara un caso de prueba.
+
+Ejemplo:
+
+```swift
+@Test("destinationUrl returns URL when string is valid")
+func destinationUrlReturnsURLWhenStringIsValid() throws {
+}
+```
+
+La descripción debe explicar el comportamiento esperado, no repetir simplemente el nombre del método.
+
+### `#expect`
+
+`#expect` valida una condición esperada.
+
+Ejemplo:
+
+```swift
+#expect(model.url == dto.url)
+```
+
+Se usa para reemplazar validaciones tradicionales como `XCTAssertEqual`, `XCTAssertTrue` o `XCTAssertNil`.
+
+### `#require`
+
+`#require` se usa cuando un valor opcional debe existir para continuar el test.
+
+Ejemplo:
+
+```swift
+let url = try #require(banner.destinationUrl)
+#expect(url.absoluteString == "https://www.sri.gob.ec")
+```
+
+Si el valor es `nil`, el test falla de forma clara y no continúa.
+
+### `Issue.record`
+
+`Issue.record` registra explícitamente una falla cuando ocurre algo que no debía pasar.
+
+Ejemplo común al validar errores:
+
+```swift
+do {
+    _ = try await sut.execute()
+    Issue.record("Expected error to be thrown")
+} catch {
+    #expect(error as? NetworkError == .serverError)
+}
+```
+
+### Patrón Given - When - Then
+
+Los tests deben escribirse usando el patrón **Given - When - Then** para mejorar legibilidad y consistencia.
 
 ```text
-idle → loading → success
-idle → loading → failure
+Given  → preparo el escenario
+When   → ejecuto la acción que quiero probar
+Then   → valido el resultado esperado
 ```
+
+#### 1. Given: preparar el escenario
+
+Aquí se coloca todo lo necesario para que el test pueda ejecutarse.
+
+Incluye cosas como:
+
+- Crear el objeto que se va a probar, si no está creado.
+- Crear datos de entrada.
+- Configurar mocks o spies.
+- Indicar si un mock debe retornar éxito o error.
+- Definir el resultado esperado.
+
+Ejemplo:
+
+```swift
+// Given
+let expectedBanner = BannerModel(
+    imagen64: "data:image/png;base64,dGVzdA==",
+    url: "https://www.sri.gob.ec",
+    predeterminado: true
+)
+mockRepository.bannerToReturn = expectedBanner
+```
+
+#### 2. When: ejecutar la acción
+
+Aquí va una sola acción principal: lo que realmente se quiere probar.
+
+Ejemplo:
+
+```swift
+// When
+let banner = try await sut.execute()
+```
+
+En un mapper, el `When` puede ser:
+
+```swift
+// When
+let model = BannerMapper.toDomain(dto)
+```
+
+En un ViewModel, el `When` puede ser:
+
+```swift
+// When
+await sut.obtenerBanner()
+```
+
+#### 3. Then: validar el resultado
+
+Aquí se usan `#expect`, `#require` o `Issue.record`.
+
+Incluye cosas como:
+
+- Verificar que el resultado sea correcto.
+- Verificar que se llamó un mock.
+- Verificar que el estado cambió.
+- Verificar que se lanzó un error esperado.
+
+Ejemplo:
+
+```swift
+// Then
+#expect(mockRepository.obtenerBannerWasCalled)
+#expect(banner == expectedBanner)
+```
+
+### Qué probar por capa
 
 #### Mapper
 
-Validar conversión DTO → Domain Model:
+Validar conversión DTO → Domain Model.
 
 ```text
 BannerDto.imagen64        → BannerModel.imagen64
@@ -1214,9 +1427,98 @@ BannerDto.url             → BannerModel.url
 BannerDto.predeterminado  → BannerModel.predeterminado
 ```
 
+Los mappers son buenos primeros candidatos para testing porque son funciones puras, rápidas y deterministas.
+
+#### Domain Model
+
+Validar propiedades calculadas o reglas simples del modelo.
+
+Ejemplo para `BannerModel`:
+
+```text
+destinationUrl → retorna URL si el string es válido
+destinationUrl → retorna nil si el string está vacío o no es válido
+imageData      → decodifica Data URL válida
+imageData      → retorna nil si falta el prefijo base64
+imageData      → retorna nil si el payload Base64 es inválido
+```
+
+#### UseCase
+
+Validar que el caso de uso invoque correctamente al repositorio y propague resultados o errores.
+
+Ejemplo:
+
+```swift
+final class MockBannerRepository: BannerRepositoryProtocol {
+    var obtenerBannerWasCalled = false
+    var shouldThrowError = false
+    var errorToThrow: Error = NetworkError.unknown
+
+    var bannerToReturn = BannerModel(
+        imagen64: "mock",
+        url: "https://example.com",
+        predeterminado: true
+    )
+
+    func obtenerBanner() async throws -> BannerModel {
+        obtenerBannerWasCalled = true
+
+        if shouldThrowError {
+            throw errorToThrow
+        }
+
+        return bannerToReturn
+    }
+}
+```
+
+Casos recomendados:
+
+```text
+Repository responde éxito → UseCase retorna modelo esperado
+Repository lanza error    → UseCase propaga error esperado
+```
+
+#### Repository
+
+Validar que el repositorio invoque al DataSource, reciba DTOs y retorne modelos de dominio correctamente mapeados.
+
+Casos recomendados:
+
+```text
+RemoteDataSource responde DTO → Repository retorna Domain Model
+RemoteDataSource lanza error  → Repository propaga error esperado
+```
+
+#### ViewModel
+
+Validar transiciones de estado.
+
+Ejemplos:
+
+```text
+Estado inicial → idle
+UseCase éxito  → success(BannerModel)
+UseCase error  → failure(message, isInlineFieldError)
+Cancelación    → idle
+resetState()   → idle
+```
+
+Si el ViewModel está marcado con `@MainActor`, la suite o los tests deben ejecutarse también en `@MainActor`:
+
+```swift
+@Suite("BannerViewModel Tests")
+@MainActor
+struct BannerViewModelTests {
+}
+```
+
 #### NetworkService
 
-Validar:
+Validar el comportamiento centralizado de networking con respuestas simuladas.
+
+Casos recomendados:
 
 - Decodificación correcta.
 - Manejo de HTTP 400.
@@ -1225,6 +1527,79 @@ Validar:
 - Manejo de HTTP 500.
 - Manejo de respuesta inválida.
 - Manejo de JSON inválido.
+
+Las pruebas de `NetworkService` no deben depender de servicios reales en internet. Deben usar respuestas controladas para que sean rápidas, repetibles y deterministas.
+
+### Ejemplo de test de UseCase
+
+```swift
+import Testing
+@testable import SriMovil
+
+@Suite("ObtenerBannerUseCase Tests")
+struct ObtenerBannerUseCaseTests {
+
+    // MARK: - Subject Under Test
+
+    let sut: ObtenerBannerUseCase
+
+    // MARK: - Mocks
+
+    let mockRepository: MockBannerRepository
+
+    // MARK: - Initializers
+
+    init() {
+        mockRepository = MockBannerRepository()
+        sut = ObtenerBannerUseCase(repository: mockRepository)
+    }
+
+    @Test("execute returns banner when repository succeeds")
+    func executeReturnsBannerWhenRepositorySucceeds() async throws {
+        // Given
+        let expectedBanner = BannerModel(
+            imagen64: "data:image/png;base64,dGVzdA==",
+            url: "https://www.sri.gob.ec",
+            predeterminado: true
+        )
+        mockRepository.bannerToReturn = expectedBanner
+
+        // When
+        let banner = try await sut.execute()
+
+        // Then
+        #expect(mockRepository.obtenerBannerWasCalled)
+        #expect(banner == expectedBanner)
+    }
+}
+
+private final class MockBannerRepository: BannerRepositoryProtocol {
+    var obtenerBannerWasCalled = false
+    var bannerToReturn = BannerModel(
+        imagen64: "mock",
+        url: "https://example.com",
+        predeterminado: true
+    )
+
+    func obtenerBanner() async throws -> BannerModel {
+        obtenerBannerWasCalled = true
+        return bannerToReturn
+    }
+}
+```
+
+### Reglas prácticas para tests
+
+- Un test debe validar una sola idea principal.
+- Evitar tests que mezclen ViewModel + UseCase + Repository + NetworkService al mismo tiempo.
+- Preferir mocks por protocolo.
+- Evitar llamadas reales a red en unit tests.
+- Usar nombres descriptivos en `@Test`.
+- Mantener `Given - When - Then` visible en cada test.
+- Usar `#require` cuando un opcional sea obligatorio para continuar.
+- Usar `Issue.record` cuando una ruta de código no debería ejecutarse.
+- Probar primero componentes puros: mappers, modelos y use cases.
+- Probar ViewModels después de tener mocks estables.
 
 ---
 
