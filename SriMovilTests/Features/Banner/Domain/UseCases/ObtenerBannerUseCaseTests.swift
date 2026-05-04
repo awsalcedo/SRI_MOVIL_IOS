@@ -17,18 +17,96 @@ struct ObtenerBannerUseCaseTests {
     
     // MARK: - Mocks
     
-    let mockRepository: MockBannerRepository
+    private let mockRepository: MockBannerRepository
     
-    @Test func <#test name#>() async throws {
-        <#body#>
+    // MARK: - Initializers
+    
+    init() {
+        mockRepository = MockBannerRepository()
+        sut = ObtenerBannerUseCase(repository: mockRepository)
     }
     
+    // MARK: - execute Tests
     
+    @Test("execute returns banner when repository succeeds")
+    func executeReturnsBannerWhenRepositorySucceeds() async throws {
+        // Given
+        let expectedBanner = BannerModel(
+            imagen64: "data:image/png;base64,dGVzdA==",
+            url: "https://www.sri.gob.ec",
+            predeterminado: true
+        )
+        mockRepository.bannerToReturn = expectedBanner
+        
+        // When
+        let banner = try await sut.execute()
+        
+        // Then
+        #expect(mockRepository.obtenerBannerWasCalled)
+        #expect(banner == expectedBanner)
+    }
+    
+    @Test("execute propagates server error when repository fails")
+    func executePropagatesServerErrorWhenRepositoryFails() async throws {
+        // Given
+        mockRepository.shouldThrowError = true
+        mockRepository.errorToThrow = NetworkError.serverError(500)
+        
+        do {
+            // When
+            _ = try await sut.execute()
+            
+            // Then
+            Issue.record("Expected NetworkError.serverError(500) to be thrown")
+        } catch {
+            // Then
+            #expect(mockRepository.obtenerBannerWasCalled)
+            #expect(error as? NetworkError == .serverError(500))
+        }
+    }
+    
+    @Test("execute propagates unauthorized error when repository fails")
+    func executePropagatesUnauthorizedErrorWhenRepositoryFails() async throws {
+        // Given
+        mockRepository.shouldThrowError = true
+        mockRepository.errorToThrow = NetworkError.unauthorized()
+        
+        do {
+            // When
+            _ = try await sut.execute()
+            
+            // Then
+            Issue.record("Expected NetworkError.unauthorized to be thrown")
+        } catch {
+            // Then
+            #expect(mockRepository.obtenerBannerWasCalled)
+            #expect(error as? NetworkError == .unauthorized())
+        }
+    }
+    
+    @Test("execute propagates not found error when repository fails")
+    func executePropagatesNotFoundErrorWhenRepositoryFails() async throws {
+        // Given
+        mockRepository.shouldThrowError = true
+        mockRepository.errorToThrow = NetworkError.notFound()
+        
+        do {
+            // When
+            _ = try await sut.execute()
+            
+            // Then
+            Issue.record("Expected NetworkError.notFound to be thrown")
+        } catch {
+            // Then
+            #expect(mockRepository.obtenerBannerWasCalled)
+            #expect(error as? NetworkError == .notFound())
+        }
+    }
 }
 
 // MARK: - Mock Repository
 
-private final class MockBannerRepository: BannerRepositoryProtocol {
+private final class MockBannerRepository: BannerRepositoryProtocol, @unchecked Sendable {
     
     var obtenerBannerWasCalled = false
     var shouldThrowError = false
