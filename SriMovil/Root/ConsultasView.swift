@@ -130,15 +130,7 @@ struct ConsultasView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: SRISpacing.xxLarge) {
                 BannerHeroView()
-                    .padding(.top, 8)
                     .padding(.horizontal, SRISpacing.large)
-                
-                if !viewModel.serviciosExternosFiltrados.isEmpty {
-                    SectionBlock(title: "Servicios en línea") {
-                        ServiciosExternosGroupedList(servicios: viewModel.serviciosExternosFiltrados)
-                            .padding(.horizontal, SRISpacing.large)
-                    }
-                }
                 
                 if !viewModel.serviciosDestacados.isEmpty {
                     SectionBlock(title: "Consultas frecuentes") {
@@ -153,32 +145,16 @@ struct ConsultasView: View {
                     }
                 }
                 
-                if !viewModel.serviciosPrincipales.isEmpty {
-                    SectionBlock(title: "Consultas disponibles") {
-                        VStack(spacing: 10) {
-                            ForEach(viewModel.serviciosPrincipales) { servicio in
-                                servicioRowDestination(for: servicio)
-                            }
-                            
-                            if viewModel.hasMoreServiciosNativos {
-                                NavigationLink {
-                                    ServiciosDisponiblesView(
-                                        categorias: viewModel.categoriasVisibles,
-                                        serviciosProvider: { categoria in
-                                            viewModel.servicios(for: categoria)
-                                        },
-                                        rowBuilder: { servicio in
-                                            AnyView(servicioRowDestination(for: servicio))
-                                        }
-                                    )
-                                } label: {
-                                    VerMasServiciosRow()
-                                }
-                                .buttonStyle(.plain)
-                            }
-                        }
-                        .padding(.horizontal)
+                if !viewModel.serviciosExternosFiltrados.isEmpty {
+                    SectionBlock(title: "Servicios externos") {
+                        ServiciosExternosGroupedList(servicios: viewModel.serviciosExternosFiltrados)
+                            .padding(.horizontal, SRISpacing.large)
                     }
+                }
+                
+                
+                if !viewModel.serviciosPrincipales.isEmpty {
+                    consultasDisponiblesPreviewSection
                 }
                 
                 
@@ -194,6 +170,76 @@ struct ConsultasView: View {
             .padding(.bottom, 24)
         }
         .scrollIndicators(.hidden)
+    }
+    
+    private var consultasDisponiblesPreviewSection: some View {
+        SectionBlock(
+            title: "Consultas disponibles",
+            accessory: {
+                if viewModel.hasMoreServiciosNativos {
+                    NavigationLink {
+                        serviciosDisponiblesDestination
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(Color(.systemBackground))
+                                .frame(width: 32, height: 32)
+                                .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 4)
+                            
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(.primary)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Ver todas las consultas disponibles")
+                }
+            }
+        ) {
+            LazyVGrid(
+                columns: [
+                    GridItem(.flexible(), spacing: 16),
+                    GridItem(.flexible(), spacing: 16)
+                ],
+                spacing: 16
+            ) {
+                ForEach(Array(viewModel.serviciosPrincipales.prefix(4))) { servicio in
+                    servicioDisponiblePreviewDestination(for: servicio)
+                }
+            }
+            .padding(.horizontal, SRISpacing.large)
+        }
+    }
+    
+    private var serviciosDisponiblesDestination: some View {
+        ServiciosDisponiblesView(
+            categorias: viewModel.categoriasVisibles,
+            serviciosProvider: { categoria in
+                viewModel.servicios(for: categoria)
+            },
+            rowBuilder: { servicio in
+                AnyView(servicioRowDestination(for: servicio))
+            }
+        )
+    }
+    
+    @ViewBuilder
+    private func servicioDisponiblePreviewDestination(for servicio: Servicio) -> some View {
+        if viewModel.requiresLogin(servicio) {
+            Button {
+                viewModel.didSelectServicio(servicio)
+            } label: {
+                ServicioDestacadoCard(servicio: servicio)
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                ServicioDestinationBuilder.build(for: servicio.destino)
+            } label: {
+                ServicioDestacadoCard(servicio: servicio)
+            }
+            .buttonStyle(.plain)
+        }
     }
     
     // MARK: - Navigation Builders
