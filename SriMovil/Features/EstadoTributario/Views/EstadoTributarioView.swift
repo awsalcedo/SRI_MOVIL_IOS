@@ -34,6 +34,12 @@ struct EstadoTributarioView: View {
         ruc.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isLoading
     }
     
+    private var consultButtonBackgroundColor: Color {
+        ruc.count == 13
+        ? SRIColors.primary
+        : SRIColors.primary.opacity(0.35)
+    }
+    
     // MARK: - Body
     
     var body: some View {
@@ -56,7 +62,8 @@ struct EstadoTributarioView: View {
                 .padding(.top, 24)
                 .padding(.bottom, 32)
             }
-            .background(SRIColors.background)
+            .background(SRIBackgrounds.formGradient)
+            .scrollIndicators(.hidden)
             .navigationTitle("Estado Tributario")
             .toolbarTitleDisplayMode(.inline)
             .alert(
@@ -139,17 +146,25 @@ struct EstadoTributarioView: View {
                     .padding(.vertical, 14)
                     .background(
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(
-                                isConsultButtonDisabled
-                                ? SRIColors.textSecondary.opacity(0.6)
-                                : SRIColors.primary
-                            )
+                            .fill(consultButtonBackgroundColor)
                     )
             }
             .buttonStyle(.plain)
             .disabled(ruc.count != 13)
-            .opacity(ruc.count == 13 ? 1 : 0.5)
+            .transaction { transaction in
+                transaction.animation = nil
+            }
         }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .fill(SRIColors.cardBackground)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .stroke(SRIColors.border.opacity(0.22), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.035), radius: 10, x: 0, y: 5)
     }
     
     private var loadingSection: some View {

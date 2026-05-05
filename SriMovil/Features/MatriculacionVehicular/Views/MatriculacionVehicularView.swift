@@ -59,7 +59,7 @@ struct MatriculacionVehicularView: View {
             .padding(.top, 20)
             .padding(.bottom, 32)
         }
-        .background(SRIColors.background.ignoresSafeArea())
+        .background(SRIBackgrounds.formGradient)
         .navigationTitle("Valores a pagar")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
@@ -134,13 +134,13 @@ struct MatriculacionVehicularView: View {
         .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(Color(.secondarySystemBackground))
+                .fill(SRIColors.cardBackground)
         )
         .overlay(
             RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .stroke(SRIColors.border.opacity(0.35), lineWidth: 1)
+                .stroke(SRIColors.border.opacity(0.22), lineWidth: 1)
         )
-        .shadow(color: .black.opacity(0.04), radius: 10, y: 4)
+        .shadow(color: .black.opacity(0.035), radius: 10, x: 0, y: 5)
     }
     
     private var heroHeader: some View {

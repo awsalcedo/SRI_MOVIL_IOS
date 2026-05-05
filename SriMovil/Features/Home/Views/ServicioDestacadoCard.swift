@@ -62,7 +62,7 @@ struct ServicioDestacadoCard: View {
     }
     
     // MARK: - Subviews
-        
+    
     /// Contenedor visual del ícono del servicio.
     private var icon: some View {
         ZStack {
@@ -95,8 +95,11 @@ struct ServicioDestacadoCard: View {
     }
     
     // MARK: - Styling
-        
+    
     /// Color principal utilizado para el fondo del ícono.
+    ///
+    /// Estos colores aplican únicamente a la sección "Consultas frecuentes".
+    /// Los servicios del catálogo general deben usar `ServicioDisponibleCard`.
     private var tintColor: Color {
         switch servicio.destino {
         case .valoresPagar:
@@ -106,9 +109,9 @@ struct ServicioDestacadoCard: View {
         case .deudas:
             return .indigo
         case .comprobantes:
-            return .teal
+            return .teal            
         default:
-            return SRIColors.primary
+            return SRIColors.cardIconBlue
         }
     }
     

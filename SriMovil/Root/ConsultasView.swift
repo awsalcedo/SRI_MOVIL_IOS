@@ -16,20 +16,6 @@ struct ConsultasView: View {
     @State private var showConfiguracion = false
     @State private var showAccountLogin = false
     
-    private var consultasBackground: some View {
-        ZStack(alignment: .topTrailing) {
-            SRIColors.background
-                .ignoresSafeArea()
-            
-            SRIColors.primary
-                .opacity(0.035)
-                .frame(width: 260, height: 220)
-                .blur(radius: 80)
-                .offset(x: 80, y: -80)
-                .ignoresSafeArea()
-        }
-    }
-    
     // MARK: - Body
     
     var body: some View {
@@ -46,7 +32,7 @@ struct ConsultasView: View {
                     errorView(message: message)
                 }
             }
-            .background(consultasBackground)
+            .background(SRIBackgrounds.mainGradient)
             .navigationTitle("Servicios")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -149,15 +135,14 @@ struct ConsultasView: View {
                 if !viewModel.serviciosDestacados.isEmpty {
                     SectionBlock(title: "Consultas frecuentes") {
                         ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
+                            LazyHStack(spacing: 16) {
                                 ForEach(viewModel.serviciosDestacados) { servicio in
                                     servicioDestacadoDestination(for: servicio)
                                 }
                             }
+                            .padding(.horizontal, SRISpacing.large)
                             .padding(.vertical, 12)
                         }
-                        .contentMargins(.horizontal, SRISpacing.large, for: .scrollContent)
-                        .scrollIndicators(.hidden)
                     }
                 }
                 
@@ -245,14 +230,14 @@ struct ConsultasView: View {
             Button {
                 viewModel.didSelectServicio(servicio)
             } label: {
-                ServicioDestacadoCard(servicio: servicio)
+                ServicioDisponibleCard(servicio: servicio)
             }
             .buttonStyle(.plain)
         } else {
             NavigationLink {
                 ServicioDestinationBuilder.build(for: servicio.destino)
             } label: {
-                ServicioDestacadoCard(servicio: servicio)
+                ServicioDisponibleCard(servicio: servicio)
             }
             .buttonStyle(.plain)
         }

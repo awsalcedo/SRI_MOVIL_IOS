@@ -26,7 +26,7 @@ struct DeudasDetailView: View {
             .padding(.top, 20)
             .padding(.bottom, 32)
         }
-        .background(SRIColors.background.ignoresSafeArea())
+        .background(SRIBackgrounds.formGradient)
         .navigationTitle("Deudas")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.regularMaterial, for: .navigationBar)
@@ -157,12 +157,12 @@ struct DeudasDetailView: View {
         HStack(alignment: .top, spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(SRIColors.primary.opacity(0.08))
+                    .fill(SRIColors.secondaryIconBlue.opacity(0.10))
                     .frame(width: 44, height: 44)
 
                 Image(systemName: systemImage)
                     .font(.headline)
-                    .foregroundStyle(SRIColors.textPrimary)
+                    .foregroundStyle(SRIColors.secondaryIconBlue)
             }
 
             VStack(alignment: .leading, spacing: 4) {

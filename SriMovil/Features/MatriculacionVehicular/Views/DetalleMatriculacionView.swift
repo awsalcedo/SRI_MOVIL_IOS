@@ -34,6 +34,8 @@ struct DetalleMatriculacionView: View {
             }
         }
         .listStyle(.insetGrouped)
+        .scrollContentBackground(.hidden)
+        .background(SRIBackgrounds.formGradient)
         .navigationTitle("Detalle del vehículo")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -73,7 +75,7 @@ struct MatriculacionDetailRow: View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: iconName)
                 .font(.title3)
-                .foregroundStyle(SRIColors.textSecondary)
+                .foregroundStyle(SRIColors.secondaryIconBlue.opacity(0.78))
                 .frame(width: 28, alignment: .center)
                 .padding(.top, 2)
             

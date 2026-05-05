@@ -21,13 +21,14 @@ enum SRIColors {
     
     // MARK: - Semantic Background Accents
     
-    /// Acento institucional sutil para fondos decorativos.
-    ///
-    /// Se usa con baja opacidad para mantener una apariencia nativa,
-    /// ligera y alineada con las Human Interface Guidelines de Apple.
-    static let backgroundBlueAccent = primaryLight.opacity(0.10)
+    static let backgroundBlue = Color(red: 0.12, green: 0.42, blue: 0.78)
+    static let backgroundBlueLight = Color(red: 0.64, green: 0.80, blue: 0.94)
     
-    /// Variante más suave del acento institucional para transiciones
-    /// o degradados de fondo.
-    static let backgroundBlueAccentSoft = primaryLight.opacity(0.04)
+    static let backgroundBlueAccent = backgroundBlue.opacity(0.22)
+    static let backgroundBlueAccentSoft = backgroundBlueLight.opacity(0.20)
+    
+    // MARK: - Icon Accents
+    
+    static let cardIconBlue = Color(red: 0.05, green: 0.36, blue: 0.78)
+    static let secondaryIconBlue = Color(red: 0.08, green: 0.32, blue: 0.72)
 }

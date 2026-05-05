@@ -113,6 +113,12 @@ struct DeudasView: View {
         }
     }
     
+    private var consultButtonBackgroundColor: Color {
+        isConsultButtonDisabled
+        ? SRIColors.primary.opacity(0.35)
+        : SRIColors.primary
+    }
+    
     // MARK: - Body
     
     var body: some View {
@@ -126,7 +132,7 @@ struct DeudasView: View {
                 .padding(.top, 24)
                 .padding(.bottom, 120)
             }
-            .background(SRIColors.background.ignoresSafeArea())
+            .background(SRIBackgrounds.formGradient)
             .navigationTitle("Consulta de Deudas")
             .navigationBarTitleDisplayMode(.large)
             .safeAreaInset(edge: .bottom) {
@@ -195,7 +201,7 @@ struct DeudasView: View {
             }
         }
     }
-    
+
     // MARK: - Sections
     
     private var formCard: some View {
@@ -206,8 +212,13 @@ struct DeudasView: View {
         .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(SRIColors.surface)
+                .fill(SRIColors.cardBackground)
         )
+        .overlay {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(SRIColors.border.opacity(0.22), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.035), radius: 10, x: 0, y: 5)
     }
     
     private var contributorTypeSection: some View {
@@ -223,7 +234,6 @@ struct DeudasView: View {
                 }
             }
             .pickerStyle(.segmented)
-            .tint(SRIColors.primary)
         }
     }
     
@@ -480,15 +490,14 @@ struct DeudasView: View {
                 .frame(height: 56)
                 .background(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(
-                            isConsultButtonDisabled
-                            ? SRIColors.textSecondary.opacity(0.45)
-                            : SRIColors.primary
-                        )
+                        .fill(consultButtonBackgroundColor)
                 )
             }
             .buttonStyle(.plain)
             .disabled(isConsultButtonDisabled)
+            .transaction { transaction in
+                transaction.animation = nil
+            }
             .padding(.horizontal, 20)
             .padding(.top, 16)
             .padding(.bottom, 12)

@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct SriMovilApp: App {
+    
+    init() {
+        SRIAppearance.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             SriTabView()

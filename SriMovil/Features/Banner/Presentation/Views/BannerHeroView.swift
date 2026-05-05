@@ -13,7 +13,7 @@ struct BannerHeroView: View {
     // MARK: - Constantes
     
     private enum Layout {
-        static let height: CGFloat = 188
+        static let height: CGFloat = 118
     }
     
     // MARK: - Propiedades
@@ -100,18 +100,12 @@ struct BannerHeroView: View {
     
     private func remoteBannerImage(_ uiImage: UIImage) -> some View {
         heroContainer {
-            ZStack {
-                RoundedRectangle(
-                    cornerRadius: SRICornerRadius.hero,
-                    style: .continuous
-                )
-                .fill(SRIColors.surface)
-                
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
+            Image(uiImage: uiImage)
+                .resizable()
+                .scaledToFill()
+                .frame(maxWidth: .infinity)
+                .frame(height: Layout.height)
+                .clipped()
         }
     }
     
@@ -159,27 +153,28 @@ struct BannerHeroView: View {
         content()
             .frame(maxWidth: .infinity)
             .frame(height: Layout.height)
-            .background(Color.clear)
+            .background(SRIColors.cardBackground)
             .clipShape(
                 RoundedRectangle(
-                    cornerRadius: SRICornerRadius.hero,
+                    cornerRadius: 24,
                     style: .continuous
                 )
             )
             .overlay {
                 RoundedRectangle(
-                    cornerRadius: SRICornerRadius.hero,
+                    cornerRadius: 24,
                     style: .continuous
                 )
-                .strokeBorder(.white.opacity(0.08))
+                .strokeBorder(SRIColors.border.opacity(0.18), lineWidth: 1)
             }
+            .shadow(color: .black.opacity(0.045), radius: 10, x: 0, y: 5)
             .contentShape(
                 RoundedRectangle(
-                    cornerRadius: SRICornerRadius.hero,
+                    cornerRadius: 24,
                     style: .continuous
                 )
             )
-        }
+    }
 }
 
 #Preview {

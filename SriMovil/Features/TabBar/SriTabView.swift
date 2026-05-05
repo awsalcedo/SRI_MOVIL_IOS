@@ -68,6 +68,7 @@ struct SriTabView: View {
                 .searchable(text: $searchText, prompt: "Buscar servicio")
             }
         }
+        .tint(SRIColors.primary)
         .tabBarMinimizeBehavior(.onScrollDown)
     }
 }

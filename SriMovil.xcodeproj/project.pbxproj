@@ -134,6 +134,7 @@
 		505B7DC52F9A6E46006A404F /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 		505B7DD32F9A9C27006A404F /* Mapper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mapper; sourceTree = "<group>"; };
 		505B7DE52F9BB631006A404F /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		506856842FAA886E0094BD86 /* DesignSystem */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DesignSystem; sourceTree = "<group>"; };
 		507195872F9901DB000A3677 /* Interactor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactor; sourceTree = "<group>"; };
 		5071958B2F9903A4000A3677 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		5071958E2F9915E6000A3677 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
@@ -459,6 +460,7 @@
 		FA2AC8DB2CB1C36E00B44A5E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				506856842FAA886E0094BD86 /* DesignSystem */,
 				505B7D9C2F99620C006A404F /* Security */,
 				505B7D992F9961CF006A404F /* Constants */,
 				50D6D2C62F7716870000820B /* Models */,
@@ -588,6 +590,7 @@
 				505B7DC52F9A6E46006A404F /* ViewModel */,
 				505B7DD32F9A9C27006A404F /* Mapper */,
 				505B7DE52F9BB631006A404F /* Views */,
+				506856842FAA886E0094BD86 /* DesignSystem */,
 				507195872F9901DB000A3677 /* Interactor */,
 				5071958B2F9903A4000A3677 /* View */,
 				5071958E2F9915E6000A3677 /* Model */,

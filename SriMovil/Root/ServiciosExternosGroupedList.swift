@@ -54,7 +54,6 @@ struct ServiciosExternosGroupedList: View {
             x: 0,
             y: 5
         )
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
     
     // MARK: - Private Methods
@@ -104,13 +103,15 @@ private struct ServicioExternoRow: View {
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(SRIColors.primary)
+                .foregroundStyle(SRIColors.secondaryIconBlue)
                 .frame(width: 24, height: 24)
+                .accessibilityHidden(true)
         } else {
             Image(systemName: servicio.destino.listIconName)
                 .font(.body.weight(.semibold))
-                .foregroundStyle(SRIColors.primary)
+                .foregroundStyle(SRIColors.secondaryIconBlue)
                 .frame(width: 28, height: 28)
+                .accessibilityHidden(true)
         }
     }
 }
