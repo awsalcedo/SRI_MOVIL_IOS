@@ -83,4 +83,36 @@ extension ServicioDestino {
             return nil
         }
     }
+    
+    var assetIconName: String? {
+        switch self {
+        case .comprobantes:
+            return "comprobantes"
+        case .estadoTributario:
+            return "estado_tributario"
+        case .valoresPagar:
+            return "matriculacion"
+        case .deudas:
+            return "pagos"
+        case .validezDocumentos:
+            return "documentos"
+        case .seguimientoTramites:
+            return "tramites"
+        case .validacionQR:
+            return "validacion_qr"
+        case .calculadoras:
+            return "calculadora"
+        case .denuncias:
+            return "denuncias_50"
+        case .contactenos:
+            return "contacto_50"
+        case .simar:
+            return "simar"
+        case .impuestoRenta,
+                .certificados,
+                .citaPrevia,
+                .facturadorSRI:
+            return externalAssetIconName
+        }
+    }
 }

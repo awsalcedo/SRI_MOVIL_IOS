@@ -16,6 +16,20 @@ struct ConsultasView: View {
     @State private var showConfiguracion = false
     @State private var showAccountLogin = false
     
+    private var consultasBackground: some View {
+        ZStack(alignment: .topTrailing) {
+            SRIColors.background
+                .ignoresSafeArea()
+            
+            SRIColors.primary
+                .opacity(0.035)
+                .frame(width: 260, height: 220)
+                .blur(radius: 80)
+                .offset(x: 80, y: -80)
+                .ignoresSafeArea()
+        }
+    }
+    
     // MARK: - Body
     
     var body: some View {
@@ -32,7 +46,7 @@ struct ConsultasView: View {
                     errorView(message: message)
                 }
             }
-            .background(SRIColors.background)
+            .background(consultasBackground)
             .navigationTitle("Servicios")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -140,8 +154,10 @@ struct ConsultasView: View {
                                     servicioDestacadoDestination(for: servicio)
                                 }
                             }
-                            .padding(.horizontal, SRISpacing.large)
+                            .padding(.vertical, 12)
                         }
+                        .contentMargins(.horizontal, SRISpacing.large, for: .scrollContent)
+                        .scrollIndicators(.hidden)
                     }
                 }
                 
@@ -167,7 +183,7 @@ struct ConsultasView: View {
                     .padding(.top, 24)
                 }
             }
-            .padding(.bottom, 24)
+            .padding(.bottom, 120)
         }
         .scrollIndicators(.hidden)
     }

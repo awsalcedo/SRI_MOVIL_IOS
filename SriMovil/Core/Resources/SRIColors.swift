@@ -18,4 +18,16 @@ enum SRIColors {
     static let surface = Color("SurfaceColor")
     static let cardBackground = Color("CardBackgroundColor")
     static let surfaceSecondary = Color("SurfaceSecondaryColor")
+    
+    // MARK: - Semantic Background Accents
+    
+    /// Acento institucional sutil para fondos decorativos.
+    ///
+    /// Se usa con baja opacidad para mantener una apariencia nativa,
+    /// ligera y alineada con las Human Interface Guidelines de Apple.
+    static let backgroundBlueAccent = primaryLight.opacity(0.10)
+    
+    /// Variante más suave del acento institucional para transiciones
+    /// o degradados de fondo.
+    static let backgroundBlueAccentSoft = primaryLight.opacity(0.04)
 }

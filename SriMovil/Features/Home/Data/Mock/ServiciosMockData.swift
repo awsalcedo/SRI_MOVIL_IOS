@@ -11,94 +11,94 @@ enum ServiciosMockData {
     static let items: [Servicio] = [
         Servicio(
             nombreServicio: "Matriculación Vehicular",
-            imagenServicio: "matriculacion_vehicular_boton",
+            imagenServicio: "matriculacion",
             categoria: .vehiculos,
             destino: .valoresPagar,
             esDestacado: true
         ),
         Servicio(
             nombreServicio: "Estado Tributario",
-            imagenServicio: "estado_tributario_boton",
+            imagenServicio: "estado_tributario",
             categoria: .tributario,
             destino: .estadoTributario,
             esDestacado: true
         ),
         Servicio(
             nombreServicio: "Deudas",
-            imagenServicio: "deudas_boton",
+            imagenServicio: "pagos",
             categoria: .tributario,
             destino: .deudas,
             esDestacado: true
         ),
         Servicio(
             nombreServicio: "Comprobantes Electrónicos",
-            imagenServicio: "comprobantes_electronicos_boton",
+            imagenServicio: "comprobantes",
             categoria: .documentos,
             destino: .comprobantes
         ),
         Servicio(
             nombreServicio: "Validez de Documentos",
-            imagenServicio: "validez_documentos_boton",
+            imagenServicio: "documentos",
             categoria: .documentos,
             destino: .validezDocumentos
         ),
         Servicio(
             nombreServicio: "Impuesto a la Renta",
-            imagenServicio: "impuesto_renta_boton",
+            imagenServicio: "impuesto",
             categoria: .tributario,
             destino: .impuestoRenta
         ),
         Servicio(
             nombreServicio: "Certificados",
-            imagenServicio: "certificados_boton",
+            imagenServicio: "certificados",
             categoria: .documentos,
             destino: .certificados
         ),
         Servicio(
             nombreServicio: "Seguimiento de Trámites",
-            imagenServicio: "seguimiento_tramites_boton",
+            imagenServicio: "tramites",
             categoria: .tramites,
             destino: .seguimientoTramites
         ),
         Servicio(
             nombreServicio: "Validación QR",
-            imagenServicio: "validacion_qr_boton",
+            imagenServicio: "validacion_qr",
             categoria: .tramites,
             destino: .validacionQR
         ),
         Servicio(
             nombreServicio: "Cita Previa",
-            imagenServicio: "cita_previa_boton",
+            imagenServicio: "turnos_movil",
             categoria: .tramites,
             destino: .citaPrevia
         ),
         Servicio(
             nombreServicio: "Calculadoras",
-            imagenServicio: "calculadoras_boton",
+            imagenServicio: "calculadora",
             categoria: .herramientas,
             destino: .calculadoras
         ),
         Servicio(
             nombreServicio: "Denuncias",
-            imagenServicio: "denuncias_boton",
+            imagenServicio: "denuncias_50",
             categoria: .soporte,
             destino: .denuncias
         ),
         Servicio(
             nombreServicio: "Contáctenos",
-            imagenServicio: "contactenos_boton",
+            imagenServicio: "contacto_50",
             categoria: .soporte,
             destino: .contactenos
         ),
         Servicio(
             nombreServicio: "SIMAR",
-            imagenServicio: "simar_boton",
+            imagenServicio: "simar",
             categoria: .herramientas,
             destino: .simar
         ),
         Servicio(
             nombreServicio: "Facturador SRI",
-            imagenServicio: "facturador_sri_boton",
+            imagenServicio: "facturador",
             categoria: .herramientas,
             destino: .facturadorSRI
         )

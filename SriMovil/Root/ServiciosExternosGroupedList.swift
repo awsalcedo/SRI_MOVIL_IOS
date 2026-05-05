@@ -42,7 +42,17 @@ struct ServiciosExternosGroupedList: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .fill(Color(.systemBackground))
+                .fill(SRIColors.cardBackground)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(SRIColors.border.opacity(0.28), lineWidth: 1)
+        }
+        .shadow(
+            color: .black.opacity(0.035),
+            radius: 10,
+            x: 0,
+            y: 5
         )
         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
@@ -70,7 +80,7 @@ private struct ServicioExternoRow: View {
             
             Text(servicio.nombreServicio)
                 .font(.body.weight(.medium))
-                .foregroundStyle(.primary)
+                .foregroundStyle(SRIColors.textPrimary)
                 .lineLimit(1)
             
             Spacer(minLength: 12)

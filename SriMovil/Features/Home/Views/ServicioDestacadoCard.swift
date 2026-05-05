@@ -48,18 +48,17 @@ struct ServicioDestacadoCard: View {
                 .frame(maxWidth: .infinity)
         }
         .padding(.horizontal, 14)
-        .padding(.vertical, 18)
-        .frame(width: 154, height: 128)
+        .padding(.vertical, 16)
+        .frame(width: 154, height: 124)
         .background(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(Color(.systemBackground))
+                .fill(SRIColors.cardBackground)
         )
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(Color(.separator).opacity(0.18), lineWidth: 1)
+                .stroke(Color(.separator).opacity(0.22), lineWidth: 1)
         }
-        .shadow(color: .black.opacity(0.035), radius: 8, x: 0, y: 4)
-        .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .shadow(color: .black.opacity(0.045), radius: 10, x: 0, y: 5)
     }
     
     // MARK: - Subviews
@@ -118,18 +117,7 @@ struct ServicioDestacadoCard: View {
     /// Retorna `nil` cuando no existe un ícono específico, permitiendo usar
     /// el SF Symbol de respaldo definido en `iconImage`.
     private var assetIconName: String? {
-        switch servicio.destino {
-        case .comprobantes:
-            return "comprobantes"
-        case .estadoTributario:
-            return "estado_tributario"
-        case .valoresPagar:
-            return "matriculacion"
-        case .deudas:
-            return "pagos"
-        default:
-            return nil
-        }
+        servicio.destino.assetIconName
     }
 }
 

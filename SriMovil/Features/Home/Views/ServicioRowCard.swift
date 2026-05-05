@@ -38,21 +38,31 @@ struct ServicioRowCard: View {
     }
     
     private var iconContainer: some View {
-        Group {
-            if let nombreImagen = servicio.imagenServicio {
-                Image(nombreImagen)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(10)
-            } else {
-                Image(systemName: "square.grid.2x2")
-                    .font(.title3)
-                    .foregroundStyle(SRIColors.primary)
-            }
+        ZStack {
+            RoundedRectangle(cornerRadius: SRICornerRadius.small, style: .continuous)
+                .fill(SRIColors.surfaceSecondary)
+                .frame(width: 52, height: 52)
+            
+            iconImage
         }
-        .frame(width: 52, height: 52)
-        .background(SRIColors.surfaceSecondary)
-        .clipShape(RoundedRectangle(cornerRadius: SRICornerRadius.small, style: .continuous))
+    }
+    
+    @ViewBuilder
+    private var iconImage: some View {
+        if let assetName = servicio.imagenServicio ?? servicio.destino.assetIconName {
+            Image(assetName)
+                .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 26, height: 26)
+                .foregroundStyle(SRIColors.primary)
+                .accessibilityHidden(true)
+        } else {
+            Image(systemName: "square.grid.2x2")
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(SRIColors.primary)
+                .accessibilityHidden(true)
+        }
     }
     
     private func subtitulo(for categoria: CategoriaServicio) -> String {
