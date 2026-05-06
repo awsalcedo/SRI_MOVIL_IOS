@@ -14,6 +14,8 @@ struct BannerHeroView: View {
     
     private enum Layout {
         static let height: CGFloat = 118
+        static let cornerRadius: CGFloat = 22
+        static let innerHorizontalPadding: CGFloat = 0
     }
     
     // MARK: - Propiedades
@@ -26,7 +28,6 @@ struct BannerHeroView: View {
     var body: some View {
         content
             .frame(maxWidth: .infinity)
-            .frame(height: Layout.height)
             .task {
                 if case .idle = viewModel.state {
                     await viewModel.obtenerBanner()
@@ -99,14 +100,39 @@ struct BannerHeroView: View {
     }
     
     private func remoteBannerImage(_ uiImage: UIImage) -> some View {
-        heroContainer {
+        bannerImageContainer {
             Image(uiImage: uiImage)
                 .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity)
-                .frame(height: Layout.height)
-                .clipped()
+                .scaledToFit()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+    }
+    
+    private func bannerImageContainer<Content: View>(
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        let shape = RoundedRectangle(
+            cornerRadius: Layout.cornerRadius,
+            style: .continuous
+        )
+        
+        return ZStack {
+            // Fondo similar al color dominante del banner remoto.
+            // Evita que se vean cortes o vacíos blancos dentro del marco.
+            Color(red: 0.60, green: 0.90, blue: 0.96)
+            
+            content()
+                .padding(.horizontal, Layout.innerHorizontalPadding)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: Layout.height)
+        .clipShape(shape)
+        .overlay {
+            shape
+                .strokeBorder(SRIColors.border.opacity(0.14), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.035), radius: 10, x: 0, y: 5)
+        .contentShape(shape)
     }
     
     private var fallbackBannerView: some View {
@@ -150,30 +176,22 @@ struct BannerHeroView: View {
     private func heroContainer<Content: View>(
         @ViewBuilder content: () -> Content
     ) -> some View {
-        content()
+        let shape = RoundedRectangle(
+            cornerRadius: Layout.cornerRadius,
+            style: .continuous
+        )
+        
+        return content()
             .frame(maxWidth: .infinity)
             .frame(height: Layout.height)
             .background(SRIColors.cardBackground)
-            .clipShape(
-                RoundedRectangle(
-                    cornerRadius: 24,
-                    style: .continuous
-                )
-            )
+            .clipShape(shape)
             .overlay {
-                RoundedRectangle(
-                    cornerRadius: 24,
-                    style: .continuous
-                )
-                .strokeBorder(SRIColors.border.opacity(0.18), lineWidth: 1)
+                shape
+                    .strokeBorder(SRIColors.border.opacity(0.18), lineWidth: 1)
             }
             .shadow(color: .black.opacity(0.045), radius: 10, x: 0, y: 5)
-            .contentShape(
-                RoundedRectangle(
-                    cornerRadius: 24,
-                    style: .continuous
-                )
-            )
+            .contentShape(shape)
     }
 }
 
