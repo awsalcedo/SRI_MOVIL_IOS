@@ -9,10 +9,12 @@ import SwiftUI
 
 enum SRIAppearance {
     
+    @MainActor
     static func configure() {
         configureSegmentedControl()
     }
     
+    @MainActor
     private static func configureSegmentedControl() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(SRIColors.primary)
         

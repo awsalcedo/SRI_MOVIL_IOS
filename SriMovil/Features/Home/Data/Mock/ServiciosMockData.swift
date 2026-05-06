@@ -10,14 +10,14 @@ import Foundation
 enum ServiciosMockData {
     static let items: [Servicio] = [
         Servicio(
-            nombreServicio: "Matriculación Vehicular",
+            nombreServicio: "Valores a pagar",
             imagenServicio: "matriculacion",
             categoria: .vehiculos,
             destino: .valoresPagar,
             esDestacado: true
         ),
         Servicio(
-            nombreServicio: "Estado Tributario",
+            nombreServicio: "Estado tributario",
             imagenServicio: "estado_tributario",
             categoria: .tributario,
             destino: .estadoTributario,
@@ -31,19 +31,19 @@ enum ServiciosMockData {
             esDestacado: true
         ),
         Servicio(
-            nombreServicio: "Comprobantes Electrónicos",
+            nombreServicio: "Comprobantes electrónicos",
             imagenServicio: "comprobantes",
             categoria: .documentos,
             destino: .comprobantes
         ),
         Servicio(
-            nombreServicio: "Validez de Documentos",
+            nombreServicio: "Validez de documentos físicos",
             imagenServicio: "documentos",
             categoria: .documentos,
             destino: .validezDocumentos
         ),
         Servicio(
-            nombreServicio: "Impuesto a la Renta",
+            nombreServicio: "Impuesto a la Renta Causado",
             imagenServicio: "impuesto",
             categoria: .tributario,
             destino: .impuestoRenta
@@ -55,19 +55,19 @@ enum ServiciosMockData {
             destino: .certificados
         ),
         Servicio(
-            nombreServicio: "Seguimiento de Trámites",
+            nombreServicio: "Seguimiento de trámites",
             imagenServicio: "tramites",
             categoria: .tramites,
             destino: .seguimientoTramites
         ),
         Servicio(
-            nombreServicio: "Validación QR",
+            nombreServicio: "Validación códigos QR",
             imagenServicio: "validacion_qr",
             categoria: .tramites,
             destino: .validacionQR
         ),
         Servicio(
-            nombreServicio: "Cita Previa",
+            nombreServicio: "Cita previa",
             imagenServicio: "turnos_movil",
             categoria: .tramites,
             destino: .citaPrevia

@@ -8,16 +8,16 @@
 import SwiftUI
 
 enum SRIColors {
-    static let primary = Color("PrimaryColor")
-    static let primaryLight = Color("PrimaryColorLight")
-    static let textPrimary = Color("TextPrimary")
-    static let textSecondary = Color("TextSecondary")
-    static let border = Color("BorderColor")
-    static let error = Color("ErrorColor")
-    static let background = Color("BackgroundColor")
-    static let surface = Color("SurfaceColor")
-    static let cardBackground = Color("CardBackgroundColor")
-    static let surfaceSecondary = Color("SurfaceSecondaryColor")
+    static let primary = Color("SRIPrimaryColor")
+    static let primaryLight = Color("SRIPrimaryLightColor")
+    static let textPrimary = Color("SRITextPrimaryColor")
+    static let textSecondary = Color("SRITextSecondaryColor")
+    static let border = Color("SRIBorderColor")
+    static let error = Color("SRIErrorColor")
+    static let background = Color("SRIBackgroundColor")
+    static let surface = Color("SRISurfaceColor")
+    static let cardBackground = Color("SRICardBackgroundColor")
+    static let surfaceSecondary = Color("SRISurfaceSecondaryColor")
     
     // MARK: - Semantic Background Accents
     

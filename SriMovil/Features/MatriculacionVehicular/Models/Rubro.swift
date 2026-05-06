@@ -8,7 +8,8 @@
 import Foundation
 
 struct Rubro: Hashable, Identifiable, Codable, Sendable {
-    let id = UUID()
+    var id: String { descripcion }
+    
     let descripcion: String
     let valor: Double
     let periodoFiscal: String
