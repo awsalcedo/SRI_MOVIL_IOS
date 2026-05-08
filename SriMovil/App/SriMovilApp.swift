@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct SriMovilApp: App {
     
     init() {
+        FirebaseApp.configure()
         SRIAppearance.configure()
     }
     

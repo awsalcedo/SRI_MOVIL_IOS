@@ -18,15 +18,21 @@ final class MatriculacionVehicularViewModel: MatriculacionVehicularViewModelProt
     @ObservationIgnored
     private let interactor: MatriculacionVehicularInteractorProtocol
     
+    @ObservationIgnored
+    private let analytics: AnalyticsTracking
+    
     // MARK: - Propiedades
     
     var state: ViewState<InfoVehiculoModel> = .idle
     
     // MARK: - Inicializadores
     
-    init(interactor: MatriculacionVehicularInteractorProtocol = MatriculacionVehicularInteractor()
+    init(
+        interactor: MatriculacionVehicularInteractorProtocol = MatriculacionVehicularInteractor(),
+        analytics: AnalyticsTracking = FirebaseAnalyticsManager()
     ) {
         self.interactor = interactor
+        self.analytics = analytics
     }
     
     // MARK: - Funciones
@@ -40,8 +46,14 @@ final class MatriculacionVehicularViewModel: MatriculacionVehicularViewModelProt
         do {
             let infoVehiculo = try await interactor.obtenerInfoVehiculo(idVehiculo: idVehiculoLimpio)
             state = .success(infoVehiculo)
+            
+            analytics.track(event: AnalyticsEvents.MatriculacionEvent.exito, parameters: ["placa": idVehiculoLimpio])
+            
         } catch {
             state = mapErrorToState(error)
+            
+            analytics.track(event: AnalyticsEvents.MatriculacionEvent.error, parameters: ["placa": idVehiculoLimpio])
+        
         }
         
     }
