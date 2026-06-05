@@ -1,0 +1,105 @@
+[
+    {
+        "id": "CE001",
+        "title": "Comprobantes electrónicos",
+        "icon": "comprobantes",
+        "type": "comprobantesElectronicos"
+    },
+    {
+        "id": "ET001",
+        "title": "Estado tributario",
+        "icon": "estado_tributario",
+        "type": "estadoTributario"
+    },
+    {
+        "id": "MV001",
+        "title": "Valores a pagar",
+        "icon": "matriculacion",
+        "type": "valoresPagar"
+    },
+    {
+        "id": "DF001",
+        "title": "Deudas",
+        "icon": "pagos",
+        "type": "deudas"
+    },
+    {
+        "id": "VD001",
+        "title": "Validez documentos físicos",
+        "icon": "documentos",
+        "type": "validezComprobantes"
+    },
+    {
+        "id": "IR001",
+        "title": "Impuesto a la Renta Causado",
+        "icon": "impuesto",
+        "type": "impuestoRenta"
+    },
+    {
+        "id": "CA001",
+        "title": "Certificados",
+        "icon": "certificados",
+        "type": "certificados"
+    },
+    {
+        "id": "TR001",
+        "title": "Seguimiento de trámites",
+        "icon": "tramites",
+        "type": "seguimientoTramites"
+    },
+    {
+        "id": "VC001",
+        "title": "Validación códigos QR",
+        "icon": "validacion_qr",
+        "type": "validacionQR"
+    },
+    {
+        "id": "TD001",
+        "title": "Cita previa",
+        "icon": "turnos_movil",
+        "type": "citaPrevia"
+    },
+    {
+        "id": "CA002",
+        "title": "Calculadoras",
+        "icon": "calculadora",
+        "type": "calculadoras"
+    },
+    {
+        "id": "DM001",
+        "title": "Denuncias",
+        "icon": "denuncias_50",
+        "type": "denuncias"
+    },
+    {
+        "id": "BM001",
+        "title": "Contáctenos",
+        "icon": "contacto_50",
+        "type": "contactenos"
+    },
+    {
+        "id": "SI001",
+        "title": "SIMAR",
+        "icon": "simar",
+        "type": "simar"
+    },
+    {
+        "id": "SL001",
+        "title": "Facturador SRI",
+        "icon": "facturador",
+        "type": "facturadorSRI"
+    },
+    {
+        "id": "CF001",
+        "title": "Configuración",
+        "icon": "configuracion",
+        "type": "configuracion"
+    },
+    {
+        "id": "PD001",
+        "title": "Política Protección de Datos",
+        "icon": "",
+        "type": "politicaDatos",
+        "isCentered": true
+    }
+]

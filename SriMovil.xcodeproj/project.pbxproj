@@ -11,6 +11,7 @@
 		5030F42C2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F42B2F9FBDA800B704BD /* ServiciosExternosGroupedList.swift */; };
 		5030F4302F9FEEA300B704BD /* VerMasServiciosRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */; };
 		5030F4322F9FEEE000B704BD /* ServiciosDisponiblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */; };
+		5036FABA2FD0CCC700D3B825 /* consultas.json in Resources */ = {isa = PBXBuildFile; fileRef = 5036FAB92FD0CCC700D3B825 /* consultas.json */; };
 		5068568A2FAE2C610094BD86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 506856892FAE2C610094BD86 /* GoogleService-Info.plist */; };
 		5071956D2F967692000A3677 /* SriTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071956C2F967692000A3677 /* SriTabView.swift */; };
 		508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B02CB6F3970040D3B6 /* ViewState.swift */; };
@@ -75,6 +76,7 @@
 		5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiciosDisponiblesView.swift; sourceTree = "<group>"; };
 		5030F4A32FA1624200B704BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5030F4A82FA25F6400B704BD /* SriMovilTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SriMovilTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5036FAB92FD0CCC700D3B825 /* consultas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = consultas.json; sourceTree = "<group>"; };
 		506856892FAE2C610094BD86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5071956C2F967692000A3677 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
@@ -139,6 +141,9 @@
 		5030F4862FA1159800B704BD /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
 		5030F4962FA12A7600B704BD /* Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Presentation; sourceTree = "<group>"; };
 		5030F4A92FA25F6400B704BD /* SriMovilTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SriMovilTests; sourceTree = "<group>"; };
+		5036FABE2FD0D9A000D3B825 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		5036FABF2FD0D9B900D3B825 /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
+		5036FAC02FD0D9C300D3B825 /* Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Presentation; sourceTree = "<group>"; };
 		505B7D992F9961CF006A404F /* Constants */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Constants; sourceTree = "<group>"; };
 		505B7D9C2F99620C006A404F /* Security */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Security; sourceTree = "<group>"; };
 		505B7DC52F9A6E46006A404F /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
@@ -197,6 +202,16 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		5036FABB2FD0D1C000D3B825 /* Consulta */ = {
+			isa = PBXGroup;
+			children = (
+				5036FAC02FD0D9C300D3B825 /* Presentation */,
+				5036FABF2FD0D9B900D3B825 /* Domain */,
+				5036FABE2FD0D9A000D3B825 /* Data */,
+			);
+			path = Consulta;
+			sourceTree = "<group>";
+		};
 		5071956E2F980ADE000A3677 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +256,7 @@
 		FA2A42842C5B1CE800A021A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5036FABB2FD0D1C000D3B825 /* Consulta */,
 				507195862F9901CE000A3677 /* Login */,
 				5071956E2F980ADE000A3677 /* Banner */,
 				500684FE2F92D5D900911301 /* Home */,
@@ -542,6 +558,7 @@
 				FAB712952C5B076300771790 /* Assets.xcassets */,
 				FAB712972C5B076300771790 /* Preview Content */,
 				506856892FAE2C610094BD86 /* GoogleService-Info.plist */,
+				5036FAB92FD0CCC700D3B825 /* consultas.json */,
 			);
 			path = SriMovil;
 			sourceTree = "<group>";
@@ -609,6 +626,9 @@
 				5030F47E2FA1143300B704BD /* Domain */,
 				5030F4862FA1159800B704BD /* Data */,
 				5030F4962FA12A7600B704BD /* Presentation */,
+				5036FABE2FD0D9A000D3B825 /* Data */,
+				5036FABF2FD0D9B900D3B825 /* Domain */,
+				5036FAC02FD0D9C300D3B825 /* Presentation */,
 				505B7D992F9961CF006A404F /* Constants */,
 				505B7D9C2F99620C006A404F /* Security */,
 				505B7DC52F9A6E46006A404F /* ViewModel */,
@@ -697,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5068568A2FAE2C610094BD86 /* GoogleService-Info.plist in Resources */,
+				5036FABA2FD0CCC700D3B825 /* consultas.json in Resources */,
 				FAB712992C5B076300771790 /* Preview Assets.xcassets in Resources */,
 				FAB712962C5B076300771790 /* Assets.xcassets in Resources */,
 			);

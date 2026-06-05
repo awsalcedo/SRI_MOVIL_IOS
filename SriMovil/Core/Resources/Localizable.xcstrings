@@ -158,10 +158,46 @@
     "Consultas" : {
 
     },
+    "CONSULTAS_DECODING_FAILED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo cargar la configuración de consultas."
+          }
+        }
+      }
+    },
+    "CONSULTAS_FILE_NOT_FOUND" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró la configuración de consultas."
+          }
+        }
+      }
+    },
+    "CONSULTAS_READ_FAILED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo leer la configuración de consultas."
+          }
+        }
+      }
+    },
     "Contáctnos" : {
 
     },
     "Contribuyente" : {
+
+    },
+    "Copyright (c) 2014 Servicio de Rentas Internas.\nTodos los derechos reservados." : {
 
     },
     "Cuando ingreses una placa, RAMV o CPN y presiones “Consultar valores”, aquí verás el resumen del vehículo y sus rubros asociados." : {
@@ -340,6 +376,9 @@
 
     },
     "Limpiar campo" : {
+
+    },
+    "Menú" : {
 
     },
     "Mostrar contraseña" : {

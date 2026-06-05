@@ -39,4 +39,10 @@ enum AppStrings {
         
         static let emptyLastName = String(localized: "DEUDAS_APELLIDOS_VACIO")
     }
+    
+    enum Consultas {
+        static let fileNotFound = String(localized: "CONSULTAS_FILE_NOT_FOUND")
+        static let readFailed = String(localized: "CONSULTAS_READ_FAILED")
+        static let decodingFailed = String(localized: "CONSULTAS_DECODING_FAILED")
+    }
 }

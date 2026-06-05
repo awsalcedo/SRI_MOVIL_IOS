@@ -18,7 +18,8 @@ struct SriMovilApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SriTabView()
+            //SriTabView()
+            ConsultasLegadaView()
         }
     }
 }

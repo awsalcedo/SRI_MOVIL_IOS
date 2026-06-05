@@ -34,4 +34,7 @@ extension Logger {
     // MARK: - Log for Core Services
     
     static let core = Logger(subsystem: subsystem, category: "Core")
+    
+    /// Logger para Consultas
+    static let consultas = Logger(subsystem: subsystem, category: "Consultas")
 }
