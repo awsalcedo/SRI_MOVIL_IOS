@@ -12,6 +12,7 @@
 		5030F4302F9FEEA300B704BD /* VerMasServiciosRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F42F2F9FEEA300B704BD /* VerMasServiciosRow.swift */; };
 		5030F4322F9FEEE000B704BD /* ServiciosDisponiblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030F4312F9FEEE000B704BD /* ServiciosDisponiblesView.swift */; };
 		5036FABA2FD0CCC700D3B825 /* consultas.json in Resources */ = {isa = PBXBuildFile; fileRef = 5036FAB92FD0CCC700D3B825 /* consultas.json */; };
+		503DF2D12FD72752005B4762 /* LegacyChildHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF2D02FD72752005B4762 /* LegacyChildHeaderView.swift */; };
 		5068568A2FAE2C610094BD86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 506856892FAE2C610094BD86 /* GoogleService-Info.plist */; };
 		5071956D2F967692000A3677 /* SriTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071956C2F967692000A3677 /* SriTabView.swift */; };
 		508C72B12CB6F3970040D3B6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C72B02CB6F3970040D3B6 /* ViewState.swift */; };
@@ -77,6 +78,7 @@
 		5030F4A32FA1624200B704BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5030F4A82FA25F6400B704BD /* SriMovilTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SriMovilTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036FAB92FD0CCC700D3B825 /* consultas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = consultas.json; sourceTree = "<group>"; };
+		503DF2D02FD72752005B4762 /* LegacyChildHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyChildHeaderView.swift; sourceTree = "<group>"; };
 		506856892FAE2C610094BD86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5071956C2F967692000A3677 /* SriTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriTabView.swift; sourceTree = "<group>"; };
 		508C72B02CB6F3970040D3B6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				508C72B82CBDC1300040D3B6 /* ErrorView.swift */,
 				50D6D2842F76C6BD0000820B /* SRITextFieldButtonView.swift */,
 				50D6D2862F76C7D10000820B /* SRIPrimaryButtonStyle.swift */,
+				503DF2D02FD72752005B4762 /* LegacyChildHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				508C72B72CBDA4BC0040D3B6 /* ErrorResponse.swift in Sources */,
 				500266F02CB568E000988A6B /* SriModel.xcdatamodeld in Sources */,
 				50E7BE182C62B29D008EFCAA /* CustomTextFieldView.swift in Sources */,
+				503DF2D12FD72752005B4762 /* LegacyChildHeaderView.swift in Sources */,
 				FA450BCB2C6BEB3A00DAA3FB /* CoreDataError.swift in Sources */,
 				FA2A43012C5B25A300A021A0 /* NoticiasView.swift in Sources */,
 				FA2A428C2C5B1D9100A021A0 /* CalculadorasView.swift in Sources */,
